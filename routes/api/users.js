@@ -36,13 +36,6 @@ router.post("/register", (request, response) => {
 
     if (!isValid) return response.status(400).json(errors);
 
-
-    User.findOne({ email: request.body.email })
-        .then( user => {
-            if (user) {
-                errors.email = "Email already exists"
-                return response.status(400).json(errors)
-
     User.findOne({ email: request.body.email })
         .then( user => {
             if (user) {
@@ -107,9 +100,6 @@ router.post("/login", (request, response) => {
 
                 errors.email = "User not found";
                 return response.status(404).json(errors);
-
-                return response.status(404).json({ email: "This email is not registered"});
-
             }
 
             bcrypt.compare(password, user.password)
