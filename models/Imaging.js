@@ -3,16 +3,13 @@ const Schema = mongoose.Schema;
 
 const ImagingSchema = new Schema({
     brainReconstruction: {
-        type: File,
-        required: true
+        type: File
     },
     MRI: {
-        type: File,
-        required: true
+        type: File
     },
     CT: {
-        type: File,
-        required: true
+        type: File
     }
 });
 
