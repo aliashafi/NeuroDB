@@ -1,6 +1,10 @@
 const express = require('epxress');
 const router = express.Router({mergeParams: true});
 
+
+const validateElectrodeInput = require("../../validations/electrode")
+
+
 // use mergeParams option => 
     // i.e., const itemRouter = express.Router({mergeParams: true});
 
@@ -24,14 +28,15 @@ router.get('/:imagingId', (req, res) => {
 router.post('/', (req, res) => {
     // TODO: create validation for imaging input and comment in the following:
     
-    // const { errors, isValid } = validateImagingInput(req.body);
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
+    const { errors, isValid } = validateElectrodeInput(req.body.electrodes);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     const newImaging = new Imaging({
-        // TODO: create imaging model and add fields to create a new imaging here
-        //i.e., coverage: req.body.coverage
+        patientId: req.body.patientId,
+        electrodes: req.body.electrodes
     });
 
     newImaging.save().then(imaging => res.json(imaging));
