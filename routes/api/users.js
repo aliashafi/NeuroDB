@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const keys = require("../../config/keys");
 
+const validateRegisterInput = require("../../validations/register");
+const validateLoginInput = require("../../validations/login");
+
 const User = require("../../models/User");
 
 
@@ -26,10 +29,17 @@ router.get("/current", passport.authenticate("jwt", { session: false }), (reques
 
 
 router.post("/register", (request, response) => {
+
+    const { errors, isValid } = validateRegisterInput(request.body);
+
+    if (!isValid) return response.status(400).json(errors);
+
+
     User.findOne({ email: request.body.email })
         .then( user => {
             if (user) {
-                return response.status(400).json({ email: "A user has already been registered with this email"})
+                errors.email = "Email already exists"
+                return response.status(400).json(errors)
             } else {
                 const newUser = new User({
                     firstName: request.body.firstName,
@@ -71,6 +81,12 @@ router.post("/register", (request, response) => {
 });
 
 router.post("/login", (request, response) => {
+
+    const { errors, isValid } = validateLoginInput(request.body);
+
+    if (!isValid) return response.status(400).json(errors);
+
+
     const email = request.body.email;
     const password = request.body.password;
 
@@ -78,7 +94,8 @@ router.post("/login", (request, response) => {
     User.findOne({ email: email })
         .then( user => {
             if (!user) {
-                return response.status(404).json({ email: "This email is not registered"});
+                errors.email = "User not found";
+                return response.status(404).json(errors);
             }
 
             bcrypt.compare(password, user.password)
