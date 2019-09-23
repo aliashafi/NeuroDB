@@ -3,24 +3,19 @@ const Schema = mongoose.Schema;
 
 const MedicalHistorySchema = new Schema({
     BDI: {
-        type: Number,
-        required: true
+        type: Number
     },
     BAI: {
-        type: Number,
-        required: true
+        type: Number
     },
     epilepsyDiagnosis: {
-        type: String,
-        required: true //[includes: MTL, ...]
+        type: String //[includes: MTL, ...]
     },
     previousResection: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     neuroPace: {
-        type: Boolean,
-        required: true
+        type: Boolean
     }
 });
 
