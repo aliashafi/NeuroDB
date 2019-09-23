@@ -17,7 +17,7 @@ export const receivePatient = (patient) => ({
 });
 
 export const removePatient = patientID => ({
-    type: REMOVE_PATIENT, 
+    type: DELETE_PATIENT, 
     patientID
 });
 
