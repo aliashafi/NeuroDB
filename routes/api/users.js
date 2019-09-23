@@ -124,7 +124,6 @@ router.post("/login", (request, response) => {
         })
 })
 
-
 // user show
 router.get("/:userId", (request, response) => {
     User.findById(request.params.userId)
