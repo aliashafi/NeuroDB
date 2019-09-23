@@ -1,26 +1,27 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
+const validateElectrodeData = require('./electrode');
 
-// module.exports = function validateImagingData(data) {
-//     let errors = {};
+module.exports = function validateImagingData(data) {
+    let errors = {};
 
-//     // data.email = validText(data.email) ? data.email : "";
-//     // data.password = validText(data.password) ? data.password : "";
+    if (!data.patientId) {
+        errors.patientId = "Patient ID is required";
+    }   
+    if (data.patientId instanceof mongoose.Schema.Types.ObjectId) {
+        errors.invalidPatientId = "Patient ID provided is invalid";
+    }
 
-//     // if (!Validator.isEmail(data.email)) {
-//     //     errors.email = "Not a valid email address"
-//     // }
+    // Validate electrode montage input - if invalid, merge electrode montage errors with imaging errors 
+    if (data.electrodeMontage) {
+        const electrodeValidation = validateElectrodeData(data.electrodeMontage);
+        if (!electrodeValidation.isValid) {
+            errors.Object.assign({}, errors, electrodeValidation.errors);
+    }
+}
 
-//     // if (Validator.isEmpty(data.email)) {
-//     //     errors.email = "Email field is required"
-//     // }
-
-//     // if (Validator.isEmpty(data.password)) {
-//     //     errors.password = "Password field is required"
-//     // }
-
-//     return {
-//         errors,
-//         isValid: Object.keys(errors).length === 0
-//     };
-// };
+    return {
+        errors,
+        isValid: Object.keys(errors).length === 0
+    };
+};
