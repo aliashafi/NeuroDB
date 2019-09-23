@@ -100,7 +100,6 @@ router.post("/login", (request, response) => {
 
                 errors.email = "User not found";
                 return response.status(404).json({ email: "This email is not registered"});
-
             }
 
             bcrypt.compare(password, user.password)
