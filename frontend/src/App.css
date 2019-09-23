@@ -20,3 +20,8 @@
 .App-link {
   color: #09d3ac;
 }
+
+.splash-page{
+  background-image: url('./temp-brain.jpg');
+  height: 100vh;
+}
