@@ -3,14 +3,18 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const bodyParser = require("body-parser");
+const passport = require("passport");
+
 const users = require("./routes/api/users");
 
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then( () => console.log("Connected to MongoDB successfully"))
-    .catch( err => console.log(err));
+    .catch( error => console.log(error));
 
-app.get("/", (request, response) => response.send("Neuro DB"));
+app.use(passport.initialize());
+require("./config/passport")(passport);
+
 
 // middleware for body parser
 app.use(bodyParser.urlencoded({extended: false}));
