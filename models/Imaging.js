@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+import electrodeSchema from './Electrode'
+import { SchemaType } from 'mongoose';
 
 const ImagingSchema = new Schema({
-    brainReconstruction: {
-        type: File,
+    patientID: {
+        type: Schema.Types.ObjectId,
+        ref: 'patients',
         required: true
     },
-    MRI: {
-        type: File,
-        required: true
-    },
-    CT: {
-        type: File,
-        required: true
-    }
+    electrodeMontage: electrodeSchema 
 });
 
 module.exports = Imaging = mongoose.model('imaging', ImagingSchema)
