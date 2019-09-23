@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-import electrodeSchema from './Electrode'
-import { SchemaType } from 'mongoose';
+import electrodeSchema from './Electrode';
 
 const ImagingSchema = new Schema({
     patientID: {
