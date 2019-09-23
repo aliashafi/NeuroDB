@@ -118,11 +118,47 @@ router.post("/login", (request, response) => {
                                 });
                             });
                     } else {
-                        return response.status(400).json({ password: "Incorrect Password"});
+                        return response.status(400).json({ password: "Incorrect Password" });
                     }
                 })
         })
 })
+
+
+// user show
+router.get("/:userId", (request, response) => {
+    User.findById(request.params.userId)
+        .then( user => {
+            response.json(user)
+        })
+        .catch( error => {
+            response.status(404).json({ noUserFound: "No user found with given ID" })
+        });
+})
+
+router.patch("/:userId/update", (request, response) => {
+    User.findByIdAndUpdate(request.params.userId, { $set: request.body }, {new: true})
+        .then ( user => {
+            response.json(user)
+        })
+        .catch( error => {
+            response.status(404).json({ noUserFound: "No user found with given ID"})
+        })
+
+})
+
+router.delete("/:userId/destroy", (request, response) => {
+    User.findByIdAndRemove(request.params.userId)
+        .then( user => {
+            // can pass found user to callback if needed 
+            response.json({ msg: `${user.email} deleted successfully`})
+        })
+        .catch( error => {
+            response.status(404).json({ noUserFound: "No user found with given ID" })
+        })
+})
+
+
 
 
 
