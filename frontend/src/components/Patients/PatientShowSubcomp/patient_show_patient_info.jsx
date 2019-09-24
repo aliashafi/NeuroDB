@@ -4,6 +4,7 @@ import React from 'react';
 function PatientShowPatientInfo(props) {
 
     function renderBasicInfo(){
+        
         if (Object.keys(props.patient).length) {
             return (
                 <>
@@ -35,7 +36,7 @@ function PatientShowPatientInfo(props) {
 
     function renderDemographics(){
         if (Object.keys(props.patient).length && props.patient.demographics) {
-            const { birthDate, age, gender, languageDominance, dominantHand, nativeLanguage } = this.props.patient.demographics;
+            const { birthDate, age, gender, languageDominance, dominantHand, nativeLanguage } = props.patient.demographics;
 
             return (
                 <>
@@ -100,6 +101,7 @@ function PatientShowPatientInfo(props) {
 
     return (
         <div className='patient-show-inner-card'>
+            <h2>Patient info card</h2>
             {renderBasicInfo()}
             {renderDemographics()}            
 
