@@ -13,7 +13,7 @@ module.exports = function validateImagingData(data) {
     }
 
     // Validate electrode montage input - if invalid, merge electrode montage errors with imaging errors 
-    if (data.electrodeMontage) {
+    if (data.electrodeMontage.length) {
         const electrodeValidation = validateElectrodeData(data.electrodeMontage);
         if (!electrodeValidation.isValid) {
             errors.Object.assign({}, errors, electrodeValidation.errors);

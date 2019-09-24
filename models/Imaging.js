@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-import electrodeSchema from './Electrode';
+const electrodeSchema = require('./Electrode').schema;
+
 
 const ImagingSchema = new Schema({
     patientID: {
@@ -8,7 +9,7 @@ const ImagingSchema = new Schema({
         ref: 'patients',
         required: true
     },
-    electrodeMontage: electrodeSchema 
+    electrodeMontage: [electrodeSchema]
 });
 
 module.exports = Imaging = mongoose.model('imaging', ImagingSchema)

@@ -6,8 +6,9 @@ const validateMedicalHistoryInput = require('./medical_history');
 const validateImagingData = require('./imaging');
 
 module.exports = function validatePatientInput(data) {
+    // debugger
     let errors = {};
-
+    console.log(data);
     data.researchId = validText(data.researchId) ? data.researchId : "";
 
     if (Validator.isEmpty(data.researchId)) {
@@ -23,31 +24,38 @@ module.exports = function validatePatientInput(data) {
     }
 
     // Validate demographics input - if invalid, merge demographics errors with patients errors 
-    const demographicsValidation = validateDemographicInput(data.demographics);
-    if (!demographicsValidation.isValid) {
-        errors = Object.assign({}, errors, demographicsValidation.errors);
+    if (Object.keys(data).includes('demographics')) {
+        const demographicsValidation = validateDemographicInput(data.demographics);
+        if (!demographicsValidation.isValid) {
+            errors = Object.assign({}, errors, demographicsValidation.errors);
+        }
     }
-
     // Validate medication input - if invalid, merge medication errors with patients errors 
-    const medicationValidation = validateMedicationInput(data.medication);
-    if (!medicationValidation.isValid) {
-        errors.Object.assign({}, errors, medicationValidation.errors);
+    if (Object.keys(data).includes('medication')) {
+        const medicationValidation = validateMedicationInput(data.medication);
+        if (!medicationValidation.isValid) {
+            errors.Object.assign({}, errors, medicationValidation.errors);
+        }
+    }
+    // Validate medical history input - if invalid, merge medical history errors with patients errors 
+    if (Object.keys(data).includes('medicalHistory')) {
+        const medicalHistoryValidation = validateMedicalHistoryInput(data.medicalHistory);
+        if (!medicationValidation.isValid) {
+            errors.Object.assign({}, errors, medicalHistoryValidation.errors);
+        }
     }
 
     // Validate medical history input - if invalid, merge medical history errors with patients errors 
-    const medicalHistoryValidation = validateMedicalHistoryInput(data.medicalHistory);
-    if (!medicationValidation.isValid) {
-        errors.Object.assign({}, errors, medicalHistoryValidation.errors);
+    if (Object.keys(data).includes('imaging')) {
+        const imagingValidation = validateImagingData(data.imaging);
+        if (!imagingValidation.isValid) {
+            errors.Object.assign({}, errors, imagingValidation.errors);
+        }
     }
-
-    // Validate medical history input - if invalid, merge medical history errors with patients errors 
-    const imagingValidation = validateImagingData(data.imaging);
-    if (!imagingValidation.isValid) {
-        errors.Object.assign({}, errors, imagingValidation.errors);
-    }
-
-    if (!data.tasks instanceof Array) {
-        errors.tasks = "Tasks must be an array of task objectIds";
+    if (Object.keys(data).includes('tasks')) {
+        if (!data.tasks instanceof Array) {
+            errors.tasks = "Tasks must be an array of task objectIds";
+        }
     }
 
     return {
