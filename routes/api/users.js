@@ -93,9 +93,11 @@ router.post("/login", (request, response) => {
 
     User.findOne({ email: email })
         .then( user => {
-            if (!user) {
+            if (!user){
                 errors.email = "User not found";
                 return response.status(404).json(errors);
+            } else if (user.privileges === "Pending") {
+                return response.status(400).json({msg: "User not approved"})
             }
 
             bcrypt.compare(password, user.password)
@@ -103,8 +105,8 @@ router.post("/login", (request, response) => {
                     if (isMatch) {
                         const payload = {
                             id: user.id,
-                            email: user.email,
-                            privileges: user.privileges
+                            // email: user.email,
+                            // privileges: user.privileges
                         };
 
                         jwt.sign(

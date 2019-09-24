@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import Root from "./components/root";
+// import Root from "./components/root";
 import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import {setAuthToken} from "./util/session_api_util";
@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ReactDOM.render(<App />, document.getElementById('root'));
 
     window.axios = axios;
-    window.dispatch = store.dispatch
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
 
     window.loginUser = loginUser;
     window.registerUser = registerUser;
+    window.logout = logout;
     
 });
 
