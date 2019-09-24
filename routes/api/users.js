@@ -43,10 +43,8 @@ router.post("/register", (request, response) => {
                 errors.email = "Email already exists"
                 return response.status(400).json(errors)
 
-    User.findOne({ email: request.body.email })
-        .then( user => {
-            if (user) {
-                return response.status(400).json({ email: "A user has already been registered with this email"})
+
+   
 
             } else {
                 const newUser = new User({
@@ -108,7 +106,6 @@ router.post("/login", (request, response) => {
                 errors.email = "User not found";
                 return response.status(404).json(errors);
 
-                return response.status(404).json({ email: "This email is not registered"});
 
             }
 

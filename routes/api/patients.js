@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const taskRoute = require('./tasks');
 
 // index, show, create, update, delete
 // TODO: add app.use("/api/patients", patients); to app.js (and also import patients router file)
@@ -72,5 +73,7 @@ router.delete('/:patientId', (req, res) => {
     }));
 });
 
+// Get all tasks for a patient 
+router.use('/:patientId/tasks', taskRoute);
 
 module.exports = router;
