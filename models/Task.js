@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ResearcherSchema = new Schema({
-    type: Schema.Types.ObjectId,
-    ref: 'users'
-})
+
 
 const TaskSchema = new Schema({
     name: {
@@ -14,9 +11,9 @@ const TaskSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    researchers: [ResearcherSchema],
+    researchers: [{_id: {type: String, ref: 'users'}}],
     notes: {
-        type: Text
+        type: String
     }
 });
 

@@ -34,14 +34,14 @@ module.exports = function validatePatientInput(data) {
     if (Object.keys(data).includes('medication')) {
         const medicationValidation = validateMedicationInput(data.medication);
         if (!medicationValidation.isValid) {
-            errors.Object.assign({}, errors, medicationValidation.errors);
+            errors = Object.assign({}, errors, medicationValidation.errors);
         }
     }
     // Validate medical history input - if invalid, merge medical history errors with patients errors 
     if (Object.keys(data).includes('medicalHistory')) {
         const medicalHistoryValidation = validateMedicalHistoryInput(data.medicalHistory);
-        if (!medicationValidation.isValid) {
-            errors.Object.assign({}, errors, medicalHistoryValidation.errors);
+        if (!medicalHistoryValidation.isValid) {
+            errors = Object.assign({}, errors, medicalHistoryValidation.errors);
         }
     }
 
@@ -49,12 +49,12 @@ module.exports = function validatePatientInput(data) {
     if (Object.keys(data).includes('imaging')) {
         const imagingValidation = validateImagingData(data.imaging);
         if (!imagingValidation.isValid) {
-            errors.Object.assign({}, errors, imagingValidation.errors);
+            errors = Object.assign({}, errors, imagingValidation.errors);
         }
     }
     if (Object.keys(data).includes('tasks')) {
         if (!data.tasks instanceof Array) {
-            errors.tasks = "Tasks must be an array of task objectIds";
+            errors = tasks = "Tasks must be an array of task objectIds";
         }
     }
 

@@ -7,7 +7,7 @@ const ImagingSchema = new Schema({
     patientID: {
         type: Schema.Types.ObjectId,
         ref: 'patients',
-        required: true
+        required: false
     },
     electrodeMontage: [electrodeSchema]
 });

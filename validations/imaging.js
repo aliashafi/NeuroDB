@@ -1,14 +1,12 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
 const validateElectrodeData = require('./electrode');
+const mongoose = require('mongoose');
 
 module.exports = function validateImagingData(data) {
     let errors = {};
-
-    if (!data.patientId) {
-        errors.patientId = "Patient ID is required";
-    }   
-    if (data.patientId instanceof mongoose.Schema.Types.ObjectId) {
+ 
+    if (data.patientId && data.patientId instanceof mongoose.Schema.Types.ObjectId) {
         errors.invalidPatientId = "Patient ID provided is invalid";
     }
 
