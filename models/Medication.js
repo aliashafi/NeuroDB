@@ -10,4 +10,4 @@ const MedicationSchema = new Schema({
     }
 });
 
-module.exports = Medication = mongoose.modelNames('medications', MedicationSchema);
+module.exports = Medication = mongoose.model('medications', MedicationSchema);

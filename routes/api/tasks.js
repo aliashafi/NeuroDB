@@ -1,4 +1,4 @@
-const express = require('epxress');
+const express = require('express');
 const router = express.Router({mergeParams: true});
 
 // use mergeParams option => 
@@ -51,7 +51,7 @@ router.patch('/:taskId', (req, res) => {
         });
     })
     .catch( err => {
-        res.status.(500).json({
+        res.status(500).json({
             success: false,
             message: 'Server error. Please try again.'
         });
@@ -74,3 +74,5 @@ router.delete('/:taskId', (req, res) => {
         });
     });
 });
+
+module.exports = router;

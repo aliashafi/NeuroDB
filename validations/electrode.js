@@ -8,14 +8,12 @@ module.exports = function validateElectrodeData(data) {
     let errors = {};
     data.forEach(electrode => {
 
-        electrode.electrodeRegion = validText(electrode.electrodeRegion) ? electrode.electrodeRegion : "";
-        electrode.electrodeID = validText(electrode.electrodeID) ? electrode.electrodeID : "";
-
+        
         /// all valid brain regions
         const brainRegions =
-            ["Temporal lobe medial aspect",
-                "Entorhinal cortex",
-                "Parahippocampal gyrus",
+        ["Temporal lobe medial aspect",
+        "Entorhinal cortex",
+        "Parahippocampal gyrus",
                 "Temporal pole",
                 "Fusiform gyrus",
                 "Temporal lobe",
@@ -54,10 +52,18 @@ module.exports = function validateElectrodeData(data) {
                 "Posterior",
                 "Isthmus"
             ]
-
-        /// if the electrode is not in electrodeRegion
+            
+        electrode.electrodeRegion = validText(electrode.electrodeRegion) ? electrode.electrodeRegion : "";
+        electrode.electrodeID = validText(electrode.electrodeID) ? electrode.electrodeID : "";
+        if (Validator.isEmpty(electrode.electrodeRegion)) {
+            errors.electrodeRegionMissing = "Electrode region is required";
+        }
+        if (Validator.isEmpty(electrode.electrodID)) {
+            errors.electrodeID = "Electrode ID is required";
+        }
+        // if the electrode is not in electrodeRegion
         if (!Validator.isIn(electrode.electrodeRegion, brainRegions)) {
-            errors.electrodeRegion = "Must be a valid brain region"
+            errors.electrodeRegionInvalid = "Electrode Region must be a valid brain region";
             valid = false;
         }
 
