@@ -4,7 +4,7 @@ const medicationSchema = require('./Medication').schema;
 const medicalHistorySchema = require('./MedicalHistory').schema;
 const imagingSchema = require('./Imaging').schema;
 const demographicSchema = require('./Demographic').schema;
-// const tasksSchema = require()
+const taskSchema = require('./Task').schema;
 
 // RelatedRecrodSchema represents other records present in the system for the same patient. It only contains the objectId of the record.
 // const RelatedRecordSchema = new Schema({
@@ -34,7 +34,7 @@ const PatientSchema = new Schema({
     medicalHistory: medicalHistorySchema,
     imaging: imagingSchema,
     relatedRecord: [{_id: {type: String, ref: 'patients'}}],
-    // tasks: [TaskSchema]
+    tasks: [taskSchema]
 });
 
 module.exports = Patient = mongoose.model('patients', PatientSchema);
