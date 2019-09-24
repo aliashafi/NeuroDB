@@ -8,6 +8,7 @@ const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
 
+
 const User = require("../../models/User");
 
 
@@ -34,12 +35,12 @@ router.post("/register", (request, response) => {
 
     if (!isValid) return response.status(400).json(errors);
 
-
     User.findOne({ email: request.body.email })
         .then( user => {
             if (user) {
                 errors.email = "Email already exists"
                 return response.status(400).json(errors)
+
             } else {
                 const newUser = new User({
                     firstName: request.body.firstName,
@@ -107,6 +108,8 @@ router.post("/login", (request, response) => {
                             id: user.id,
                             // email: user.email,
                             // privileges: user.privileges
+                            email: user.email,
+                            privileges: user.privileges
                         };
 
                         jwt.sign(
@@ -120,7 +123,7 @@ router.post("/login", (request, response) => {
                                 });
                             });
                     } else {
-                        return response.status(400).json({ password: "Incorrect Password" });
+                        return response.status(400).json({ password: "Incorrect Password"});
                     }
                 })
         })
@@ -158,8 +161,6 @@ router.delete("/:userId/destroy", (request, response) => {
             response.status(404).json({ noUserFound: "No user found with given ID" })
         })
 })
-
-
 
 
 
