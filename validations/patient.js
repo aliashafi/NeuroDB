@@ -6,11 +6,11 @@ const validateMedicalHistoryInput = require('./medical_history');
 const validateImagingData = require('./imaging');
 
 module.exports = function validatePatientInput(data) {
-    // debugger
     let errors = {};
     console.log(data);
     data.researchId = validText(data.researchId) ? data.researchId : "";
 
+    // TODO: add validation to check there are no duplicate researchId
     if (Validator.isEmpty(data.researchId)) {
         errors.researchId = "Patient ECID field is required";
     }
