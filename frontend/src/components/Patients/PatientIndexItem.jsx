@@ -6,9 +6,13 @@ class PatientIndexItem extends React.Component {
     }
 
     render() {
+        debugger;
         return (
-            <div>
-                This is a Patient index item
+            <div className='patient-index-item-main'>
+                <div>{this.props.patient._id}</div>
+                <div>{this.props.patient.researchId}</div>
+                <div>Age: {this.props.patient.demographics.age}</div>
+                <div>Gender: {this.props.patient.demographics.gender}</div>
             </div>
         )
     }
