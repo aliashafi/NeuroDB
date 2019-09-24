@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const getTasks = () => {
-    return axios.get('/api/tasks')
+export const getTasks = patientId => {
+    return axios.get(`/api/patients/${patientId}/tasks`);
 };
 
 export const getTask = (id) => {
