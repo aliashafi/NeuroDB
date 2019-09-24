@@ -1,12 +1,13 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
 
-modeule.exports = function validateDemographicInput(data) {
+module.exports = function validateDemographicInput(data) {
     let errors = {};
     const leftRightDominance = ["L", "R"];
     const languages = ["English", "Madarin", "Spanish"];
     const gender = ["M", "F"];
 
+    
     if (data.birthDate && !data.birthDate instanceof Date) {
         errors.birthDate = "Birth date needs to be in date format";
     }

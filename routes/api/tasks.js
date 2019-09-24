@@ -1,4 +1,4 @@
-const express = require('epxress');
+const express = require('express');
 const router = express.Router({mergeParams: true});
 const keys = require("../../config/keys");
 const passport = require("passport");
@@ -89,3 +89,5 @@ router.delete('/:taskId', (req, res) => {
         });
     });
 });
+
+module.exports = router;

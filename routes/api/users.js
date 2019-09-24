@@ -35,6 +35,7 @@ router.post("/register", (request, response) => {
 
     if (!isValid) return response.status(400).json(errors);
 
+
     User.findOne({ email: request.body.email })
         .then( user => {
             if (user) {
@@ -108,8 +109,8 @@ router.post("/login", (request, response) => {
                             id: user.id,
                             // email: user.email,
                             // privileges: user.privileges
-                            email: user.email,
-                            privileges: user.privileges
+                            // email: user.email,
+                            // privileges: user.privileges
                         };
 
                         jwt.sign(

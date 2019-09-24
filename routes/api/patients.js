@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const taskRoute = require('./tasks');
+const tasks = require('./tasks');
+const mongoose = require("mongoose");
+const Patient = require('../../models/Patient');
+const validatePatientInput = require('../../validations/patient');
 
 // index, show, create, update, delete
-// TODO: add app.use("/api/patients", patients); to app.js (and also import patients router file)
 
 // Patients index route
 router.get('/', (req, res) => {
@@ -23,16 +25,41 @@ router.get('/:patientId', (req, res) => {
 
 // Patient create route
 router.post('/', (req, res) => {
-    // TODO: create validation for patient input and comment in the following:
     
-    // const { errors, isValid } = validatePatientInput(req.body);
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
+    const { errors, isValid } = validatePatientInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     const newPatient = new Patient({
-        // TODO: create patient model and add fields to create a new patient here
-        //i.e., ecId: req.body.ecId
+        researchId: req.body.researchId,
+        dateOfSurgery: req.body.dateOfSurgery,
+        consent: req.body.consent,
+        demographics: { 
+            birthDate: req.body.demographics.birthDate,
+            age: req.body.demographics.age,
+            gender: req.body.demographics.gender,
+            languageDominance: req.body.demographics.languageDominance,
+            dominantHand: req.body.demographics.dominantHand,
+            nativeLanguage: req.body.demographics.nativeLanguage 
+        },
+        medication: { 
+            medicationName: req.body.medication.medicationName,
+            medicationPurpose: req.body.medication.medicationPurpose
+        },
+        medicalHistory: { 
+            BDI: req.body.medicalHistory.BDI,
+            BAI: req.body.medicalHistory.BAI,
+            epilepsyDiagnosis: req.body.medicalHistory.epilepsyDiagnosis,
+            previousResection: req.body.medicalHistory.previousResection,
+            neuroPace: req.body.medicalHistory.neuroPace
+         },
+        imaging: {
+            patientId: req.body.imaging.patientId,
+            electrodeMontage: req.body.imaging.electrodeMontage
+        },
+        relatedRecord: req.body.relatedRecord,
+        tasks: req.body.tasks
     });
 
     newPatient.save().then(patient => res.json(patient));
@@ -50,7 +77,7 @@ router.patch('/:patientId', (req, res) => {
                 success: true,
                 message: 'Patient is updated',
                 updatePatient: updateObject,
-        });
+            });
         })
         .catch((err) => {
             res.status(500).json({
@@ -74,6 +101,6 @@ router.delete('/:patientId', (req, res) => {
 });
 
 // Get all tasks for a patient 
-router.use('/:patientId/tasks', taskRoute);
+router.use('/:patientId/tasks', tasks);
 
 module.exports = router;

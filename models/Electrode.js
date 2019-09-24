@@ -3,15 +3,15 @@ const Schema = mongoose.Schema;
 
 const ElectrodeSchema = new Schema({
     electrodeNum: {
-        type: integer,
+        type: Number,
         required: false
     },
     electrodeID: {
-        type: string,
+        type: String,
         required: false
     },
     electrodeRegion: {
-        type: string,
+        type: String,
         required: false
     },
 

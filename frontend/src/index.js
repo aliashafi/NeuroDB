@@ -4,6 +4,8 @@ import Root from './components/Root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
+import axios from 'axios';
+import { createPatient, getPatient } from './util/patient_api_util';
 // import { logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,4 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store}/>, root);
+
+    window.createPatient = createPatient;
+    window.getPatient = getPatient;
+
 });
