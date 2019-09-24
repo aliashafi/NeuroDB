@@ -4,7 +4,7 @@ const electrodeSchema = require('./Electrode').schema;
 
 
 const ImagingSchema = new Schema({
-    patientID: {
+    patientId: {
         type: Schema.Types.ObjectId,
         ref: 'patients',
         required: false
