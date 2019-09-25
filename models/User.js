@@ -25,7 +25,7 @@ const UserSchema = new Schema({
     privileges: {
         // either admin => full crud or viewer => view only
         type: String,
-        required: true
+        default: "Pending"
     },
     createdAt: {
         type: Date,
