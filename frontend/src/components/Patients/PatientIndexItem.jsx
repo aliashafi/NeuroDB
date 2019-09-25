@@ -6,7 +6,6 @@ class PatientIndexItem extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <div className='patient-index-item-main'>
                 <div>{this.props.patient._id}</div>

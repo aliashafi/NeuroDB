@@ -10,9 +10,9 @@ class DemographicsForm extends React.Component {
 
     render(){
         const options = [
-            { value: 'english', label: 'English' },
-            { value: 'spanish', label: 'Spanish' },
-            { value: 'mandarin', label: 'Mandarin' },
+            { value: 'english', name: 'nativeLanguage' },
+            { value: 'spanish', name: 'nativeLanguage' },
+            { value: 'mandarin', name: 'nativeLanguage' },
         ];
 
         const customStyles = {
@@ -40,6 +40,7 @@ class DemographicsForm extends React.Component {
                     <input 
                         type="text" 
                         name="researchId" 
+                        placeholder="ECXX"
                         value={this.props.demographics.researchId}
                         onChange={this.props.handleChange}
                         />
@@ -48,6 +49,7 @@ class DemographicsForm extends React.Component {
                 <label className="form__label" >Date of Surgery
                     <input 
                         type="date" 
+                        placeholder="ECXX"
                         name="dateOfSurgery"
                         value={this.props.demographics.dateOfSurgery}
                         onChange={this.props.handleChange}
@@ -61,6 +63,8 @@ class DemographicsForm extends React.Component {
                     <input
                         type="date"
                         name="birthDate"
+                        value={this.props.demographics.demographics.birthDate}
+
                             value={this.props.demographics.demographics.birthDate}
                         onChange={this.props.handleChange}
                         id="demographics" />
@@ -69,6 +73,7 @@ class DemographicsForm extends React.Component {
                     <label className="form__label" >Native Language
 
                         <Select options={options} 
+                            onChange={this.props.handleChange}/>
                             styles={customStyles}/>
 
                         {/* <select className="form__dropdown">
