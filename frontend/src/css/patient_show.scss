@@ -1,0 +1,162 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+
+
+.patient-show-page-container{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: $font;
+    background-color: $lightgray-three;
+}
+
+// ======== side nav
+.side-nav-container{
+    background-color: $nav-navy;
+    color: white;
+    height: 100vh;
+    width: 300px;
+}
+
+.side-nav-content {
+    
+    &__wrap {
+        padding: 30px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__cluster {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 30px;
+        background-color: transparent;
+        color: #9ba4b3;
+    }
+
+    &__icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $bright-purple;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    &__text {
+        // display: none;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        
+    }
+}
+
+.side-nav-stem{
+    width: 10px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.side-nav-content__cluster:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease-in;
+}
+
+.nav-selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease-in;
+    color: white;
+}
+// ========= patient show card
+
+
+.patient-show-card {
+    flex: 1 0 500px;
+    background-color: white;
+    height: 80vh;
+    overflow-y: scroll;
+    margin: 50px;
+    border-radius: 12px;
+    padding: 50px 80px;
+    box-sizing: border-box;
+}
+
+//========== patient info subcomp
+.patient-show-inner-card {
+    display: flex; 
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+
+    &__header {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+}
+.inner-card {
+    
+    &__field-grouping {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        width: 90%;
+        box-sizing: border-box;
+        margin: 10px auto;
+    }
+    &__field-label {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-size: 1rem;
+        color: $core-teal;
+        margin-right: 8px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    &__field-value {
+        font-size: 1.3rem;
+        padding: 25px 10px 5px 20px;
+        border: 1px solid #eff0f1;
+        border-radius: 12px;
+        height: 80px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+.editable {
+    background-color: #ebf6ff;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.header-divider {
+    height: 5px;
+    width: 120px;
+    background-color: $lightgray-two;
+    border-radius: 3px;
+    margin: 30px 0;
+}
+
+
+//======= media queries
+@media screen and (min-width: 1200px) {
+    .patient-show-card {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1000px;
+    }
+}
