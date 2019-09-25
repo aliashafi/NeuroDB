@@ -5,7 +5,7 @@ export default (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_PATIENT:
-            return merge({}, { [action.patient._id]: action.patient });
+            return merge({}, { [action.patient.data._id]: action.patient.data });
         case RECEIVE_PATIENTS:
             const patients = action.patients.map(patient => ({ [patient._id]: patient }));
             return merge({}, state, patients);
