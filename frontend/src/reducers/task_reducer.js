@@ -5,12 +5,13 @@ const taskReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_TASKS:
-            const tasks = action.tasks.data.map(task => ({ [task._id]: task }));
-            return Object.assign({}, state, tasks);
+            let newState = {};
+            action.tasks.data.forEach(task => (newState[task._id] = task));
+            return newState;
         case RECEIVE_TASK: 
-            return Object.assign({}, state, { [action.task._id]: action.task });
+            return Object.assign({}, state, { [action.task.data._id]: action.task.data });
         case DELETE_TASK:
-            let newState = Object.assign({}, state);
+            newState = Object.assign({}, state);
             delete newState[action.taskId];
             return newState;
         default:

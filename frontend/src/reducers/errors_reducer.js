@@ -1,9 +1,12 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
+import sessionErrorsReducer from "./session_errors_reducer";
 import PatientErrorsReducer from './patient_errors_reducer';
 import TaskErrorsReducer from './task_errors_reducer';
 
-
-export default combineReducers({
+const ErrorsReducer = combineReducers({
+    session: sessionErrorsReducer,
     patients: PatientErrorsReducer,
     tasks: TaskErrorsReducer,
-});
+})
+
+export default ErrorsReducer;
