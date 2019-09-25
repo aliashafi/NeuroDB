@@ -2,12 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import SplashPage from './components/splash_page'
 import CreatePatientContainer from './components/Patients/patient_create_form_container'
-
-
-
 import PatientIndexContainer from './components/Patients/patient_index_container';
-
-import SplashPage from './components/splash_page';
 import PatientShowContainer from './components/Patients/patient_show_container';
 
 // import logo from './logo.svg';
