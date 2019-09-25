@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createPatient } from '../../actions/patient_actions';
-import PatientCreateForm  from './PatientCreateForm';
+import PatientCreateForm  from './form/PatientCreateForm';
 
 const mapStateToProps = (state) => {
     return {
