@@ -1,3 +1,4 @@
+@import './reset.scss';
 @import './config.scss';
 
  div[id*="button-"] {
@@ -8,9 +9,13 @@
     margin-top: 5px;
     font-weight: 400;
     font-size: 16px;
-    border-radius: 13px;
+    border-radius: 5px;
     margin-bottom: 5px;
     text-align: center;
     margin-right: 15px;
     cursor: pointer;
  }
+
+
+
+
