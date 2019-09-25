@@ -1,8 +1,5 @@
 @import './config.scss';
-@import '~pretty-checkbox/src/pretty-checkbox.scss';
 @import './custom_borders.scss';
-// @import '~react-select/less/select';
-
 
 .card{
     width: 50%;
@@ -38,10 +35,9 @@
             margin-bottom: 10px;
         }
         
-    
+   
 
         section{
-                // margin-top: 20px;
                 display: flex;
                 justify-content: space-between;
                 padding-bottom: 10px;
@@ -50,6 +46,7 @@
         > section{
             height: 16.5%
         }
+
     }
 
 }
@@ -85,6 +82,7 @@
         &__checkbox{
             text-align: start;
             color: $text-gray;
+            color: #666;
             display: flex;
             flex-direction: column;
 
@@ -110,6 +108,11 @@
             padding: 7px;
             border-radius: 4px;
             height: 43%;
+            width: 218px;
+            height: 42px;
+            border: 1px solid hsl(0,0%,80%);
+            padding: 7px;
+            border-radius: 5px;
 
         }
         input:focus {
@@ -126,10 +129,6 @@
 .css-2b097c-container{
     margin-top: 3px;
 }
-
-
- 
-
 
 
 
@@ -212,7 +211,6 @@
     background-color: transparent;
     border-radius: 0;
 }
-
 
 
 
