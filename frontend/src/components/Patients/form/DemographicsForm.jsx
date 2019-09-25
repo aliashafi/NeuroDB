@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../../css/form.scss'
 import Select from 'react-select'
+import '../../../css/form.scss'
 
 class DemographicsForm extends React.Component {
 
@@ -10,91 +10,74 @@ class DemographicsForm extends React.Component {
 
     render(){
         const options = [
-            { value: 'english', name: 'nativeLanguage' },
-            { value: 'spanish', name: 'nativeLanguage' },
-            { value: 'mandarin', name: 'nativeLanguage' },
+            { name: 'english', value: 'nativeLanguage' },
+            { name: 'spanish', value: 'nativeLanguage' },
+            { name: 'mandarin', value: 'nativeLanguage' },
         ];
 
-        const customStyles = {
-            option: (provided, state) => ({
-                ...provided,
-                // borderBottom: '2px solid green',
-                // color: state.isSelected ? 'yellow' : 'black',
-                // backgroundColor: state.isSelected ? 'green' : 'white'
-            }),
-            control: (provided) => ({
-                ...provided,
-                marginTop: "0%",
-            })
-        }
 
         if (this.props.currentStep !== "demographics") {
             return null
         }
         return(
-        <div className="card__sub-form">
+            <div className="patient-show-inner-card ">
 
-            <h1>Demographics</h1>
-            <section>
-                <label className="form__label">Research ID
-                    <input 
-                        type="text" 
-                        name="researchId" 
-                        placeholder="ECXX"
-                        value={this.props.demographics.researchId}
-                        onChange={this.props.handleChange}
+            <h1 className="patient-show-inner-card__header">Demographics</h1>
+            <div className='header-divider'></div>
+
+                <section className='inner-card__section-grouping'>
+                    <div className='inner-card__field-grouping'>
+                        <div className='inner-card__field-label'>Research ID</div>
+                        <input
+                            className='inner-card__field-value'
+                            type="text"
+                            name="researchId"
+                            placeholder="ECXX"
+                            value={this.props.demographics.researchId}
+                            onChange={this.props.handleChange}
                         />
-                </label>
-            
-                <label className="form__label" >Date of Surgery
-                    <input 
-                        type="date" 
-                        placeholder="ECXX"
-                        name="dateOfSurgery"
-                        value={this.props.demographics.dateOfSurgery}
-                        onChange={this.props.handleChange}
-                        id=""/>
-                </label>
+                    </div>
+
+                    <div className='inner-card__field-grouping'>
+                        <div className='inner-card__field-label'>Date of Surgery</div>
+                        <input
+                            className='inner-card__field-value'
+                            type="date"
+                            name="dateOfSurgery"
+                            value={this.props.demographics.dateOfSurgery}
+                            onChange={this.props.handleChange}
+                            id=""
+                        />
+                    </div>
             </section>
                 <div className="border-bottom-short"></div>
-            <section>
+                <section className='inner-card__section-grouping'>
 
-                <label className="form__label" >Birth Date
-                    <input
-                        type="date"
-                        name="birthDate"
-                        value={this.props.demographics.demographics.birthDate}
+                    <div className='inner-card__field-grouping'>
+                        <div className='inner-card__field-label'>Birth Date</div>
+                        <input
+                            className='inner-card__field-value'
+                            ttype="date"
+                            name="birthDate"
+                            value={this.props.demographics.demographics.birthDate}
 
                             value={this.props.demographics.demographics.birthDate}
-                        onChange={this.props.handleChange}
-                        id="demographics" />
-                </label>
+                            onChange={this.props.handleChange}
+                            id="demographics"
+                        />
+                    </div>
 
-                    <label className="form__label" >Native Language
-
+                    <div className='inner-card__field-grouping'>
+                        <div className='inner-card__field-label'>Native Language</div>
                         <Select options={options} 
                             onChange={this.props.handleChange}/>
-                            styles={customStyles}/>
-
-                        {/* <select className="form__dropdown">
-                                <option value="undefined">Select Language:</option>
-                                <option value="English">English</option>
-                                <option value="Spanish">Spanish</option>
-                                <option value="Mandarin">Mandarin</option>
-                        </select> */}
-                        {/* <input
-                            type="text"
-                            name="nativeLanguage"
-                            value={this.props.demographics.demographics.nativeLanguage}
-                            onChange={this.props.handleChange}
-                            id="demographics" /> */}
-                    </label>
+                    </div>
 
             </section> 
 
                 <div className="border-bottom-short"></div>
 
-            <section>
+                <section className='inner-card__section-grouping'>
                 <label className="form__label__checkbox" >Consent
                 
                     <div>

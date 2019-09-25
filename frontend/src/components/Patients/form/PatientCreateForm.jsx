@@ -71,7 +71,7 @@ class PatientCreateForm extends React.Component {
     render() {
         console.log(this.state)  
         return (
-        <div className="card">
+            <div className="patient-show-card std-shadow">
             <React.Fragment >
 
                 <form className="card__form" onSubmit={this.handleSubmit}>
