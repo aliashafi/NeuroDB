@@ -44,8 +44,25 @@ function PatientShowPatientInfo(props) {
     function handleUpdateClick(e) {
         //grab form input and dispatch updatePatient
         setRenderEdit(!renderEdit);
-        //
-        // props.updatePatient(data);
+        const data = {
+            _id: props.patient._id,
+            researchId,
+            consent,
+            demographics: { 
+                birthDate,
+                age,
+                gender,
+                languageDominance,
+                dominantHand,
+                nativeLanguage 
+            }
+        };
+        props.updatePatient(data)
+        .then(() => {
+            const allValueFields = document.querySelectorAll('.inner-card__field-value');
+            Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
+        });
+
     }
 
     function handleResearchIdChange(e) {
@@ -105,12 +122,12 @@ function PatientShowPatientInfo(props) {
                     <input onChange={handleGenderChange} className='inner-card__field-value' value={gender} disabled={!renderEdit} />
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div className='inner-card__field-label'>Dominant Language</div>
-                    <input onChange={handleLanguageDominanceChange} className='inner-card__field-value' value={languageDominance} disabled={!renderEdit} />
-                </div>
-                <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>Dominant Hand</div>
                     <input onChange={handleDominantHandChange} className='inner-card__field-value' value={dominantHand} disabled={!renderEdit} />
+                </div>
+                <div className='inner-card__field-grouping'>
+                    <div className='inner-card__field-label'>Dominant Language</div>
+                    <input onChange={handleLanguageDominanceChange} className='inner-card__field-value' value={languageDominance} disabled={!renderEdit} />
                 </div>
                 <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>Native Language</div>
