@@ -15,7 +15,18 @@ class DemographicsForm extends React.Component {
             { value: 'mandarin', name: 'nativeLanguage' },
         ];
 
-  
+        const customStyles = {
+            option: (provided, state) => ({
+                ...provided,
+                // borderBottom: '2px solid green',
+                // color: state.isSelected ? 'yellow' : 'black',
+                // backgroundColor: state.isSelected ? 'green' : 'white'
+            }),
+            control: (provided) => ({
+                ...provided,
+                marginTop: "0%",
+            })
+        }
 
         if (this.props.currentStep !== "demographics") {
             return null
@@ -53,6 +64,8 @@ class DemographicsForm extends React.Component {
                         type="date"
                         name="birthDate"
                         value={this.props.demographics.demographics.birthDate}
+
+                            value={this.props.demographics.demographics.birthDate}
                         onChange={this.props.handleChange}
                         id="demographics" />
                 </label>
@@ -61,6 +74,20 @@ class DemographicsForm extends React.Component {
 
                         <Select options={options} 
                             onChange={this.props.handleChange}/>
+                            styles={customStyles}/>
+
+                        {/* <select className="form__dropdown">
+                                <option value="undefined">Select Language:</option>
+                                <option value="English">English</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Mandarin">Mandarin</option>
+                        </select> */}
+                        {/* <input
+                            type="text"
+                            name="nativeLanguage"
+                            value={this.props.demographics.demographics.nativeLanguage}
+                            onChange={this.props.handleChange}
+                            id="demographics" /> */}
                     </label>
 
             </section> 
