@@ -4,15 +4,16 @@ import merge from 'lodash/merge';
 export default (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
-        case RECEIVE_PATIENT:
+        case RECEIVE_PATIENT: // Does this have the data key array?????????
             return merge({}, { [action.patient.data._id]: action.patient.data });
         case RECEIVE_PATIENTS:
-            const patients = action.patients.map(patient => ({ [patient._id]: patient }));
-            return merge({}, state, patients);
+            let newState = {};
+            action.patients.data.forEach(patient => ( newState[patient._id]= patient ));
+            return newState;
         case DELETE_PATIENT:
-                let newState = Object.assign({}, state);
-                delete newState[action.patientId];
-                return newState;
+            newState = Object.assign({}, state);
+            delete newState[action.patientId];
+            return newState;
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import PatientIndex from './PatientIndex';
 
 const mapStateToProps = (state) => {
     return {
-        patients: Object.keys(state.entities.patients).map((id) => state.entities.patients[id])
+        patients: Object.values(state.entities.patients)
     }
 };
 
