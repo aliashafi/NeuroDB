@@ -29,8 +29,8 @@ export const receiveTaskErrors = (errors) => ({
 
 
 //Thunk action creators
-export const fetchTasks = () => dispatch =>
-    TaskUtil.getTasks().then((tasks) => dispatch(receiveTasks(tasks)))
+export const fetchTasks = (patientId) => dispatch =>
+    TaskUtil.getTasks(patientId).then((tasks) => dispatch(receiveTasks(tasks)))
     .catch((error) => dispatch(receiveTaskErrors(error)));
 
 export const fetchTask = (task) => dispatch =>
