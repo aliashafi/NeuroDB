@@ -126,15 +126,15 @@ router.post("/login", (request, response) => {
         })
 })
 
-router.get("/"), (request, response) => {
+router.get("/", (request, response) => {
     User.find()
-        .then( users => {
+        .then( users => (
             response.json(users)
-        })
-        .catch( error => {
+        ))
+        .catch( error => (
             response.status(404).json({ noUsersFound: "No users found"})
-        })
-}
+        ))
+})
 
 // user show
 router.get("/:userId", (request, response) => {

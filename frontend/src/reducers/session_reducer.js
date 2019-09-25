@@ -7,6 +7,7 @@ import {
 
 const initialState = {
     isAuthenticated: false,
+    isLoggedIn: false,
     currentUser: {}
 }
 
@@ -17,11 +18,13 @@ const SessionReducer = (state=initialState, action) => {
     switch(action.type) {
         case RECEIVE_CURRENT_USER: 
             nextState["isAuthenticated"] = !!action.currentUser;
-            nextState["currentUser"] = action.currentUser
+            nextState["currentUser"] = action.currentUser;
+            nextState["isLoggedIn"] = true;
             return nextState;
         case RECEIVE_USER_LOGOUT:
             nextState["isAuthenticated"] = false;
             nextState["currentUser"] = undefined;
+            nextState["isLoggedIn"] = false;
             return nextState;
         case RECEIVE_CREATED_USER:
             nextState["status"] = "Pending"
