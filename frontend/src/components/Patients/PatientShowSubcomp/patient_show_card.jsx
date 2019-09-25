@@ -3,7 +3,7 @@ import PatientShowPatientInfo from './patient_show_patient_info';
 import PatientShowImagingData from './patient_show_imaging_data';
 import PatientShowMedicalHistory from './patient_show_medical_history';
 import PatientShowMedication from './patient_show_medication';
-import PatientShowTasks from './patient_show_tasks';
+import PatientShowTaskList from './patient_show_task_list';
 
 
 class PatientShowCard extends React.Component {
@@ -42,7 +42,7 @@ class PatientShowCard extends React.Component {
                 break;
             case 'tasks':
                 comp = (
-                    <PatientShowTasks 
+                    <PatientShowTaskList
                         patient={this.props.patient}
                         updatePatient={this.props.updatePatient} />
                 );
