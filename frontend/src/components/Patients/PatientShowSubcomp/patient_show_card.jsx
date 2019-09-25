@@ -55,7 +55,7 @@ class PatientShowCard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='patient-show-card std-shadow'>
                 {this.renderRelevantCard()}
             </div>
         );

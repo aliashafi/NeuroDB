@@ -9,12 +9,12 @@ function PatientShowPatientInfo(props) {
             return (
                 <>
                 <div className='inner-card__field-grouping'>
-                    <div>ECID</div>
-                    <div>{props.patient.researchId}</div>
+                    <div className='inner-card__field-label'>ECID</div>
+                    <div className='inner-card__field-value'>{props.patient.researchId}</div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Consent</div>
-                    <div>{props.patient.consent}</div>
+                    <div className='inner-card__field-label'>Consent</div>
+                    <div className='inner-card__field-value'>{props.patient.consent}</div>
                 </div>
                 </>
             )
@@ -22,12 +22,12 @@ function PatientShowPatientInfo(props) {
             return (
                 <>
                     <div className='inner-card__field-grouping'>
-                        <div>ECID</div>
-                        <div></div>
+                        <div className='inner-card__field-label'>ECID</div>
+                        <div className='inner-card__field-value'></div>
                     </div>
                     <div className='inner-card__field-grouping'>
-                        <div>Consent</div>
-                        <div></div>
+                        <div className='inner-card__field-label'>Consent</div>
+                        <div className='inner-card__field-value'></div>
                     </div>
                 </>
             )
@@ -41,28 +41,28 @@ function PatientShowPatientInfo(props) {
             return (
                 <>
                 <div className='inner-card__field-grouping'>
-                    <div>Birth Date</div>
-                    <div>{birthDate}</div>
+                    <div className='inner-card__field-label'>Birth Date</div>
+                    <div className='inner-card__field-value'>{birthDate}</div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Age</div>
-                    <div>{age}</div>
+                    <div className='inner-card__field-label'>Age</div>
+                    <div className='inner-card__field-value'>{age}</div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Gender</div>
-                    <div>{gender}</div>
+                    <div className='inner-card__field-label'>Gender</div>
+                    <div className='inner-card__field-value'>{gender}</div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Dominant Language</div>
-                    <div>{languageDominance}</div>
+                    <div className='inner-card__field-label'>Dominant Language</div>
+                    <div className='inner-card__field-value'>{languageDominance}</div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Dominant Hand</div>
-                    <div>{dominantHand}</div>
+                    <div className='inner-card__field-label'>Dominant Hand</div>
+                    <div className='inner-card__field-value'>{dominantHand}</div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Native Language</div>
-                    <div>{nativeLanguage}</div>
+                    <div className='inner-card__field-label'>Native Language</div>
+                    <div className='inner-card__field-value'>{nativeLanguage}</div>
                 </div>
                 </>
             )
@@ -70,28 +70,28 @@ function PatientShowPatientInfo(props) {
             return (
                 <>
                 <div className='inner-card__field-grouping'>
-                    <div>Birth Date</div>
-                    <div></div>
+                    <div className='inner-card__field-label'>Birth Date</div>
+                    <div className='inner-card__field-value'></div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Age</div>
-                    <div></div>
+                    <div className='inner-card__field-label'>Age</div>
+                    <div className='inner-card__field-value'></div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Gender</div>
-                    <div></div>
+                    <div className='inner-card__field-label'>Gender</div>
+                    <div className='inner-card__field-value'></div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Dominant Language</div>
-                    <div></div>
+                    <div className='inner-card__field-label'>Dominant Language</div>
+                    <div className='inner-card__field-value'></div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Dominant Hand</div>
-                    <div></div>
+                    <div className='inner-card__field-label'>Dominant Hand</div>
+                    <div className='inner-card__field-value'></div>
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div>Native Language</div>
-                    <div></div>
+                    <div className='inner-card__field-label'>Native Language</div>
+                    <div className='inner-card__field-value'></div>
                 </div>
                 </>
             )
