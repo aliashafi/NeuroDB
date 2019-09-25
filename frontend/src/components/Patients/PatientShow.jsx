@@ -23,7 +23,7 @@ class PatientShow extends React.Component {
             const navItem = document.querySelector(`#side-nav-patient-info`);
             navItem.classList.add('nav-selected');
 
-        }, 500);
+        }, 800);
     }
     componentDidUpdate(prevProp, prevState) {
         if (prevState.visibleCared !== this.state.visibleCard) {
