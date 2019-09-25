@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './components/Root';
+import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import axios from 'axios';
 import { createPatient, getPatient, getPatients } from './util/patient_api_util';
-// import { logout } from './actions/session_actions';
+import { logout, loginUser, registerUser } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store}/>, root);
+
+    window.getState = store.getState;
+    window.dispatch = store.dispatch;
+
+    window.logout = logout;
+    window.loginUser = loginUser;
+    window.registerUser = registerUser;
+
 
     window.createPatient = createPatient;
     window.getPatient = getPatient;

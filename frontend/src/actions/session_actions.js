@@ -7,6 +7,8 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_CREATED_USER = "RECEIVE_CREATED_USER";
 
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
 export const receiveCurrentUser = (currentUser) => {
     return {
         type: RECEIVE_CURRENT_USER,
@@ -21,6 +23,12 @@ export const createdUser = (user) => {
     }
 }
 
+export const logoutUser = () => {
+    return {
+        type: RECEIVE_USER_LOGOUT
+    }
+}
+
 export const receiveErrors = errors => {
     return {
         type: RECEIVE_ERRORS,
@@ -28,9 +36,9 @@ export const receiveErrors = errors => {
     }
 }
 
-export const logoutUser = () => {
+export const clearErrors = () => {
     return {
-        type: RECEIVE_USER_LOGOUT
+        type: CLEAR_ERRORS
     }
 }
 

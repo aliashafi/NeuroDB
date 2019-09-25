@@ -7,15 +7,10 @@
     "server:debug": "nodemon --inspect app.js",
     "start": "node app.js",
     "server": "nodemon app.js",
-<<<<<<< HEAD
-    "server:debug": "nodemon --inspect app.js",
     "frontend-install": "npm install --prefix frontend",
-=======
->>>>>>> 74afcdf960016f75e8f21961c45f35c6b072d09d
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "dev:debug": "concurrently \"npm run server:debug\" \"npm run frontend\""
-
   },
   "repository": {
     "type": "git",

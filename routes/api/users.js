@@ -106,11 +106,7 @@ router.post("/login", (request, response) => {
                 .then( isMatch => {
                     if (isMatch) {
                         const payload = {
-                            id: user.id,
-                            // email: user.email,
-                            // privileges: user.privileges
-                            // email: user.email,
-                            // privileges: user.privileges
+                            id: user.id
                         };
 
                         jwt.sign(
@@ -130,6 +126,16 @@ router.post("/login", (request, response) => {
         })
 })
 
+router.get("/"), (request, response) => {
+    User.find()
+        .then( users => {
+            response.json(users)
+        })
+        .catch( error => {
+            response.status(404).json({ noUsersFound: "No users found"})
+        })
+}
+
 // user show
 router.get("/:userId", (request, response) => {
     User.findById(request.params.userId)
@@ -141,7 +147,7 @@ router.get("/:userId", (request, response) => {
         });
 })
 
-router.patch("/:userId/update", (request, response) => {
+router.patch("/:userId", (request, response) => {
     User.findByIdAndUpdate(request.params.userId, { $set: request.body }, {new: true})
         .then ( user => {
             response.json(user)
@@ -152,7 +158,7 @@ router.patch("/:userId/update", (request, response) => {
 
 })
 
-router.delete("/:userId/destroy", (request, response) => {
+router.delete("/:userId", (request, response) => {
     User.findByIdAndRemove(request.params.userId)
         .then( user => {
             // can pass found user to callback if needed 

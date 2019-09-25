@@ -7,5 +7,5 @@ import TaskReducer from './task_reducer';
 export default combineReducers({
     patients: PatientReducer,
     tasks: TaskReducer,
-    errors: ErrorsReducer,
+    // errors: ErrorsReducer,
 });
