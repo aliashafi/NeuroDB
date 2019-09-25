@@ -85,7 +85,7 @@
     flex: 1 0 500px;
     background-color: white;
     height: 80vh;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     margin: 50px;
     border-radius: 12px;
     padding: 50px 80px;
@@ -104,10 +104,39 @@
         font-size: 2rem;
         text-transform: uppercase;
     }
+    &__body {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__profile-img {
+        // height: 400px;
+        // height: 80%;
+        flex: 1 0 300px;
+        border-radius: 12px;
+        width: 40%;
+        border: 1px solid $lightgray-three;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__info {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0 50px;
+        box-sizing: border-box;
+    }
 }
+.patient-show-inner-card__profile-img img {
+    width: 100%;
+}
+
 .inner-card {
     
     &__field-grouping {
+        flex: 0 1 200px;
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
@@ -121,18 +150,18 @@
         position: absolute;
         top: 10px;
         left: 20px;
-        font-size: 1rem;
+        font-size: 0.8rem;
         color: $core-teal;
         margin-right: 8px;
         text-transform: uppercase;
         margin-bottom: 10px;
     }
     &__field-value {
-        font-size: 1.3rem;
-        padding: 25px 10px 5px 20px;
+        font-size: 1.1rem;
+        padding: 20px 7px 5px 20px;
         border: 1px solid #eff0f1;
-        border-radius: 12px;
-        height: 80px;
+        border-radius: 8px;
+        height: 70px;
         width: 100%;
         box-sizing: border-box;
     }
