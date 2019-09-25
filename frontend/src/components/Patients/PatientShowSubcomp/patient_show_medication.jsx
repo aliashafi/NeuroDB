@@ -3,8 +3,8 @@ import React from 'react';
 function PatientShowMedication(props){
 
     function renderComp() {
-        const { medicationName, medicationPurpose } = props.patient.medication;
         if (Object.keys(props.patient).length && props.patient.medication) {
+            const { medicationName, medicationPurpose } = props.patient.medication;
             return (
                 <>
                 <div className='inner-card__field-grouping'>
@@ -35,6 +35,7 @@ function PatientShowMedication(props){
     
     return (
         <div className='patient-show-inner-card'>
+            <h2>Medication card</h2>
             {renderComp()}
         </div>
     );
