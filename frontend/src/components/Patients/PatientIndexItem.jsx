@@ -7,12 +7,12 @@ class PatientIndexItem extends React.Component {
 
     render() {
         return (
-            <div className='patient-index-item-main'>
-                <div>{this.props.patient._id}</div>
-                <div>{this.props.patient.researchId}</div>
-                <div>Age: {this.props.patient.demographics.age}</div>
-                <div>Gender: {this.props.patient.demographics.gender}</div>
-            </div>
+            <tr className='patient-index-item-main' onClick={() => this.props.handleQuickView(this.props.id)}>
+                <td>{this.props.patient._id}</td>
+                <td>{this.props.patient.researchId}</td>
+                <td>Age: {this.props.patient.demographics.age}</td>
+                <td>Gender: {this.props.patient.demographics.gender}</td>
+            </tr>
         )
     }
 };
