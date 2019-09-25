@@ -18,7 +18,7 @@ function App() {
      
         <Route exact path="/patients" component={PatientIndexContainer} />
 
-        <Route path='/show' component={PatientShowContainer} />
+        <Route path='/show/:patientId' component={PatientShowContainer} />
 
       </Switch>
     </div>
