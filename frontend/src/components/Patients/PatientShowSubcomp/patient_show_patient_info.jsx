@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { set } from 'mongoose';
+import PlaceholderBrainProfile from '../../../images/placeholder_rotating_brain.gif';
 
 
 function PatientShowPatientInfo(props) {
@@ -90,9 +90,6 @@ function PatientShowPatientInfo(props) {
     };
 
     function renderDemographics(){
-        // if (Object.keys(props.patient).length && props.patient.demographics) {
-        //     const { birthDate, age, gender, languageDominance, dominantHand, nativeLanguage } = props.patient.demographics;
-
             return (
                 <>
                 <div className='inner-card__field-grouping'>
@@ -121,36 +118,7 @@ function PatientShowPatientInfo(props) {
                 </div>
                 </>
             )
-        // } else {
-        //     return (
-        //         <>
-        //         <div className='inner-card__field-grouping'>
-        //             <div className='inner-card__field-label'>Birth Date</div>
-        //             <div className='inner-card__field-value'></div>
-        //         </div>
-        //         <div className='inner-card__field-grouping'>
-        //             <div className='inner-card__field-label'>Age</div>
-        //             <div className='inner-card__field-value'></div>
-        //         </div>
-        //         <div className='inner-card__field-grouping'>
-        //             <div className='inner-card__field-label'>Gender</div>
-        //             <div className='inner-card__field-value'></div>
-        //         </div>
-        //         <div className='inner-card__field-grouping'>
-        //             <div className='inner-card__field-label'>Dominant Language</div>
-        //             <div className='inner-card__field-value'></div>
-        //         </div>
-        //         <div className='inner-card__field-grouping'>
-        //             <div className='inner-card__field-label'>Dominant Hand</div>
-        //             <div className='inner-card__field-value'></div>
-        //         </div>
-        //         <div className='inner-card__field-grouping'>
-        //             <div className='inner-card__field-label'>Native Language</div>
-        //             <div className='inner-card__field-value'></div>
-        //         </div>
-        //         </>
-        //     )
-        // }
+       
     };
 
     function renderButton() {
@@ -166,8 +134,13 @@ function PatientShowPatientInfo(props) {
             {renderButton()}
             <div className='patient-show-inner-card__header'>Patient info</div>
             <div className='header-divider'></div>
-            {renderBasicInfo()}
-            {renderDemographics()}            
+            <div className='patient-show-inner-card__body'>
+                <div className='patient-show-inner-card__profile-img'><img src={PlaceholderBrainProfile} /></div>
+                <div className='patient-show-inner-card__info'>
+                    {renderBasicInfo()}
+                    {renderDemographics()} 
+                </div>
+            </div>           
 
         </div>
     );
