@@ -10,9 +10,9 @@ class DemographicsForm extends React.Component {
 
     render(){
         const options = [
-            { name: 'english', value: 'nativeLanguage' },
-            { name: 'spanish', value: 'nativeLanguage' },
-            { name: 'mandarin', value: 'nativeLanguage' },
+            { value: 'english', name: 'nativeLanguage' },
+            { value: 'spanish', name: 'nativeLanguage' },
+            { value: 'mandarin', name: 'nativeLanguage' },
         ];
 
 
@@ -71,6 +71,7 @@ class DemographicsForm extends React.Component {
                         <div className='inner-card__field-label'>Native Language</div>
                         <Select options={options} 
                             onChange={this.props.handleChange}/>
+
                     </div>
 
             </section> 
