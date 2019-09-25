@@ -126,6 +126,7 @@
         margin-right: 8px;
         text-transform: uppercase;
         margin-bottom: 10px;
+        z-index: 1;
     }
     &__field-value {
         font-size: 1.3rem;
@@ -137,6 +138,12 @@
         box-sizing: border-box;
     }
 
+    //========== patient info subcomp
+    &__section-grouping{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;        
+    }
 }
 .editable {
     background-color: #ebf6ff;
