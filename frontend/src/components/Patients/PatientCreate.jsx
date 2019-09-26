@@ -26,6 +26,7 @@ class PatientCreate extends React.Component {
                 <PatientShowSideNav
                     handleVisibleCardChange={this.handleVisibleCardChange} />
                 <PatientCreateForm 
+                    visibleCard={this.state.visibleCard}
                     processForm={this.props.processForm}
                     />
                 
