@@ -199,6 +199,20 @@
     margin-left: 15px;
 }
 
+//======== patient show - medical history card
+.med-history {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.no-flex {
+    flex: none;
+}
+.card-two-column {
+    flex: 1 0 400px;
+}
+
 
 //======= media queries
 @media screen and (min-width: 1200px) {

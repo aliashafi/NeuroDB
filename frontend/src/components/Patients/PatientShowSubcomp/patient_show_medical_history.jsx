@@ -83,46 +83,103 @@ function PatientShowMedicalHistory(props){
     function handleNeuroPaceChange(e) {
         setNeuroPace(e.target.value);
     }
+    function handlePreviousResectionToggle(e) {
+        let val = (e.target.value ==='yes') ? true : false;
+        setPreviousResection(val);
+    }
+    function handleNeuroPaceToggle(e) {
+        let val = (e.target.value ==='yes') ? true : false;
+        setNeuroPace(val);
+    }
 
     function renderComp() {
         return (
-            <>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>BDI</div>
-                <input onChange={handleBDIChange} className='inner-card__field-value' value={BDI} disabled={!renderEdit} />
+        <div className='patient-show-inner-card__info'>
+            <div className='card-two-column'>
+                <div className='inner-card__field-grouping no-flex'>
+                    <div className='inner-card__field-label'>BDI</div>
+                    <input onChange={handleBDIChange} className='inner-card__field-value no-border' value={BDI} disabled={!renderEdit} />
+                    
+                </div>
+                <div className='inner-card__field-grouping no-flex'>
+                    <div className='inner-card__field-label'>BAI</div>
+                    <input onChange={handleBAIChange} className='inner-card__field-value no-border' value={BAI} disabled={!renderEdit} />
+                </div>
+                <div className='inner-card__field-grouping no-flex'>
+                    <div className='inner-card__field-label'>Epilepsy Diagnosis</div>
+                    <input onChange={handleEpilepsyDiagnosisChange} className='inner-card__field-value no-border' value={epilepsyDiagnosis} disabled={!renderEdit} />
+                </div>
+            </div>
+
+            <div className='card-two-column'>
+                <div className='inner-card__field-grouping no-flex'>
+                    <div className='inner-card__checkbox-label'>Had previous resection</div>
+                    <div className='radio-grouping'>
+                        <div className='radio-btn-container'>
+                            <input 
+                                disabled={!renderEdit}
+                                onClick={handlePreviousResectionToggle} 
+                                checked={(previousResection) ? 'checked' : ''} 
+                                type="radio" 
+                                name="previousResection" 
+                                value='yes' />
+                            <label for="option"><span><span>✓</span></span></label>
+                            <span className='radio-label'>Yes</span>
+                        </div>
+                        <div className='radio-btn-container'>
+                            <input 
+                                disabled={!renderEdit}
+                                onClick={handlePreviousResectionToggle} 
+                                checked={(previousResection) ? '' : 'checked'} 
+                                type="radio" 
+                                name="previousResection" 
+                                value='no' />
+                            <label for="option"><span><span>✓</span></span></label>    
+                            <span className='radio-label'>No</span>
+                        </div>
+                    </div>
+                </div>
                 
+                <div className='inner-card__field-grouping no-flex'>
+                    <div className='inner-card__checkbox-label'>Has Neuro Pace</div>
+                    <div className='radio-grouping'>
+                        <div className='radio-btn-container'>
+                            <input 
+                                disabled={!renderEdit}
+                                onClick={handleNeuroPaceToggle} 
+                                checked={(neuroPace) ? 'checked' : ''} 
+                                type="radio" 
+                                name="neuroPace" 
+                                value='yes' />
+                            <label for="option"><span><span>✓</span></span></label>
+                            <span className='radio-label'>Yes</span>
+                        </div>
+                        <div className='radio-btn-container'>
+                            <input 
+                                disabled={!renderEdit}
+                                onClick={handleNeuroPaceToggle} 
+                                checked={(neuroPace) ? '' : 'checked'} 
+                                type="radio" 
+                                name="neuroPace" 
+                                value='no' />
+                            <label for="option"><span><span>✓</span></span></label>    
+                            <span className='radio-label'>No</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>BAI</div>
-                <input onChange={handleBAIChange} className='inner-card__field-value' value={BAI} disabled={!renderEdit} />
-            </div>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>Epilepsy Diagnosis</div>
-                <input onChange={handleEpilepsyDiagnosisChange} className='inner-card__field-value' value={epilepsyDiagnosis} disabled={!renderEdit} />
-            </div>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>Previous Resection</div>
-                <input onChange={handlePreviousResectionChange} className='inner-card__field-value' value={previousResection} disabled={!renderEdit} />
-            </div>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>Has Neuro Pace</div>
-                <input onChange={handleNeuroPaceChange} className='inner-card__field-value' value={neuroPace} disabled={!renderEdit} />
-            </div>
-            </>
+        </div>
         );
     }
    
     return (
         <div className='patient-show-inner-card'>
             {renderButton()}
-            <div className='patient-show-inner-card__header'>Medication</div>
+            <div className='patient-show-inner-card__header'>Medical History</div>
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__body'>
-                <div className='patient-show-inner-card__info'>
-                    {renderComp()}
-                </div>
+                {renderComp()}
             </div>           
-
         </div>
     );
     
