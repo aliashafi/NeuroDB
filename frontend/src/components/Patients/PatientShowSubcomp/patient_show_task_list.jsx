@@ -7,6 +7,7 @@ class PatientShowTasks extends React.Component {
 
 
     render() {
+
         return (
             <div className='patient-show-inner-card'>
                 <div className='task-item-details__header'>

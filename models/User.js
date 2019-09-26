@@ -22,11 +22,15 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    privileges: {
-        // either admin => full crud or viewer => view only
-        type: String,
-        default: "Pending"
+    isVerified: {
+        type: Boolean,
+        default: false
     },
+    // privileges: {
+    //     // either admin => full crud or viewer => view only
+    //     type: String,
+    //     default: "Pending"
+    // },
     createdAt: {
         type: Date,
         default: Date.now
