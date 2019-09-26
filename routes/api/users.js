@@ -19,29 +19,45 @@ const Token = require("../../models/Token");
 
 
 router.get("/current", passport.authenticate("jwt", { session: false }), (request, response) => {
-    // debugger
 
-    // response.json({msg: "Hello"})
     response.json({
         id: request.user.id,
         firstName: request.user.firstName,
         lastName: request.user.lastName,
         email: request.user.email,
         affiliation: request.user.affiliation,
-        privileges: request.user.privileges
     })
 })
 
-router.post("/confirmation", (request, response) => {
+// email confirmation
+router.get("/confirmation/:token", (request, response) => {
+    Token.findOne({ token: request.params.token })
+        .then( token => {
+            User.findById(token._userId)
+                .then( user => {
+                    if (user.isVerified) {
+                        // console.log("User has already been verified")
+                        response.status(404).json({alreadyVerified: "Account has already been verified"})
+                    } else {
+                        user.isVerified = true;
+                        user.save()
+                    }
+                })
+                .catch( error => {
+                    response.status(400).json({noUserFound: "Unable to find a valid user for this token"})
+                })
+        })
+        .catch( error => {
+            response.status(400).json({noTokenFound: "Unable to find valid token"})
+        })
+})
+
+// resend email confirmation
+router.get("/resend", (request, response) => {
 
 })
 
-router.post("/resend", (request, response) => {
-
-})
-
-
-
+// register user
 router.post("/register", (request, response) => {
 
     const { errors, isValid } = validateRegisterInput(request.body);
@@ -62,7 +78,6 @@ router.post("/register", (request, response) => {
                     email: request.body.email,
                     password: request.body.password,
                     affiliation: request.body.affiliation,
-                    // privileges: request.body.privileges,
                 })
 
                 bcrypt.genSalt(10, (error, salt) => {
@@ -76,11 +91,12 @@ router.post("/register", (request, response) => {
                                     _userId: user._id,
                                     token: crypto.randomBytes(16).toString("hex")
                                 })
-
+                                // add token to admin pendingUsers
                                 token.save()
+                                    // token gets saved to mongoDB
                                     .then( token => {
                                         const transporter = nodemailer.createTransport({
-                                            service: "Sendgrid",
+                                            service: "gmail",
                                             auth: { 
                                                 user: "neurodb.io@gmail.com",
                                                 pass: "go_neuro_go"
@@ -88,13 +104,20 @@ router.post("/register", (request, response) => {
                                         })
                                         const mailOptions = {
                                             from: "neurodb.io@gmail.com",
+                                            // admin.email
                                             to: user.email,
                                             subject: "NeuroDB Account Verification",
                                             text: "http://localhost:3000/confirmation/" + token.token
                                         }
-                                        transporter.sendMail(mailOptions)
-                                            .then( response => {msg: "Verification email was sent"})
-                                            .catch( error => response.status(500).json({msg: "Email was not sent"}))
+                                        transporter.sendMail(mailOptions, function(error, data) {
+                                            if (error) {
+                                                console.log("Unable to send email" + error)
+                                            } else {
+                                                console.log("Email successfully sent")
+                                            }
+                                        })
+                                            // .then( response => {msg: "Verification email was sent"})
+                                            // .catch( error => response.status(500).json({msg: "Email was not sent"}))
                                     })
 
 
@@ -122,6 +145,7 @@ router.post("/register", (request, response) => {
         });
 });
 
+// login user
 router.post("/login", (request, response) => {
 
     const { errors, isValid } = validateLoginInput(request.body);
@@ -166,6 +190,7 @@ router.post("/login", (request, response) => {
         })
 })
 
+// user index
 router.get("/", (request, response) => {
     User.find()
         .then( users => (
@@ -187,6 +212,7 @@ router.get("/:userId", (request, response) => {
         });
 })
 
+// user update
 router.patch("/:userId", (request, response) => {
     User.findByIdAndUpdate(request.params.userId, { $set: request.body }, {new: true})
         .then ( user => {
@@ -198,6 +224,7 @@ router.patch("/:userId", (request, response) => {
 
 })
 
+// user delete
 router.delete("/:userId", (request, response) => {
     User.findByIdAndRemove(request.params.userId)
         .then( user => {

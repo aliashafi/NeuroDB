@@ -9,6 +9,8 @@ import { createPatient, getPatient, getPatients } from './util/patient_api_util'
 import { logout, loginUser, registerUser } from './actions/session_actions';
 import {fetchUsers, fetchUser, deleteUser, updateUser} from "./actions/user_actions";
 
+import {verifyToken} from "./util/user_api_util";
+
 document.addEventListener('DOMContentLoaded', () => {
     let store;
     store = configureStore({})
@@ -40,8 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.fetchUsers = fetchUsers;
     window.fetchUser = fetchUser;
-    // window.deleteUser = deleteUser;
+    window.deleteUser = deleteUser;
     // window.updateUser = updateUser;
+    window.verifyToken = verifyToken;
 
 
     window.createPatient = createPatient;

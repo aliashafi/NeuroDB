@@ -15,3 +15,11 @@ export const updateUser = (data) => {
 export const deleteUser = (userId) => {
     return axios.delete(`/api/users/${userId}`);
 }
+
+export const verifyToken = (token) => {
+    return axios.get(`/api/users/confirmation/${token}`)
+}
+
+// component/route for /confirmation
+// componentdidmount dispatch thunk action creator with verifyToken
+// receive back user with message

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const AdminSchema = new Schema({ 
     firstName: {
         type: String,
         required: true
@@ -22,14 +22,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    isVerified: {
-        type: Boolean,
-        default: false
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+    pendingUserTokens: [{
+        type: String
+    }]
 })
 
-module.exports = User = mongoose.model("users", UserSchema);
+module.exports = Admin = mongoose.model("admin", AdminSchema)
