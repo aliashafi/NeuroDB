@@ -178,8 +178,10 @@
     //========== patient info subcomp
     &__section-grouping{
         display: flex;
-        justify-content: space-between;
-        width: 100%;        
+        flex-direction: column;
+        width: 60%;
+        // justify-content: space-between;
+        // width: 100%;        
     }
 }
 .editable {
@@ -209,3 +211,4 @@
         max-width: 1000px;
     }
 }
+
