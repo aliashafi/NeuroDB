@@ -16,12 +16,17 @@
     margin-right: 15px;
     min-width: 50px;
     cursor: pointer;
- 
+    
+    &__wrap {
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        display: flex;
+        
+    }
     &--card {
        background-color: $core-teal;
        color: white;
-       position: absolute;
-       top: 10px;
-       right: 30px;
+       
     }
 }
