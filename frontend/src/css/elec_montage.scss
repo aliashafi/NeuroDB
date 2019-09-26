@@ -1,0 +1,78 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+.inner-card{
+    font-size: 1.1rem;
+    padding: 7px 7px 5px 20px;
+    border: 1px solid #eff0f1;
+    border-radius: 8px;
+    // height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+.inner-card__elecID{
+    width: 100%;
+    text-align: center;
+    border: none;
+    font-size: 14px;
+
+
+}
+
+.inner-card__region{
+    width: 100%;
+    text-align: center;
+    border: none;
+    font-size: 14px;
+
+
+}
+
+.inner-card__number{
+    width: 100%;
+    padding-left: 8px;
+    border: none;
+    font-size: 14px;
+
+
+}
+.elec-montage{
+    display: flex;
+    border-bottom: 1px solid $lightgray-three;
+    div:nth-child(1){
+        flex: none;
+        width: 10%;
+    }
+
+    div:nth-child(2){
+        width: 45%;
+    }
+
+     div:nth-child(3){
+        width: 45%;
+    }
+}
+
+.montage-headers{
+    display: flex;
+    border-bottom: 1px solid $lightgray-three;
+    h1{
+        color: $core-teal;
+        text-align: center;
+        padding-bottom: 1%;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+    div:nth-child(1){
+        width: 10%;
+    }
+
+    div:nth-child(2){
+        width: 45%;
+    }
+
+     div:nth-child(3){
+        width: 45%;
+    }
+}
