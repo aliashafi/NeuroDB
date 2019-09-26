@@ -2,3 +2,6 @@
 /frontend/node_modules/
 keys.js
 
+package-lock.json
+
+/frontend/package-lock.json
