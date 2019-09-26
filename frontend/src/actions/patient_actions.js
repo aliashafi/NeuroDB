@@ -1,9 +1,10 @@
-import * as PatientUtil from '../../src/util/patient_api_util'
+import * as PatientUtil from '../../src/util/patient_api_util';
 
 // Action types
-export const RECEIVE_PATIENTS = "RECEIVE_PATIENTS"
-export const RECEIVE_PATIENT = "RECEIVE_PATIENT"
-export const DELETE_PATIENT = "DELETE_PATIENT"
+export const RECEIVE_PATIENTS = "RECEIVE_PATIENTS";
+export const RECEIVE_PATIENT = "RECEIVE_PATIENT";
+export const RECEIVE_UPDATED_PATIENT = "RECEIVE_UPDATED_PATIENT";
+export const DELETE_PATIENT = "DELETE_PATIENT";
 export const RECEIVE_PATIENT_ERRORS = "RECEIVE_PATIENT_ERRORS";
 
 // Regular action creators
@@ -16,6 +17,11 @@ export const receivePatient = (patient) => ({
     type: RECEIVE_PATIENT,
     patient
 });
+
+export const receiveUpdatedPatient = (patient) => ({
+    type: RECEIVE_UPDATED_PATIENT,
+    patient
+})
 
 export const removePatient = patientId => ({
     type: DELETE_PATIENT, 
@@ -45,5 +51,5 @@ export const createPatient = (data) => dispatch =>
     .catch(err => dispatch(receivePatientErrors(err)));
 
 export const updatePatient = (data) => dispatch =>
-    PatientUtil.updatePatient(data).then(patient => dispatch(receivePatient(patient)))
+    PatientUtil.updatePatient(data).then(patient => dispatch(receiveUpdatedPatient(patient)))
     .catch(err => dispatch(receivePatientErrors(err)));

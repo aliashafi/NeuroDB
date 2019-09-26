@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createPatient } from '../../actions/patient_actions';
-import PatientCreateForm  from './form/PatientCreateForm';
+import PatientCreate  from './PatientCreate';
 
 const mapStateToProps = (state) => {
     return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PatientCreateForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PatientCreate);

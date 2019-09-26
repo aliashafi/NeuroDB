@@ -44,25 +44,8 @@ function PatientShowPatientInfo(props) {
     function handleUpdateClick(e) {
         //grab form input and dispatch updatePatient
         setRenderEdit(!renderEdit);
-        const data = {
-            _id: props.patient._id,
-            researchId,
-            consent,
-            demographics: { 
-                birthDate,
-                age,
-                gender,
-                languageDominance,
-                dominantHand,
-                nativeLanguage 
-            }
-        };
-        props.updatePatient(data)
-        .then(() => {
-            const allValueFields = document.querySelectorAll('.inner-card__field-value');
-            Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
-        });
-
+        //
+        // props.updatePatient(data);
     }
 
     function handleResearchIdChange(e) {
@@ -122,12 +105,12 @@ function PatientShowPatientInfo(props) {
                     <input onChange={handleGenderChange} className='inner-card__field-value' value={gender} disabled={!renderEdit} />
                 </div>
                 <div className='inner-card__field-grouping'>
-                    <div className='inner-card__field-label'>Dominant Hand</div>
-                    <input onChange={handleDominantHandChange} className='inner-card__field-value' value={dominantHand} disabled={!renderEdit} />
-                </div>
-                <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>Dominant Language</div>
                     <input onChange={handleLanguageDominanceChange} className='inner-card__field-value' value={languageDominance} disabled={!renderEdit} />
+                </div>
+                <div className='inner-card__field-grouping'>
+                    <div className='inner-card__field-label'>Dominant Hand</div>
+                    <input onChange={handleDominantHandChange} className='inner-card__field-value' value={dominantHand} disabled={!renderEdit} />
                 </div>
                 <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>Native Language</div>
@@ -138,11 +121,35 @@ function PatientShowPatientInfo(props) {
        
     };
 
+    function handleCancelClick(e) {
+        setRenderEdit(!renderEdit);
+        setResearchId(props.patient.researchId);
+        setConsent(props.patient.consent);
+        setBirthDate(initBirthDate);
+        setAge(initAge);
+        setGender(initGender);
+        setLanguageDominance(initLanguageDominance);
+        setDominantHand(initDominantHand);
+        setNativeLanguage(initNativeLanguage);
+
+        const allValueFields = document.querySelectorAll('.inner-card__field-value');
+        Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
+    }
+
     function renderButton() {
         if (!renderEdit) {
-            return <div onClick={handleEditClick} className='btn btn--card'>Edit</div>
+            return (
+            <div className='btn__wrap'>
+                <div onClick={handleEditClick} className='btn btn--card'>Edit</div>
+            </div>
+            )
         } else {
-            return <div onClick={handleUpdateClick} className='btn btn--card'>Update</div>
+            return ( 
+                <div className='btn__wrap'>
+                <div onClick={handleUpdateClick} className='btn btn--card'>Update</div>
+                <div onClick={handleCancelClick} className='btn btn--card'>Cancel</div>
+                </div>
+            );
         }
     }
 
