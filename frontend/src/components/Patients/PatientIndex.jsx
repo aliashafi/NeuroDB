@@ -25,14 +25,14 @@ class PatientIndex extends React.Component {
 
     handleClick() {
         if (this.state.component === '') {
-            this.setState({component: <PatientIndexSideBar/>})
+            this.setState({component: <PatientIndexSideBar sortBy={this.sortBy}/>})
         } else {
             this.setState({component: ''})
         }
     }
 
-    handleQuickView(id) {
-        this.setState({quickView: <PatientIndexQuickView patient={this.props.patients[id]}/>})
+    handleQuickView(index) {
+        this.setState({quickView: <PatientIndexQuickView patient={this.props.patients[index]}/>})
     }
 
     sortBy(key) {
@@ -85,7 +85,7 @@ class PatientIndex extends React.Component {
                         Patients
                     </div>
                     <div className='patient-index-item-container'>
-                        <PatientTable patients={this.props.patients} sortBy={this.sortBy}/>
+                        <PatientTable patients={this.props.patients} sortBy={this.sortBy} handleQuickView={this.handleQuickView}/>
                     </div> 
                 </div>
                 

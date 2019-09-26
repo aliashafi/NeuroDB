@@ -15,7 +15,7 @@ class PatientIndexSideBar extends React.Component {
                         <div className='sort-by-options'>
                             ID
                         </div>
-                        <div className='sort-by-options'>
+                        <div className='sort-by-options' onClick={() => this.props.sortBy('researchId')}>
                             Research ID
                         </div>
                         <div className='sort-by-options'>
@@ -40,8 +40,6 @@ class PatientIndexSideBar extends React.Component {
                             Native Language
                         </div>
                     </div>
-                    
-
                 </div>
             </div>
         )
