@@ -99,6 +99,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
+    
 
     &__header {
         font-size: 2rem;
@@ -127,7 +128,14 @@
         flex-flow: row wrap;
         padding: 0 50px;
         box-sizing: border-box;
-    }
+        
+        &--medication {
+            width: 100%;
+        }
+        &--medication-history {
+
+        }
+    } 
 }
 .patient-show-inner-card__profile-img img {
     width: 100%;
@@ -186,7 +194,12 @@
     border-radius: 3px;
     margin: 30px 0;
 }
-
+.btn-row-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    position: absolute
+}
 
 //======= media queries
 @media screen and (min-width: 1200px) {
