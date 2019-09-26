@@ -20,8 +20,80 @@
     &--card {
        background-color: $core-teal;
        color: white;
-       position: absolute;
-       top: 10px;
-       right: 30px;
+       
     }
+}
+.btn-group {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+
+.radio-grouping {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-top: 10px;
+    
+}
+.radio-btn-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 20px;
+}
+.radio-label {
+    // margin-left: 10px;
+    width: 45px;
+    text-align: left;
+}
+
+
+input[type=radio   ]:not(old){
+    width     : 30px;
+    height: 30px;
+    margin    : 0;
+    padding   : 0;
+    font-size : 1em;
+    opacity   : 0;
+  }
+  input[type=radio   ]:not(old) + label{
+    display      : inline-block;
+    margin-left  : -2em;
+    line-height  : 1.5em;
+  }
+  input[type=radio   ]:not(old) + label > span{
+    display          : inline-block;
+    width            : 30px;
+    height           : 30px;
+    margin           : 0.25em 0.5em 0.25em 0.25em;
+    border           : 0.0625em solid #c3e7fa;
+    border-radius    : 5px;;
+    background       : white;
+    vertical-align   : bottom;
+  }
+ 
+  input[type=radio]:not(old) + label > span > span{
+      display: none;
+  }
+  input[type=radio]:not(old):checked + label > span > span{
+      
+    display          : block;
+    font-size: 2rem;
+    line-height: 30px;
+    color: $core-teal;
+    background-color       : transparent;
+  }
+
+input[type=radio]:not(old):disabled + label > span > span{
+    color: $core-teal;
+}
+input[type=radio]:not(old):disabled + label > span {
+    border-color: $lightgray-three;
 }
