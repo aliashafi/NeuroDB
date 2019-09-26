@@ -3,6 +3,10 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
+
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
+
 const keys = require("../../config/keys");
 
 const validateRegisterInput = require("../../validations/register");
@@ -10,6 +14,7 @@ const validateLoginInput = require("../../validations/login");
 
 
 const User = require("../../models/User");
+const Token = require("../../models/Token");
 
 
 
@@ -25,6 +30,14 @@ router.get("/current", passport.authenticate("jwt", { session: false }), (reques
         affiliation: request.user.affiliation,
         privileges: request.user.privileges
     })
+})
+
+router.post("/confirmation", (request, response) => {
+
+})
+
+router.post("/resend", (request, response) => {
+
 })
 
 
@@ -49,7 +62,7 @@ router.post("/register", (request, response) => {
                     email: request.body.email,
                     password: request.body.password,
                     affiliation: request.body.affiliation,
-                    privileges: request.body.privileges,
+                    // privileges: request.body.privileges,
                 })
 
                 bcrypt.genSalt(10, (error, salt) => {
@@ -58,6 +71,33 @@ router.post("/register", (request, response) => {
                         newUser.password = hash;
                         newUser.save()
                             .then( user => {
+
+                                const token = new Token({
+                                    _userId: user._id,
+                                    token: crypto.randomBytes(16).toString("hex")
+                                })
+
+                                token.save()
+                                    .then( token => {
+                                        const transporter = nodemailer.createTransport({
+                                            service: "Sendgrid",
+                                            auth: { 
+                                                user: "neurodb.io@gmail.com",
+                                                pass: "go_neuro_go"
+                                            }
+                                        })
+                                        const mailOptions = {
+                                            from: "neurodb.io@gmail.com",
+                                            to: user.email,
+                                            subject: "NeuroDB Account Verification",
+                                            text: "http://localhost:3000/confirmation/" + token.token
+                                        }
+                                        transporter.sendMail(mailOptions)
+                                            .then( response => {msg: "Verification email was sent"})
+                                            .catch( error => response.status(500).json({msg: "Email was not sent"}))
+                                    })
+
+
                                 const payload = {
                                     id: user.id,
                                     email: user.email,
@@ -98,8 +138,8 @@ router.post("/login", (request, response) => {
             if (!user){
                 errors.email = "User not found";
                 return response.status(404).json(errors);
-            } else if (user.privileges === "Pending") {
-                return response.status(400).json({msg: "User not approved"})
+            } else if (!user.isVerified) {
+                return response.status(400).json({msg: "Your account has not been verified"})
             }
 
             bcrypt.compare(password, user.password)
