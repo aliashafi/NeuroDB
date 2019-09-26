@@ -20,8 +20,101 @@
     &--card {
        background-color: $core-teal;
        color: white;
-       position: absolute;
-       top: 10px;
-       right: 30px;
+       
     }
 }
+.btn-group {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+
+.radio-grouping {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-top: 15px;
+    
+}
+.radio-btn-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-right: 20px;
+}
+.radio-label {
+    margin-left: 10px;
+}
+// .custom-radio-container input {
+//     width: 35px;
+//     height: 35px;
+//     border: 1px solid $core-teal;
+//     border-radius: 5px;
+// }
+
+// .custom-radio-container input[type='radio']:checked {
+//     background-color: blue;
+// }
+
+
+// .radio-group {
+//     display: flex;
+//     flex-flow: column nowrap;
+//     justify-content: flex-start;
+// }
+// .custom-radio-container {
+//     margin: 10px 20px 10px 0px;
+//     position: relative;
+// }
+// .custom-radio:checked {
+//     background-color: blue;
+// }
+// .custom-radio-btn {
+//     position: absolute;
+//     top: 11px;
+//     left: 12px;
+//     height: 15px;
+//     width: 15px;
+//     background-color: transparent;
+    
+//     border-radius: 5px;
+//     line-height: 15px;
+//     font-size: 1.5rem;
+//   }
+// .custom-radio-btn:after {
+//     content: '✓';
+//     color: $core-teal;
+//     position: absolute;
+//     display: none;
+// }
+// // .custom-radio-container .custom-radio-btn:after {
+// //     width: 100%;
+// //     height: 100%;
+// //     background-color: white;
+// //     border-radius: 5px;
+// // }
+// .custom-radio-container input:checked ~ .custom-radio-btn:after {
+//     display: block;
+//     transition: all 0.2s ease-in;
+// }
+// .radio-label {
+//     position: absolute;
+//     top: 4px;
+//     left: 40px;
+// }
+
+// //when radio button disabled
+// .custom-radio-container input:disabled {
+//     border-color: gray;
+// }
+
+// .custom-radio-container input:disabled ~ .custom-radio-btn:after{
+//     border-color: gray;
+//     color: gray;
+// }
+
