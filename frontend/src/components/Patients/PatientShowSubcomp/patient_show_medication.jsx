@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PlaceholderBrainProfile from '../../../images/placeholder_rotating_brain.gif';
 
 function PatientShowMedication(props){
     const [renderEdit, setRenderEdit] = useState(false);
@@ -64,21 +63,37 @@ function PatientShowMedication(props){
 
     }
 
+    function handleCancelClick(e) {
+        setRenderEdit(!renderEdit);
+        setMedicationName(initMedicaitonName);
+        setMedicationPurpose(initMedicationPurpose);
+        const allValueFields = document.querySelectorAll('.inner-card__field-value');
+        Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
+    }
+
     function renderButton() {
         if (!renderEdit) {
-            return <div onClick={handleEditClick} className='btn btn--card'>Edit</div>
+            return (
+                <div className='btn-group'>
+                    <div onClick={handleEditClick} className='btn btn--card'>Edit</div>
+                </div>
+            )
         } else {
-            return <div onClick={handleUpdateClick} className='btn btn--card'>Update</div>
+            return (
+            <div className='btn-group'>
+                <div onClick={handleUpdateClick} className='btn btn--card'>Update</div>
+                <div onClick={handleCancelClick} className='btn btn--card'>Cancel</div>
+            </div>
+            )
         }
     }
     
     return (
         <div className='patient-show-inner-card'>
             {renderButton()}
-            <div className='patient-show-inner-card__header'>Patient info</div>
+            <div className='patient-show-inner-card__header'>Medication</div>
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__body'>
-                <div className='patient-show-inner-card__profile-img'><img src={PlaceholderBrainProfile} /></div>
                 <div className='patient-show-inner-card__info'>
                     {renderComp()}
                 </div>
