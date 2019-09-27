@@ -6,6 +6,10 @@ class PatientIndexItem extends React.Component {
     }
 
     render() {
+
+
+
+
         return (
             <tr className='patient-index-item-main' onClick={() => this.props.handleQuickView(this.props.id)}>
                 <td>{this.props.patient._id}</td>
