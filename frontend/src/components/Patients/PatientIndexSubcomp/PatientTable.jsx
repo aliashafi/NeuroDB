@@ -5,11 +5,7 @@ class PatientTable extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filteredPatients: [],
-            filters: {
-                researchId: '',
-                age: '',
-            }
+            filteredPatients: []
         }
         this.handleRIDSearch = this.handleRIDSearch.bind(this);
         this.handlePIDSearch = this.handlePIDSearch.bind(this);
@@ -27,30 +23,6 @@ class PatientTable extends React.Component {
         this.setState({
             filteredPatients: nextProps.patients
         })
-    }
-
-    updateRIDParams(event) {
-        if (event.target.value !== '') {
-            this.setState({RIDParams: event.target.value})
-        }
-    }
-
-    updateAgeParams(event) {
-        if (event.target.value !== '') {
-            this.setState({ageParams: event.target.value})
-        }
-    }
-
-    handleSearch() {
-        let filteredPatients = [];
-        let patients = this.props.patients.filter(patient => {
-            Object.keys(this.state.filters).filter(param => {
-                if (this.state.filters[param] !== '') {
-                    return patient[param].toLowerCase().includes()
-                } 
-            })
-        })
-
     }
 
     handleRIDSearch(event) {
