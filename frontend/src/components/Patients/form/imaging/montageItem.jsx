@@ -5,11 +5,28 @@ class MontageItem extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state={
+            electrodeNum: this.props.electrode.electrodeNum,
+            electrodeID: this.props.electrode.electrodeID,
+            electrodeRegion: this.props.electrode.electrodeRegion
+        }
+        this.handleUpdate = this.handleUpdate.bind(this);
     }
 
-    render() {
-       
+    componentDidUpdate(prevProps, prevState){
+        if (prevState !== this.state){
+            this.props.updateMontage(this.props.index, this.state)
+        }
+    }
 
+    handleUpdate(filter){
+        return (e) => {
+            this.setState({[filter]: e.target.value})
+        }
+        
+    }
+
+    render() {     
         return (
             <div className="elec-montage">
 
@@ -19,6 +36,7 @@ class MontageItem extends React.Component {
                         className='inner-card__number inner-card'
                         type="text"
                         value={this.props.electrode.electrodeNum}
+                        onChange={this.handleUpdate("electrodeNum")}
                         
                     />
                 </div>
@@ -30,6 +48,7 @@ class MontageItem extends React.Component {
                         className='inner-card__elecID inner-card'
                         type="text"
                         value={this.props.electrode.electrodeID}
+                        onChange={this.handleUpdate("electrodeID")}
                         
                     />
                 </div>
@@ -40,7 +59,7 @@ class MontageItem extends React.Component {
                         className='inner-card__region inner-card'
                         type="text"
                         value={this.props.electrode.electrodeRegion}
-                        
+                        onChange={this.handleUpdate("electrodeRegion")}
                     />
                 </div>
 
