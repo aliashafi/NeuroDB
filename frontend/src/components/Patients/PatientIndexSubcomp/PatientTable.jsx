@@ -6,12 +6,13 @@ class PatientTable extends React.Component {
         super(props)
         this.state = {
             filteredPatients: [],
-            filteredParams: [],
-            filteredRID: '',
-            filteredAge: ''
+            filters: {
+                researchId: '',
+                age: '',
+            }
         }
-        this.handlePIDSearch = this.handlePIDSearch.bind(this);
         this.handleRIDSearch = this.handleRIDSearch.bind(this);
+        this.handlePIDSearch = this.handlePIDSearch.bind(this);
         this.handleGenderSearch = this.handleGenderSearch.bind(this);
         this.handleAgeSearch = this.handleAgeSearch.bind(this);
     }
@@ -28,7 +29,32 @@ class PatientTable extends React.Component {
         })
     }
 
+    updateRIDParams(event) {
+        if (event.target.value !== '') {
+            this.setState({RIDParams: event.target.value})
+        }
+    }
+
+    updateAgeParams(event) {
+        if (event.target.value !== '') {
+            this.setState({ageParams: event.target.value})
+        }
+    }
+
+    handleSearch() {
+        let filteredPatients = [];
+        let patients = this.props.patients.filter(patient => {
+            Object.keys(this.state.filters).filter(param => {
+                if (this.state.filters[param] !== '') {
+                    return patient[param].toLowerCase().includes()
+                } 
+            })
+        })
+
+    }
+
     handleRIDSearch(event) {
+        event.preventDefault();
         let currentList;
         let newList;
         if (event.target.value !== '') {
@@ -108,13 +134,7 @@ class PatientTable extends React.Component {
                     <input type="text" placeholder='Search by Patient ID' onChange={this.handlePIDSearch}/>
                     <input type="text" placeholder='Search by Research ID' onChange={this.handleRIDSearch}/>
                     <input type="text" placeholder='Search by Age' onChange={this.handleAgeSearch}/>
-                    <select name="Search by Gender" onChange={this.handleGenderSearch}>
-                        <option value="search by gender" selected disabled>Search by Gender</option>
-                        <option value="m">M</option>
-                        <option value="f">F</option>
-                        <option value="">All</option>
-                    </select>
-                    <button>Clear all</button>
+                    <input type="text" placeholder='Search by Gender (M/F)' onChange={this.handleGenderSearch}/>
                 </div>
                 
                 <table>
@@ -122,17 +142,23 @@ class PatientTable extends React.Component {
                         <tr>
                             <th>Patient ID</th>
                             <th>Research ID</th>
+                            <th>Date of surgery</th>
                             <th>Age</th>
                             <th>Gender</th>
+                            <th>Dominant hand</th>
+                            <th>Native language</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.filteredPatients.map((patient, index) => (
-                            <tr onClick={() => this.props.handleQuickView(index)}>
+                            <tr onClick={() => this.props.handleQuickView(this.props.patients.indexOf(this.state.filteredPatients[index]))}>
                                 <td>{patient._id}</td>
                                 <td>{patient.researchId}</td>
+                                <td>{patient.dateOfSurgery}</td>
                                 <td>{patient.demographics.age}</td>
                                 <td>{patient.demographics.gender}</td>
+                                <td>{patient.demographics.dominantHand}</td>
+                                <td>{patient.demographics.nativeLanguage}</td>
                             </tr>
                         ))}
                     </tbody>
