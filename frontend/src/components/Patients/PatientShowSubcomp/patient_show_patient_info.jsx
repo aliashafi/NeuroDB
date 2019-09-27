@@ -66,6 +66,8 @@ function PatientShowPatientInfo(props) {
             Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
         });
 
+
+
     }
 
     function handleCancelClick(e) {
@@ -247,6 +249,7 @@ function PatientShowPatientInfo(props) {
                             <span className='radio-label'>Right</span>
                         </div>
                     </div>
+
                 </div>
                 
                 <div className='inner-card__field-grouping'>
@@ -281,7 +284,39 @@ function PatientShowPatientInfo(props) {
             )
        
     };
-    
+
+
+    function handleCancelClick(e) {
+        setRenderEdit(!renderEdit);
+        setResearchId(props.patient.researchId);
+        setConsent(props.patient.consent);
+        setBirthDate(initBirthDate);
+        setAge(initAge);
+        setGender(initGender);
+        setLanguageDominance(initLanguageDominance);
+        setDominantHand(initDominantHand);
+        setNativeLanguage(initNativeLanguage);
+
+        const allValueFields = document.querySelectorAll('.inner-card__field-value');
+        Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
+    }
+
+    function renderButton() {
+        if (!renderEdit) {
+            return (
+            <div className='btn__wrap'>
+                <div onClick={handleEditClick} className='btn btn--card'>Edit</div>
+            </div>
+            )
+        } else {
+            return ( 
+                <div className='btn__wrap'>
+                <div onClick={handleUpdateClick} className='btn btn--card'>Update</div>
+                <div onClick={handleCancelClick} className='btn btn--card'>Cancel</div>
+                </div>
+            );
+        }
+    }
 
     return (
         <div className='patient-show-inner-card'>
