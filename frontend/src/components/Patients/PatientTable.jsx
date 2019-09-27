@@ -1,10 +1,14 @@
 import React from 'react';
+import { EventEmitter } from 'events';
 
 class PatientTable extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filteredPatients: []
+            filteredPatients: [],
+            filteredParams: [],
+            filteredRID: '',
+            filteredAge: ''
         }
         this.handlePIDSearch = this.handlePIDSearch.bind(this);
         this.handleRIDSearch = this.handleRIDSearch.bind(this);
@@ -46,7 +50,7 @@ class PatientTable extends React.Component {
         let currentList;
         let newList;
         if (event.target.value !== '') {
-            currentList = this.props.patients;
+            currentList = this.state.filteredPatients;
             newList = currentList.filter(patient => {
                 let lowercased = patient._id.toLowerCase();
                 let filtered = event.target.value.toLowerCase();
@@ -64,7 +68,7 @@ class PatientTable extends React.Component {
         let currentList;
         let newList;
         if (event.target.value !== '') {
-            currentList = this.props.patients;
+            currentList = this.state.filteredPatients;
             newList = currentList.filter(patient => {
                 let lowercased = patient.demographics.gender.toLowerCase();
                 let filtered = event.target.value.toLowerCase();
@@ -82,7 +86,7 @@ class PatientTable extends React.Component {
         let currentList;
         let newList;
         if (event.target.value !== '') {
-            currentList = this.props.patients;
+            currentList = this.state.filteredPatients;
             newList = currentList.filter(patient => {
                 let lowercased = patient.demographics.age.toString();
                 let filtered = event.target.value
@@ -104,13 +108,13 @@ class PatientTable extends React.Component {
                     <input type="text" placeholder='Search by Patient ID' onChange={this.handlePIDSearch}/>
                     <input type="text" placeholder='Search by Research ID' onChange={this.handleRIDSearch}/>
                     <input type="text" placeholder='Search by Age' onChange={this.handleAgeSearch}/>
-
                     <select name="Search by Gender" onChange={this.handleGenderSearch}>
                         <option value="search by gender" selected disabled>Search by Gender</option>
                         <option value="m">M</option>
                         <option value="f">F</option>
                         <option value="">All</option>
                     </select>
+                    <button>Clear all</button>
                 </div>
                 
                 <table>
