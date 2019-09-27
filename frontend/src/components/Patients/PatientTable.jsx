@@ -32,7 +32,7 @@ class PatientTable extends React.Component {
         let currentList;
         let newList;
         if (event.target.value !== '') {
-            currentList = this.props.patients;
+            currentList = this.state.filteredPatients;
             newList = currentList.filter(patient => {
                 let lowercased = patient.researchId.toLowerCase();
                 let filtered = event.target.value.toLowerCase();
