@@ -16,12 +16,13 @@ class MontageIndex extends React.Component {
 
 
     render(){
+        // console.log(montage)
 
         let montage = this.props.montage.map((electrode, index) => {
             return(
                 <MontageItem key={`electrode-item-${index}`} 
                     electrode={electrode} 
-                    index={index}
+                    index={electrode.electrodeNum}
                     updateMontage={this.props.updateMontage} />
             )
         })

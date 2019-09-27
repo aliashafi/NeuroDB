@@ -7,7 +7,7 @@ module.exports = function validateElectrodeData(data) {
 
     let errors = {};
     data.forEach(electrode => {
-
+        debugger
         
         /// all valid brain regions
         const brainRegions =

@@ -26,7 +26,6 @@ class ElectrodeForm extends React.Component {
     }
 
 
-
     render() {
 
         return (
