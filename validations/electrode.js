@@ -7,7 +7,7 @@ module.exports = function validateElectrodeData(data) {
 
     let errors = {};
     data.forEach(electrode => {
-
+        // debugger
         
         /// all valid brain regions
         const brainRegions =
@@ -62,12 +62,12 @@ module.exports = function validateElectrodeData(data) {
         if (Validator.isEmpty(electrode.electrodeRegion)) {
             errors.electrodeRegionMissing = "Electrode region is required";
         }
-        if (Validator.isEmpty(electrode.electrodID)) {
+        if (Validator.isEmpty(electrode.electrodeID)) {
             errors.electrodeID = "Electrode ID is required";
         }
-        // if the electrode is not in electrodeRegion
+        // // if the electrode is not in electrodeRegion
         if (!Validator.isIn(electrode.electrodeRegion, brainRegions)) {
-            errors.electrodeRegionInvalid = "Electrode Region must be a valid brain region";
+            // errors.electrodeRegionInvalid = "Electrode Region must be a valid brain region";
             valid = false;
         }
 
