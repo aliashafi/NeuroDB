@@ -12,7 +12,7 @@ class PatientCreateForm extends React.Component {
             currentStep: this.props.visibleCard,
             researchId: "",
             dateOfSurgery: "",
-            consent: "",
+            consent: false,
             demographics: {
                 birthDate: "",
                 age: "",
@@ -29,8 +29,8 @@ class PatientCreateForm extends React.Component {
                 BDI: "",
                 BAI: "",
                 epilepsyDiagnosis: "",
-                previousResection: "",
-                neuroPace: ""
+                previousResection: false,
+                neuroPace: false
             },
             imaging: {
                 electrodeMontage: []
@@ -61,12 +61,15 @@ class PatientCreateForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const { researchId, dateOfSurgery, consent,
-            demographics, medication, medicalHistory,
-            imaging, relatedRecords
-             } = this.state
-        console.log(this.state)
-        this.props.processForm(this.state)
+
+        const patient = Object.assign({}, this.state)
+        delete patient["currentStep"]
+        // const { researchId, dateOfSurgery, consent,
+        //     demographics, medication, medicalHistory,
+        //     imaging, relatedRecords
+        //      } = this.state
+        console.log(patient)
+        this.props.processForm(patient)
         
     }
 
