@@ -4,6 +4,9 @@ class PatientIndexQuickView extends React.Component {
     render() {
         return (
             <div className='quick-view-main'>
+                <div className='quick-view-close' onClick={this.props.closeQuickView}>close</div>
+                <br/>
+                <br/>
                 Patient ID: 
                 <br/>
                 {this.props.patient._id}
