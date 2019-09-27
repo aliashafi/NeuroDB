@@ -26,4 +26,3 @@ export const verifyToken = (token) => {
 
 // on admin show page show all pending users
 // there you can fire off route to backend to toggle isVerified for user
-// take out link from email, email should just be notification for user request to verify

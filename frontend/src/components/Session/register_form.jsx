@@ -41,7 +41,7 @@ class RegisterForm extends React.Component {
         ))
 
         return (
-            <div>
+            <div className="card">
                 <form className="card__form">
                     <input
                         type="text"

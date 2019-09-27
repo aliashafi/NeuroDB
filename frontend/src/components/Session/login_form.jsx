@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
         event.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.loginUser(user)
-            // .then( () => this.props.history.push("/"))
+            // .then( () => this.props.clearErrors)
     }
 
     render() {
@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
         ))
 
         return (
-            <div>
+            <div className="card">
                 <form className="card__form">
                     <input
                         type="text"

@@ -1,13 +1,10 @@
-import {
-    RECEIVE_USER_LOGOUT,
-    RECEIVE_CURRENT_USER,
-    // RECEIVE_ERRORS,
-    RECEIVE_CREATED_USER
-} from "../actions/session_actions";
+import {RECEIVE_USER_LOGOUT, RECEIVE_CURRENT_USER, RECEIVE_CREATED_USER} from "../actions/session_actions";
+
+// import {REMOVE_PENDING_USER} from "../actions/user_actions";
 
 const initialState = {
     isAuthenticated: false,
-    isLoggedIn: false,
+    // isLoggedIn: false,
     currentUser: undefined
 }
 
@@ -19,12 +16,12 @@ const SessionReducer = (state=initialState, action) => {
         case RECEIVE_CURRENT_USER: 
             nextState["isAuthenticated"] = !!action.currentUser;
             nextState["currentUser"] = action.currentUser;
-            nextState["isLoggedIn"] = true;
+            // nextState["isLoggedIn"] = true;
             return nextState;
         case RECEIVE_USER_LOGOUT:
             nextState["isAuthenticated"] = false;
             nextState["currentUser"] = undefined;
-            nextState["isLoggedIn"] = false;
+            // nextState["isLoggedIn"] = false;
             return nextState;
         case RECEIVE_CREATED_USER:
             nextState["status"] = "Pending"

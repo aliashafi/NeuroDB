@@ -17,6 +17,15 @@ const User = require("../../models/User");
 const Token = require("../../models/Token");
 
 
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "neurodb.io@gmail.com",
+        pass: "go_neuro_go"
+    }
+    // .env package for storing info later
+})
+const adminEmail = "ernest.man10@gmail.com";
 
 router.get("/current", passport.authenticate("jwt", { session: false }), (request, response) => {
 
@@ -41,11 +50,29 @@ router.get("/confirmation/:token", (request, response) => {
                     } else {
                         user.isVerified = true;
                         user.save()
-                        // delete token from admin pendingUsers
 
-                        // transporter = nodemailer.createTransport
-                        // mailoptions: from neurodb.io to user.email "admin.name has verified you"
-                        // transporter.sendmail
+                        // delete token from admin pendingUsers
+                        User.findOne({email: adminEmail})
+                            .then( admin => {
+                                console.log(admin.pendingUsers[user.email])
+                                delete admin.pendingUsers[user.email]
+                                admin.markModified("pendingUsers")
+                                admin.save()
+                            })
+
+                        const mailOptions = {
+                            from: "neurodb.io@gmail.com",
+                            to: user.email,
+                            subject: "Thank you for joining NeuroDB!",
+                            text: `${user.email}, your account has been verified`
+                        }
+                        transporter.sendMail(mailOptions, function (error, data) {
+                            if (error) {
+                                console.log("Unable to send email" + error)
+                            } else {
+                                console.log("Email successfully sent")
+                            }
+                        })
                     }
                 })
                 .catch( error => {
@@ -100,28 +127,16 @@ router.post("/register", (request, response) => {
                                 token.save()
                                     .then( token => {
                                         // add token to admin pendingUsers
-                                        const adminEmail = "ernest.man10@gmail.com"
+                                        // const adminEmail = "ernest.man10@gmail.com"
                                         User.findOne({email: adminEmail})
                                             .then( admin => {
-                                                console.log(admin.pendingUsers)
-                                                console.log(user.email)
-                                                console.log(token.token)
                                                 admin.pendingUsers[user.email] = token.token
-                                                console.log(admin.pendingUsers)
+                                                admin.markModified("pendingUsers")
                                                 admin.save()
-                                                console.log(admin.pendingUsers)
                                             })
                                             .catch( error => {
                                                 console.log("could not find admin")
                                             })
-                                        const transporter = nodemailer.createTransport({
-                                            service: "gmail",
-                                            auth: { 
-                                                user: "neurodb.io@gmail.com",
-                                                pass: "go_neuro_go"
-                                            }
-                                            // .env package for storing info later
-                                        })
                                         const mailOptions = {
                                             from: "neurodb.io@gmail.com",
                                             to: adminEmail,
