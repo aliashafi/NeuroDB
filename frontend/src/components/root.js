@@ -3,12 +3,12 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 // We'll create this soon
 import App from '../App';
-import NavBarContainer from '../components/nav_bar_container'
+import NavBar from '../components/nav_bar'
 
 const Root = ({ store }) => (
     <Provider store={store}>
         <HashRouter>
-            <NavBarContainer />
+            <NavBar />
             <App />
         </HashRouter>
     </Provider>
