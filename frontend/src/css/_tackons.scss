@@ -5,3 +5,48 @@
 .clickable {
     cursor: pointer;
 }
+
+.flex-size{
+    flex: 0 1 80px;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.initial-header{
+    text-align: initial;
+}
+
+.no-border {
+    border: none;
+}
+
+.flex-col-wrap {
+    display: flex;
+    flex-flow: column wrap;
+}
+.flex-col-nowrap {
+    display: flex;
+    flex-flow: column nowrap;
+}
+.flex-row-wrap {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.margin-left-none{
+    margin-left: 0;
+}
+
+.height-none{
+    height: 41px;
+    font-size: 14px;
+    width: 97%;
+    padding-top: 35px;
+    padding-bottom: 14px;
+}
+
+.smaller-font{
+    font-size: 11px;
+}

@@ -1,4 +1,5 @@
 @import './config.scss';
+
 @import './custom_borders.scss';
 
 .card{
@@ -126,16 +127,6 @@
 
 }
 
-.css-2b097c-container{
-    margin-top: 3px;
-}
-
-
-
-
-
-
-
 
 
 ////checkbox stuff
@@ -215,34 +206,107 @@
 
 
 //===== add to form/override other css
-.patient-show-inner-card{
-    width: 90%;
+
+
+.inner-card__field-label-checkbox{
+
+    font-size: 12.8px;
+    color: $core-teal;
+    margin-right: 8px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    text-align: initial;
+    width: 63%;
+    margin-left: auto;
+
+    padding: 20px 7px 5px 20px;
+    border-radius: 8px;
+    height: 70px;
+
+    > div{
+        display: flex;
+    }
+    input{
+
+        height: 20px;
+        width: 20px;
+        border: none;
+        background-color: $grey;
+        margin-bottom: -2px;
+    }
+            
+        
 }
 
-.inner-card__field-value {
-    width: none !important;
-}
 
-.css-yk16xz-control{
-    // background-color: none !important; 
-    height: 80px;
+
+.patient-dem-container{
     width: 100%;
 }
 
-.css-2b097c-container{
+.patient-add-imaging{
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .left-side{
+        width: 50%;
+        // display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        > div{
+            display: flex;
+            justify-content: center;
+            span{
+                margin-left: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+            }
+        }
+        > div > h1{
+            padding-right: 12px;
+            font-size: 23px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        &__electrode-form{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .right-side{
+        width: 44%;
+
+        > h1{
+            font-size: 23px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+    }
 }
 
-.css-1hwfws3{
-    // background-color: none;
-    height: 80px;
+
+.trash-icon{
+    visibility: hidden;
+    align-items: center;
+    margin-left: 7px;
+    display: flex;
 }
 
-.css-2613qy-menu{
-    width: 100%;
-    height: 150%;
-    color: black;
+.inner-card__section-grouping__electrodes:hover .trash-icon{
+    visibility: visible;
 }
+    
+
+
+
+
+
+
 
 
 

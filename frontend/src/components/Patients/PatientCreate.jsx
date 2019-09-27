@@ -15,6 +15,25 @@ class PatientCreate extends React.Component {
         this.handleVisibleCardChange = this.handleVisibleCardChange.bind(this);
     }
 
+    componentDidMount(){
+        setTimeout(() => {
+            const navItem = document.querySelector(`#side-nav-patient-info`);
+            navItem.classList.add('nav-selected');
+
+        }, 800);
+    }
+
+    componentDidUpdate(prevProp, prevState) {
+        if (prevState.visibleCared !== this.state.visibleCard) {
+            const navIdSuffix = this.state.visibleCard.split(' ').join('-');
+            const navItem = document.querySelector(`#side-nav-${navIdSuffix}`);
+            const prevNavIdSuffix = prevState.visibleCard.split(' ').join('-');
+            const prevItem = document.querySelector(`#side-nav-${prevNavIdSuffix}`);
+            navItem.classList.add('nav-selected');
+            prevItem.classList.remove('nav-selected');
+        }
+    }
+
     handleVisibleCardChange(e, card) {
         this.setState({ visibleCard: card });
 
@@ -26,6 +45,7 @@ class PatientCreate extends React.Component {
                 <PatientShowSideNav
                     handleVisibleCardChange={this.handleVisibleCardChange} />
                 <PatientCreateForm 
+                    visibleCard={this.state.visibleCard}
                     processForm={this.props.processForm}
                     />
                 

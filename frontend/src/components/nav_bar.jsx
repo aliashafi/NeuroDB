@@ -1,8 +1,13 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import '../css/nav_bar.scss'
 import Logo from '../images/NeuroDBLogo.png'
 
-function App() {
+const App = (props) => {
+    // function App() {
+
+    const {logout} = props;
+
     return (
         <div className="nav-bar">
 
@@ -13,11 +18,14 @@ function App() {
             </div>
 
             <div id="right-nav">
-                <div id="button-logout">
-                    Logout
-                </div>
                 <div id="button-login">
-                    Login
+                    <Link to="/login">Login</Link>
+                </div>
+                <div id="button-register">
+                    <Link to="/register">Register</Link>
+                </div>
+                <div id="button-logout">
+                    <button onClick={logout}>Logout</button>
                 </div>
             </div>
 
