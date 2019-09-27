@@ -14,7 +14,7 @@ module.exports = function validateImagingData(data) {
     if (data.electrodeMontage.length) {
         const electrodeValidation = validateElectrodeData(data.electrodeMontage);
         if (!electrodeValidation.isValid) {
-            errors.Object.assign({}, errors, electrodeValidation.errors);
+            errors = Object.assign({}, errors, electrodeValidation.errors);
     }
 }
 

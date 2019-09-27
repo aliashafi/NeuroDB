@@ -8,8 +8,8 @@ export const getTask = (id) => {
     return axios.get(`/api/tasks/${id}`)
 };
 
-export const createTask = (data) => {
-    return axios.post('/api/tasks', data)
+export const createTask = (patientId, data) => {
+    return axios.post(`/api/patients/${patientId}/tasks`, data)
 };
 
 export const updateTask = (id, data) => {
