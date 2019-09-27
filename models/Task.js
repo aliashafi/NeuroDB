@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const User = require('./User');
 
 
 
@@ -11,10 +12,10 @@ const TaskSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    researchers: [{_id: {type: String, ref: 'users'}}],
+    researchers: [{type: Schema.Types.ObjectId, ref: 'User'}],
     notes: {
         type: String
     }
 });
 
-module.exports = Task = mongoose.model('task', TaskSchema);
+module.exports = Task = mongoose.model('Task', TaskSchema);

@@ -19,4 +19,4 @@ const MedicalHistorySchema = new Schema({
     }
 });
 
-module.exports = MedicalHistory = mongoose.model("medical_histories", MedicalHistorySchema);
+module.exports = MedicalHistory = mongoose.model("MedicalHistory", MedicalHistorySchema);

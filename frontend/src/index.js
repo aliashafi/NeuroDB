@@ -8,6 +8,7 @@ import axios from 'axios';
 import { createPatient, getPatient, getPatients } from './util/patient_api_util';
 import { logout, loginUser, registerUser } from './actions/session_actions';
 import {fetchUsers, fetchUser, deleteUser, updateUser} from "./actions/user_actions";
+import { createTask, getTask, updateTask } from './util/task_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -48,5 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getPatient = getPatient;
     window.getPatients = getPatients;
 
+    window.createTask = createTask;
+    window.getTask = getTask;
+    window.updateTask = updateTask;
 
 });
