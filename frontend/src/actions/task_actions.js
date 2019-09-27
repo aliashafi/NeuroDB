@@ -3,6 +3,7 @@ import * as TaskUtil from '../util/task_api_util';
 // Action types
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
+export const RECEIVE_NEW_TASK = 'RECEIVE_NEW_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
 
@@ -27,6 +28,10 @@ export const receiveTaskErrors = (errors) => ({
     errors
 });
 
+export const receiveNewTask = (patient) => ({
+    type: RECEIVE_NEW_TASK, 
+    patient
+})
 
 //Thunk action creators
 export const fetchTasks = (patientId) => dispatch =>
@@ -37,8 +42,8 @@ export const fetchTask = (task) => dispatch =>
     TaskUtil.getTask(task).then((task) => dispatch(receiveTasks(task)))
     .catch((error) => dispatch(receiveTaskErrors(error)));
 
-export const createTask = (task) => dispatch =>
-    TaskUtil.createTask(task).then((task) => dispatch(receiveTasks(task)))
+export const createTask = (patientId, task) => dispatch =>
+    TaskUtil.createTask(patientId, task).then((patient) => dispatch(receiveTasks(patient)))
     .catch((error) => dispatch(receiveTaskErrors(error)));
 
 export const updateTask = (taskId, taskData) => dispatch =>
