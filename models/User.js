@@ -22,19 +22,22 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
     isVerified: {
         type: Boolean,
         default: false
     },
-    // privileges: {
-    //     // either admin => full crud or viewer => view only
-    //     type: String,
-    //     default: "Pending"
-    // },
+    pendingUsers: {
+        type: Schema.Types.Mixed,
+        default: {}
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
-})
+}, {minimize: false})
 
 module.exports = User = mongoose.model("users", UserSchema);

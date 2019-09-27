@@ -17,5 +17,13 @@
  }
 
 
+.custom-link a {
+   text-decoration: none;
+   color: inherit
+}
 
+.btn-container {
+   display: flex;
+}
 
+// btn btn--card for blue register/login button
