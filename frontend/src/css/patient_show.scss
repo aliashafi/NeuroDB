@@ -85,7 +85,7 @@
     flex: 1 0 500px;
     background-color: white;
     height: 80vh;
-    // overflow-y: scroll;
+    overflow: scroll;
     margin: 50px;
     border-radius: 12px;
     padding: 50px 80px;
@@ -99,6 +99,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
+    
 
     &__header {
         font-size: 2rem;
@@ -114,7 +115,7 @@
     &__profile-img {
         // height: 400px;
         // height: 80%;
-        flex: 1 0 300px;
+        flex: 0 0 300px;
         border-radius: 12px;
         width: 40%;
         border: 1px solid $lightgray-three;
@@ -124,10 +125,17 @@
     }
     &__info {
         display: flex;
-        flex-flow: row wrap;
-        padding: 0 50px;
+        flex-flow: row nowrap;
+        padding: 0 10px;
         box-sizing: border-box;
-    }
+        
+        &--medication {
+            width: 100%;
+        }
+        &--medication-history {
+
+        }
+    } 
 }
 .patient-show-inner-card__profile-img img {
     width: 100%;
@@ -145,6 +153,7 @@
         width: 90%;
         box-sizing: border-box;
         margin: 10px auto;
+        height: 70px;
     }
     &__field-label {
         position: absolute;
@@ -164,7 +173,12 @@
         border-radius: 8px;
         height: 70px;
         width: 100%;
+        min-width: 200px;
         box-sizing: border-box;
+    }
+    &__checkbox-label {
+        color: $core-teal;
+        font-size: 0.8rem;
     }
 
     //========== patient info subcomp
@@ -172,8 +186,15 @@
         display: flex;
         flex-direction: column;
         width: 60%;
-        // justify-content: space-between;
-        // width: 100%;        
+       
+        &__electrodes{
+            display: flex;
+        }
+
+    }
+
+    &__right{
+        width: 50%;
     }
 }
 .editable {
@@ -188,7 +209,30 @@
     border-radius: 3px;
     margin: 30px 0;
 }
+.radio-column, .input-column {
+    min-width: 250px;
+    margin-left: 15px;
+}
 
+.med-history {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.no-flex {
+    flex: none;
+}
+.card-two-column {
+    flex: 1 0 400px;
+}
+
+.btn-row-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    position: absolute
+}
 
 //======= media queries
 @media screen and (min-width: 1200px) {
@@ -198,4 +242,5 @@
         max-width: 1000px;
     }
 }
+
 

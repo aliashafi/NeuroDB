@@ -1,6 +1,8 @@
 import React from 'react';
 import DemographicsForm from './DemographicsForm';
 import MedicalHistoryForm from './MedicalHistoryForm'
+import ImagingForm from './ImagingForm'
+import MedicationForm from './MedicationForm'
 import '../../../css/form.scss'
 import '../../../css/button.scss'
 class PatientCreateForm extends React.Component {
@@ -85,6 +87,18 @@ class PatientCreateForm extends React.Component {
                         currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         medicalHistory={this.state.medicalHistory}
+                    />
+
+                    <ImagingForm
+                        currentStep={this.props.visibleCard}
+                        handleChange={this.handleChange}
+                        imaging={this.state.imaging}
+                    />
+
+                    <MedicationForm
+                        currentStep={this.props.visibleCard}
+                        handleChange={this.handleChange}
+                        imaging={this.state.imaging}
                     />
                     
                     <div id="button-submit">Add Patient
