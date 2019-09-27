@@ -9,12 +9,13 @@ class ImagingForm extends React.Component {
         this.state = {
             numElecs: [0],
             electrodes: {},
-            montage: [],
+            montage: {},
         }
         this.addElec = this.addElec.bind(this);
         this.deleteElec = this.deleteElec.bind(this);
         this.addElecToState = this.addElecToState.bind(this);
         this.renderMontage = this.renderMontage.bind(this);
+        this.updateMontage = this.updateMontage.bind(this);
     }
 
     addElec(){
@@ -45,26 +46,33 @@ class ImagingForm extends React.Component {
 
     renderMontage() {
         let electrodes = Object.values(this.state.electrodes)
-        let montage = []
+        let montage = {}
+        let j = 1
         electrodes.forEach(elec => {
             
             for (let i = 0; i < elec.numElecs; i++) {
                 let subElec = {
-                    electrodeNum: i,
+                    electrodeNum: j,
                     electrodeID: `${elec.region}${1}`,
                     electrodeRegion: elec.region
                 }
-                montage.push(subElec)
+                j ++
+                montage[j] = (subElec);
             }
         })
 
         this.setState({montage: montage})
     }
 
+    updateMontage(idx, elec){
+        let newState = Object.assign({}, this.state.montage, {[idx]: elec})
+        this.setState({montage: newState});
+    }
+
 
 
     render(){
-        console.log(this.state.electrodes)
+
         if (this.props.currentStep !== "imaging data") {
             return null
         }
@@ -94,13 +102,13 @@ class ImagingForm extends React.Component {
                             </div>
                             <div className="left-side__electrode-form">
 
-                            <form>
+                            <div>
                                 {addElecForms}
 
-                                <div className="btn--card" onClick={this.renderMontage}>
+                                <div className="btn btn--card margin-left-none" onClick={this.renderMontage}>
                                     Render Montage
                                 </div>
-                            </form>
+                            </div>
                             </div>
                             
                         </div>
@@ -108,9 +116,10 @@ class ImagingForm extends React.Component {
 
                         <div className="right-side">
                         <h1>Montage</h1>
-                        {this.state.montage ? 
-                            <MontageIndex montage={this.state.montage} /> : ""
-                        }
+                            <MontageIndex 
+                                key="montage-idx"
+                                montage={Object.values(this.state.montage)} 
+                                updateMontage={this.updateMontage}/> 
                         </div>
                 </div>
             </div>

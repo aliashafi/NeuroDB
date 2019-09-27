@@ -5,14 +5,24 @@ class MontageIndex extends React.Component {
     
     constructor(props){
         super(props)
-        
+
+        this.state={
+            montage: {}
+        }
+
     }
+
+
+
 
     render(){
 
         let montage = this.props.montage.map((electrode, index) => {
             return(
-                <MontageItem key={Math.random(10)} electrode={electrode} index={index} />
+                <MontageItem key={`electrode-item-${index}`} 
+                    electrode={electrode} 
+                    index={index}
+                    updateMontage={this.props.updateMontage} />
             )
         })
         
