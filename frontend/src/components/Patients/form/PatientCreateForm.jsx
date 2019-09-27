@@ -1,13 +1,15 @@
 import React from 'react';
 import DemographicsForm from './DemographicsForm';
 import MedicalHistoryForm from './MedicalHistoryForm'
+import ImagingForm from './ImagingForm'
+import MedicationForm from './MedicationForm'
 import '../../../css/form.scss'
 import '../../../css/button.scss'
 class PatientCreateForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentStep: "demographics",
+            currentStep: this.props.visibleCard,
             researchId: undefined,
             dateOfSurgery: undefined,
             consent: undefined,
@@ -69,22 +71,34 @@ class PatientCreateForm extends React.Component {
 
 
     render() {
-        console.log(this.state)  
+       
         return (
             <div className="patient-show-card std-shadow">
             <React.Fragment >
 
                 <form className="card__form" onSubmit={this.handleSubmit}>
                     <DemographicsForm 
-                        currentStep={this.state.currentStep}
+                        currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         demographics={this.state}
                     />
 
                     <MedicalHistoryForm
-                        currentStep={this.state.currentStep}
+                        currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         medicalHistory={this.state.medicalHistory}
+                    />
+
+                    <ImagingForm
+                        currentStep={this.props.visibleCard}
+                        handleChange={this.handleChange}
+                        imaging={this.state.imaging}
+                    />
+
+                    <MedicationForm
+                        currentStep={this.props.visibleCard}
+                        handleChange={this.handleChange}
+                        imaging={this.state.imaging}
                     />
                     
                     <div id="button-submit">Add Patient

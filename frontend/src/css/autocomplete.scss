@@ -1,0 +1,42 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+
+
+.no-suggestions {
+  color: $lightgray-three;
+  padding: 0.5rem;
+}
+
+.suggestions {
+    border: 1px solid $lightgray-three;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow-y: auto;
+    padding-left: 0;
+    width: calc(181px + 1rem);
+    position: absolute;
+    background-color: white;
+    top: 51px;
+    border-radius: 4px;
+
+}
+
+.suggestions li {
+  padding: 0.5rem;
+  font-size: 14px;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: $core-teal;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid $lightgray-three;
+}
