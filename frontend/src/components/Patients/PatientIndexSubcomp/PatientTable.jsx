@@ -135,7 +135,6 @@ class PatientTable extends React.Component {
                     <input type="text" placeholder='Search by Research ID' onChange={this.handleRIDSearch}/>
                     <input type="text" placeholder='Search by Age' onChange={this.handleAgeSearch}/>
                     <input type="text" placeholder='Search by Gender (M/F)' onChange={this.handleGenderSearch}/>
-                    <button>Clear all</button>
                 </div>
                 
                 <table>
