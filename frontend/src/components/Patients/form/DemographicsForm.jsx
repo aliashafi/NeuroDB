@@ -6,6 +6,31 @@ class DemographicsForm extends React.Component {
 
     constructor(props){
         super(props)
+
+        this.handleConsentToggle = this.handleConsentToggle.bind(this);
+        this.handleSexToggle = this.handleSexToggle.bind(this);
+        this.handleLanguageDominance = this.handleLanguageDominance.bind(this)
+        this.handleDominantHand = this.handleDominantHand.bind(this);
+    }
+
+    handleConsentToggle(e) {
+        const val = (e.target.value === 'true') ? true : false;
+        this.props.updateForm("consent", val)
+    }
+
+    handleSexToggle(e) {   
+        const val = (e.target.value === 'M') ? 'M' : 'F';
+        this.props.updateForm("gender", val, "demographics")
+    }
+
+    handleLanguageDominance(e){
+        const val = (e.target.value === 'L') ? 'L' : 'R';
+        this.props.updateForm("languageDominance", val, "demographics")
+    }
+
+    handleDominantHand(e) {
+        const val = (e.target.value === 'L') ? 'L' : 'R';
+        this.props.updateForm("dominantHand", val, "demographics")
     }
 
     render(){
@@ -19,6 +44,8 @@ class DemographicsForm extends React.Component {
         if (this.props.currentStep !== "patient info") {
             return null
         }
+
+
         return(
         <div className="patient-dem-container">
             <h1 className="patient-show-inner-card__header initial-header">Demographics</h1>
@@ -55,10 +82,8 @@ class DemographicsForm extends React.Component {
                             <div className='inner-card__field-label'>Birth Date</div>
                             <input
                                 className='inner-card__field-value'
-                                ttype="date"
+                                type="date"
                                 name="birthDate"
-                                value={this.props.demographics.demographics.birthDate}
-
                                 value={this.props.demographics.demographics.birthDate}
                                 onChange={this.props.handleChange}
                                 id="demographics"
@@ -70,10 +95,8 @@ class DemographicsForm extends React.Component {
                             <input
                                 className='inner-card__field-value'
                                 ttype="text"
-                                name="birthDate"
-                                value={this.props.demographics.demographics.birthDate}
-
-                                value={this.props.demographics.demographics.birthDate}
+                                name="nativeLanguage"
+                                value={this.props.demographics.demographics.nativeLanguage}
                                 onChange={this.props.handleChange}
                                 id="demographics"
                             />
@@ -86,87 +109,109 @@ class DemographicsForm extends React.Component {
                         <label className="inner-card__field-label-checkbox" >Consent
                     
                         <div>
-                            <div className="checkbox-container">
-                                Signed
-                                <label className="checkbox-label"> 
+
+
+                        <div className='radio-grouping'>
+                                <div className='radio-btn-container'>
                                     <input
+                                        onChange={this.handleConsentToggle}
+                                        checked={(this.props.demographics.consent) ? 'checked' : ''}
+                                        type="radio"
                                         name="consent"
-                                        value={true}
-                                        onChange={this.props.handleChange}
-                                        type="checkbox"/>
-                                    <span
-                                    
-                                    className="checkbox-custom rectangular"></span>
-                                </label>
-                            </div>
-                            <div className="checkbox-container">
-                                Unsigned
-                                <label className="checkbox-label">
-                                        <input
-                                            name="consent"
-                                            value={false}
-                                            onChange={this.props.handleChange}
-                                            type="checkbox" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                </label>
+                                        value='true' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>Signed</span>
+                                </div>
+
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleConsentToggle}
+                                        checked={(this.props.demographics.consent) ? '' : 'checked'}
+                                        type="radio"
+                                        name="consent"
+                                        value='false' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>Unsigned</span>
+                                </div>
                             </div>
                         </div>
                     </label>
 
                         <label className="inner-card__field-label-checkbox" >Sex
-                            <div>
-                                <div className="checkbox-container">
-                                    M
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+                            <div className='radio-grouping'>
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleSexToggle}
+                                        checked={(this.props.demographics.demographics.gender === 'F') ? 'checked' : ''}
+                                        type="radio"
+                                        name="gender"
+                                        value='F' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>F</span>
                                 </div>
-                                <div className="checkbox-container">
-                                    F
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleSexToggle}
+                                        checked={(this.props.demographics.demographics.gender === 'F') ? '' : 'checked'}
+                                        type="radio"
+                                        name="gender"
+                                        value='M' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>M</span>
                                 </div>
                             </div>
                         </label>
 
                         <label className="inner-card__field-label-checkbox" >Language Dominance
-                            <div>
-                                <div className="checkbox-container">
-                                    L
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+                            <div className='radio-grouping'>
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleLanguageDominance}
+                                        checked={(this.props.demographics.demographics.languageDominance === 'L') ? 'checked' : ''}
+                                        type="radio"
+                                        name="languageDominance"
+                                        value='L' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>L</span>
                                 </div>
-                                <div className="checkbox-container">
-                                    R
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleLanguageDominance}
+                                        checked={(this.props.demographics.demographics.languageDominance === 'L') ? '' : 'checked'}
+                                        type="radio"
+                                        name="languageDominance"
+                                        value='R' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>R</span>
                                 </div>
                             </div>
                         </label>
 
 
                         <label className="inner-card__field-label-checkbox" >Dominant Hand
-                            <div>
-                                <div className="checkbox-container">
-                                    L
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+                            <div className='radio-grouping'>
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleDominantHand}
+                                        checked={(this.props.demographics.demographics.dominantHand === 'L') ? 'checked' : ''}
+                                        type="radio"
+                                        name="dominantHand"
+                                        value='L' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>L</span>
                                 </div>
-                                <div className="checkbox-container">
-                                    R
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleDominantHand}
+                                        checked={(this.props.demographics.demographics.dominantHand === 'L') ? '' : 'checked'}
+                                        type="radio"
+                                        name="dominantHand"
+                                        value='R' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>R</span>
                                 </div>
                             </div>
                         </label>

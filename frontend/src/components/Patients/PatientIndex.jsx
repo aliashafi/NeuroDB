@@ -4,6 +4,7 @@ import '../../css/patient_index.scss';
 import PatientIndexSideBar from './PatientIndexSubcomp/PatientIndexSideBar';
 import PatientIndexQuickView from './PatientIndexSubcomp/PatientIndexQuickView';
 import PatientTable from './PatientIndexSubcomp/PatientTable';
+
 import navBar from '../nav_bar';
 
 class PatientIndex extends React.Component {
@@ -19,6 +20,7 @@ class PatientIndex extends React.Component {
         this.handleQuickView = this.handleQuickView.bind(this);
         this.sortBy = this.sortBy.bind(this);
         this.sortByDemographics = this.sortByDemographics.bind(this);
+
         this.closeQuickView = this.closeQuickView.bind(this);
     }
 

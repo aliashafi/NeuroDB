@@ -35,7 +35,7 @@ class MontageItem extends React.Component {
                     <input
                         className='inner-card__number inner-card'
                         type="text"
-                        value={this.props.electrode.electrodeNum}
+                        value={this.state.electrodeNum}
                         onChange={this.handleUpdate("electrodeNum")}
                         
                     />
@@ -47,7 +47,7 @@ class MontageItem extends React.Component {
                     <input
                         className='inner-card__elecID inner-card'
                         type="text"
-                        value={this.props.electrode.electrodeID}
+                        value={this.state.electrodeID}
                         onChange={this.handleUpdate("electrodeID")}
                         
                     />

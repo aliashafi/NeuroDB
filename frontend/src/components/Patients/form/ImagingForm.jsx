@@ -18,6 +18,12 @@ class ImagingForm extends React.Component {
         this.updateMontage = this.updateMontage.bind(this);
     }
 
+    componentDidUpdate(prevProp, prevState){
+        if (prevState !== this.state){
+            this.props.updateForm('electrodeMontage', Object.values(this.state.montage), 'imaging')
+        }
+    }
+
     addElec(){
         this.state.numElecs.push(1 + this.state.numElecs[this.state.numElecs.length - 1])
         this.setState({ numElecs: this.state.numElecs })
@@ -56,16 +62,20 @@ class ImagingForm extends React.Component {
                     electrodeID: `${elec.region}${1}`,
                     electrodeRegion: elec.region
                 }
-                j ++
                 montage[j] = (subElec);
+                j ++
             }
         })
 
         this.setState({montage: montage})
+        // debugger
     }
 
     updateMontage(idx, elec){
-        let newState = Object.assign({}, this.state.montage, {[idx]: elec})
+        let newState = Object.assign({}, this.state.montage)
+        delete newState[idx]
+        newState[idx] = elec
+        // debugger
         this.setState({montage: newState});
     }
 
