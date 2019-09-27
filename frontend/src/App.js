@@ -5,6 +5,9 @@ import CreatePatientContainer from './components/Patients/patient_create_form_co
 import PatientIndexContainer from './components/Patients/patient_index_container';
 import PatientShowContainer from './components/Patients/patient_show_container';
 
+import LoginFormContainer from "./components/Session/login_form_container";
+import RegisterFormContainer from "./components/Session/register_form_container";
+
 // import logo from './logo.svg';
 import './App.css';
 
@@ -16,6 +19,15 @@ function App() {
         <Route exact path="/patient/create" component={CreatePatientContainer} />     
         <Route exact path="/patients" component={PatientIndexContainer} />
         <Route path='/show/:patientId' component={PatientShowContainer} />
+
+
+        <Route path="/login" component={LoginFormContainer}/>
+
+        <Route path="/register" component={RegisterFormContainer}/>
+
+
+
+
       </Switch>
     </div>
   );

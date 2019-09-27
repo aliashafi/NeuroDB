@@ -4,6 +4,7 @@ import '../../css/patient_index.scss';
 import PatientIndexSideBar from './PatientIndexSideBar';
 import PatientIndexQuickView from './PatientIndexQuickView';
 import PatientTable from './PatientTable';
+import navBar from '../nav_bar';
 
 class PatientIndex extends React.Component {
     constructor(props) {

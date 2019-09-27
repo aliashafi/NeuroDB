@@ -7,18 +7,22 @@ class PatientShowTasks extends React.Component {
 
 
     render() {
+
         return (
             <div className='patient-show-inner-card'>
-                <div className='task-item-details__header'>
-                    <div>Task Name</div>
-                    <div>Date conducted</div>
+                <div className='patient-show-inner-card__header'>Tasks</div>
+                <div className='header-divider'></div>
+                <div className='patient-show-inner-card__body'>
+                    <div className='task-item-details__header'>
+                        <div>Task Name</div>
+                        <div>Date conducted</div>
+                    </div>
+                    {this.props.tasks.forEach((task, i) => (
+                        <PatientShowTaskItem 
+                            key={i}
+                            task={task} />
+                    ))}
                 </div>
-                {this.props.tasks.forEach((task, i) => (
-                    <PatientShowTaskItem 
-                        key={i}
-                        task={task} />
-                ))}
-
             </div>
         );
     }
