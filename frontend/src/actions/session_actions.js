@@ -54,6 +54,7 @@ export const loginUser = (user) => (dispatch) => {
         })
 }
 
+
 export const logout = () => (dispatch) => {
     localStorage.removeItem("jwtToken")
     SessionApiUtil.setAuthToken(false)

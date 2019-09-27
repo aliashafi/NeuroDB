@@ -7,6 +7,10 @@ const TokenSchema = new Schema({
         required: true,
         ref: "User"
     },
+    _userEmail: {
+        type: String,
+        required: true
+    },
     token: {
         type: String,
         required: true

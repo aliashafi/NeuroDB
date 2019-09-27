@@ -8,7 +8,7 @@ import {
 const initialState = {
     isAuthenticated: false,
     isLoggedIn: false,
-    currentUser: {}
+    currentUser: undefined
 }
 
 const SessionReducer = (state=initialState, action) => {

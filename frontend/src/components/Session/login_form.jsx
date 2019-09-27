@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router-dom"
 import "../../css/form.scss";
 
 class LoginForm extends React.Component {
@@ -25,7 +26,8 @@ class LoginForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.loginUser(user);
+        this.props.loginUser(user)
+            // .then( () => this.props.history.push("/"))
     }
 
     render() {
@@ -39,7 +41,7 @@ class LoginForm extends React.Component {
 
         return (
             <div>
-                <form className="session-form">
+                <form className="card__form">
                     <input
                         type="text"
                         value={this.state.email}
@@ -65,4 +67,4 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

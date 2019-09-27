@@ -42,7 +42,7 @@ class RegisterForm extends React.Component {
 
         return (
             <div>
-                <form className="session-form">
+                <form className="card__form">
                     <input
                         type="text"
                         value={this.state.firstName}

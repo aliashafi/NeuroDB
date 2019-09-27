@@ -3,6 +3,7 @@ import {
     RECEIVE_USER,
     DELETE_USER
 } from "../actions/user_actions";
+import {RECEIVE_CURRENT_USER} from "../actions/session_actions";
 
 
 const UserReducer = (state={}, action) => {
@@ -13,8 +14,8 @@ const UserReducer = (state={}, action) => {
         case RECEIVE_USERS:
             action.users.data.forEach(user => (nextState[user._id] = user))
             return nextState;
-        case RECEIVE_USER:
-            nextState[action.user.data._id] = action.user.data
+        case RECEIVE_CURRENT_USER:
+            nextState[action.currentUser.id] = action.currentUser
             return nextState;
         case DELETE_USER:
             delete nextState[action.userId]

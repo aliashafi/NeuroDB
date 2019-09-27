@@ -29,7 +29,7 @@ router.get("/current", passport.authenticate("jwt", { session: false }), (reques
     })
 })
 
-// email confirmation
+// admin verification
 router.get("/confirmation/:token", (request, response) => {
     Token.findOne({ token: request.params.token })
         .then( token => {
@@ -41,6 +41,11 @@ router.get("/confirmation/:token", (request, response) => {
                     } else {
                         user.isVerified = true;
                         user.save()
+                        // delete token from admin pendingUsers
+
+                        // transporter = nodemailer.createTransport
+                        // mailoptions: from neurodb.io to user.email "admin.name has verified you"
+                        // transporter.sendmail
                     }
                 })
                 .catch( error => {
@@ -89,25 +94,39 @@ router.post("/register", (request, response) => {
 
                                 const token = new Token({
                                     _userId: user._id,
+                                    _userEmail: user.email,
                                     token: crypto.randomBytes(16).toString("hex")
                                 })
-                                // add token to admin pendingUsers
                                 token.save()
-                                    // token gets saved to mongoDB
                                     .then( token => {
+                                        // add token to admin pendingUsers
+                                        const adminEmail = "ernest.man10@gmail.com"
+                                        User.findOne({email: adminEmail})
+                                            .then( admin => {
+                                                console.log(admin.pendingUsers)
+                                                console.log(user.email)
+                                                console.log(token.token)
+                                                admin.pendingUsers[user.email] = token.token
+                                                console.log(admin.pendingUsers)
+                                                admin.save()
+                                                console.log(admin.pendingUsers)
+                                            })
+                                            .catch( error => {
+                                                console.log("could not find admin")
+                                            })
                                         const transporter = nodemailer.createTransport({
                                             service: "gmail",
                                             auth: { 
                                                 user: "neurodb.io@gmail.com",
                                                 pass: "go_neuro_go"
                                             }
+                                            // .env package for storing info later
                                         })
                                         const mailOptions = {
                                             from: "neurodb.io@gmail.com",
-                                            // admin.email
-                                            to: user.email,
+                                            to: adminEmail,
                                             subject: "NeuroDB Account Verification",
-                                            text: "http://localhost:3000/confirmation/" + token.token
+                                            text: `${user.email} has requested NeuroDB verification`
                                         }
                                         transporter.sendMail(mailOptions, function(error, data) {
                                             if (error) {
@@ -124,7 +143,6 @@ router.post("/register", (request, response) => {
                                 const payload = {
                                     id: user.id,
                                     email: user.email,
-                                    privileges: user.privileges
                                 }
 
                                 jwt.sign(
@@ -170,7 +188,14 @@ router.post("/login", (request, response) => {
                 .then( isMatch => {
                     if (isMatch) {
                         const payload = {
-                            id: user.id
+                            id: user.id,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                            affiliation: user.affiliation,
+                            isAdmin: user.isAdmin,
+                            isVerified: user.isVerified,
+                            pendingUsers: user.pendingUsers
                         };
 
                         jwt.sign(
