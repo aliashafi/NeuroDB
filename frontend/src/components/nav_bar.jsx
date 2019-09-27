@@ -1,12 +1,38 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import '../css/nav_bar.scss'
 import Logo from '../images/NeuroDBLogo.png'
 
 const App = (props) => {
     // function App() {
 
-    const {logout} = props;
+    const {logout, currentUser} = props;
+
+    const handleLogout = (event) => {
+        event.preventDefault();
+        logout()
+        props.history.push("/")
+    }
+
+    const rightNav = currentUser ? (
+        <div className="btn-container">
+            <div className="btn custom-link">
+                <Link to={`/users/${currentUser.id}`}>My Account</Link>
+            </div>
+            <div id="button-logout" onClick={handleLogout}>
+                Logout
+            </div>
+        </div>
+    ) : (
+        <div className="btn-container">
+            <div className='btn custom-link'>
+                <Link to="/login">Login</Link>
+            </div>
+            <div className="btn custom-link">
+                <Link to="/register">Register</Link>
+            </div>
+        </div>
+    )
 
     return (
         <div className="nav-bar">
@@ -18,15 +44,7 @@ const App = (props) => {
             </div>
 
             <div id="right-nav">
-                <div id="button-login">
-                    <Link to="/login">Login</Link>
-                </div>
-                <div id="button-register">
-                    <Link to="/register">Register</Link>
-                </div>
-                <div id="button-logout">
-                    <button onClick={logout}>Logout</button>
-                </div>
+                {rightNav}
             </div>
 
 
@@ -34,4 +52,4 @@ const App = (props) => {
     );
 }
 
-export default App;
+export default withRouter(App);

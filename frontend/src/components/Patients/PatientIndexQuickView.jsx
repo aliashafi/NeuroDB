@@ -16,13 +16,11 @@ class PatientIndexQuickView extends React.Component {
                 <br/>
                 Sex: 
                 <br/>
-                F
-                <br/>
                 {this.props.patient.demographics.gender}
+                <br/>
                 <br/>
                 Age: 
                 <br/>
-                20
                 {this.props.patient.demographics.age}
                 <br/>
                 <br/>

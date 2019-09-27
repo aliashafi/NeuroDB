@@ -22,4 +22,4 @@ const DemographicSchema = new Schema({
     }
 });
 
-module.exports = Demographic = mongoose.model('demographics', DemographicSchema);
+module.exports = Demographic = mongoose.model('Demographic', DemographicSchema);
