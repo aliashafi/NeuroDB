@@ -9,6 +9,8 @@ import { createPatient, getPatient, getPatients } from './util/patient_api_util'
 import { logout, loginUser, registerUser } from './actions/session_actions';
 import {fetchUsers, fetchUser, deleteUser, updateUser} from "./actions/user_actions";
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     let store;
     store = configureStore({})
