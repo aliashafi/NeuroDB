@@ -60,7 +60,13 @@ function PatientShowMedication(props){
             const allValueFields = document.querySelectorAll('.inner-card__field-value');
             Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
         });
-
+    }
+    function handleCancelClick(e) {
+        setRenderEdit(!renderEdit);
+        setMedicationName(initMedicaitonName);
+        setMedicationPurpose(initMedicationPurpose);
+        const allValueFields = document.querySelectorAll('.inner-card__field-value');
+        Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
     }
 
     function handleCancelClick(e) {
@@ -95,6 +101,7 @@ function PatientShowMedication(props){
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__body'>
                 <div className='patient-show-inner-card__info'>
+
                     {renderComp()}
                 </div>
             </div>           
