@@ -4,6 +4,7 @@ import '../../css/patient_index.scss';
 import PatientIndexSideBar from './PatientIndexSideBar';
 import PatientIndexQuickView from './PatientIndexQuickView';
 import PatientTable from './PatientTable';
+import navBar from '../nav_bar';
 
 class PatientIndex extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class PatientIndex extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleQuickView = this.handleQuickView.bind(this);
         this.sortBy = this.sortBy.bind(this);
+        this.sortByDemographics = this.sortByDemographics.bind(this);
     }
 
     componentDidMount() {
@@ -25,14 +27,14 @@ class PatientIndex extends React.Component {
 
     handleClick() {
         if (this.state.component === '') {
-            this.setState({component: <PatientIndexSideBar/>})
+            this.setState({component: <PatientIndexSideBar sortBy={this.sortBy} sortByDemographics={this.sortByDemographics}/>})
         } else {
             this.setState({component: ''})
         }
     }
 
-    handleQuickView(id) {
-        this.setState({quickView: <PatientIndexQuickView patient={this.props.patients[id]}/>})
+    handleQuickView(index) {
+        this.setState({quickView: <PatientIndexQuickView patient={this.props.patients[index]}/>})
     }
 
     sortBy(key) {
@@ -70,6 +72,41 @@ class PatientIndex extends React.Component {
         }
     }
 
+    sortByDemographics(key) {
+        let patients = this.props.patients;
+        if (this.state.sortStatus === 'unsorted' || this.state.sortStatus === 'desc') {
+            this.setState({
+                patients: patients.sort(function(a, b) { 
+                    if (a.demographics[key] < b.demographics[key]) {
+                        return -1
+                    } if (a.demographics[key] > b.demographics[key]) {
+                        return 1
+                    } else {
+                        return 0
+                    }
+                })
+            })
+            this.setState({
+                sortStatus: 'asc'
+            })
+        } else {
+            this.setState({
+                patients: patients.sort(function(a, b) {
+                    if (b.demographics[key] < a.demographics[key]) {
+                        return -1
+                    } if (b.demographics[key] > a.demographics[key]) {
+                        return 1
+                    } else {
+                        return 0
+                    }
+                })
+            })
+            this.setState({
+                sortStatus: 'desc'
+            })
+        }
+    }
+
     render() {
         return (
             <div className='patient-index-main'>
@@ -85,7 +122,7 @@ class PatientIndex extends React.Component {
                         Patients
                     </div>
                     <div className='patient-index-item-container'>
-                        <PatientTable patients={this.props.patients} sortBy={this.sortBy}/>
+                        <PatientTable patients={this.props.patients} handleQuickView={this.handleQuickView}/>
                     </div> 
                 </div>
                 
