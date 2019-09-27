@@ -17,31 +17,79 @@ const User = require("../../models/User");
 const Token = require("../../models/Token");
 
 
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "neurodb.io@gmail.com",
+        pass: "go_neuro_go"
+    }
+    // .env package for storing info later
+})
+const adminEmail = "ernest.man10@gmail.com";
 
 router.get("/current", passport.authenticate("jwt", { session: false }), (request, response) => {
-    // debugger
 
-    // response.json({msg: "Hello"})
     response.json({
         id: request.user.id,
         firstName: request.user.firstName,
         lastName: request.user.lastName,
         email: request.user.email,
         affiliation: request.user.affiliation,
-        privileges: request.user.privileges
     })
 })
 
-router.post("/confirmation", (request, response) => {
+// admin verification
+router.get("/confirmation/:token", (request, response) => {
+    Token.findOne({ token: request.params.token })
+        .then( token => {
+            User.findById(token._userId)
+                .then( user => {
+                    if (user.isVerified) {
+                        // console.log("User has already been verified")
+                        response.status(404).json({alreadyVerified: "Account has already been verified"})
+                    } else {
+                        user.isVerified = true;
+                        user.save()
+
+                        // delete token from admin pendingUsers
+                        User.findOne({email: adminEmail})
+                            .then( admin => {
+                                console.log(admin.pendingUsers[user.email])
+                                delete admin.pendingUsers[user.email]
+                                admin.markModified("pendingUsers")
+                                admin.save()
+                            })
+
+                        const mailOptions = {
+                            from: "neurodb.io@gmail.com",
+                            to: user.email,
+                            subject: "Thank you for joining NeuroDB!",
+                            text: `${user.email}, your account has been verified`
+                        }
+                        transporter.sendMail(mailOptions, function (error, data) {
+                            if (error) {
+                                console.log("Unable to send email" + error)
+                            } else {
+                                console.log("Email successfully sent")
+                            }
+                        })
+                    }
+                })
+                .catch( error => {
+                    response.status(400).json({noUserFound: "Unable to find a valid user for this token"})
+                })
+        })
+        .catch( error => {
+            response.status(400).json({noTokenFound: "Unable to find valid token"})
+        })
+})
+
+// resend email confirmation
+router.get("/resend", (request, response) => {
 
 })
 
-router.post("/resend", (request, response) => {
-
-})
-
-
-
+// register user
 router.post("/register", (request, response) => {
 
     const { errors, isValid } = validateRegisterInput(request.body);
@@ -62,7 +110,6 @@ router.post("/register", (request, response) => {
                     email: request.body.email,
                     password: request.body.password,
                     affiliation: request.body.affiliation,
-                    // privileges: request.body.privileges,
                 })
 
                 bcrypt.genSalt(10, (error, salt) => {
@@ -74,34 +121,43 @@ router.post("/register", (request, response) => {
 
                                 const token = new Token({
                                     _userId: user._id,
+                                    _userEmail: user.email,
                                     token: crypto.randomBytes(16).toString("hex")
                                 })
-
                                 token.save()
                                     .then( token => {
-                                        const transporter = nodemailer.createTransport({
-                                            service: "Sendgrid",
-                                            auth: { 
-                                                user: "neurodb.io@gmail.com",
-                                                pass: "go_neuro_go"
-                                            }
-                                        })
+                                        // add token to admin pendingUsers
+                                        // const adminEmail = "ernest.man10@gmail.com"
+                                        User.findOne({email: adminEmail})
+                                            .then( admin => {
+                                                admin.pendingUsers[user.email] = token.token
+                                                admin.markModified("pendingUsers")
+                                                admin.save()
+                                            })
+                                            .catch( error => {
+                                                console.log("could not find admin")
+                                            })
                                         const mailOptions = {
                                             from: "neurodb.io@gmail.com",
-                                            to: user.email,
+                                            to: adminEmail,
                                             subject: "NeuroDB Account Verification",
-                                            text: "http://localhost:3000/confirmation/" + token.token
+                                            text: `${user.email} has requested NeuroDB verification`
                                         }
-                                        transporter.sendMail(mailOptions)
-                                            .then( response => {msg: "Verification email was sent"})
-                                            .catch( error => response.status(500).json({msg: "Email was not sent"}))
+                                        transporter.sendMail(mailOptions, function(error, data) {
+                                            if (error) {
+                                                console.log("Unable to send email" + error)
+                                            } else {
+                                                console.log("Email successfully sent")
+                                            }
+                                        })
+                                            // .then( response => {msg: "Verification email was sent"})
+                                            // .catch( error => response.status(500).json({msg: "Email was not sent"}))
                                     })
 
 
                                 const payload = {
                                     id: user.id,
                                     email: user.email,
-                                    privileges: user.privileges
                                 }
 
                                 jwt.sign(
@@ -122,6 +178,7 @@ router.post("/register", (request, response) => {
         });
 });
 
+// login user
 router.post("/login", (request, response) => {
 
     const { errors, isValid } = validateLoginInput(request.body);
@@ -146,7 +203,14 @@ router.post("/login", (request, response) => {
                 .then( isMatch => {
                     if (isMatch) {
                         const payload = {
-                            id: user.id
+                            id: user.id,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                            affiliation: user.affiliation,
+                            isAdmin: user.isAdmin,
+                            isVerified: user.isVerified,
+                            pendingUsers: user.pendingUsers
                         };
 
                         jwt.sign(
@@ -166,6 +230,7 @@ router.post("/login", (request, response) => {
         })
 })
 
+// user index
 router.get("/", (request, response) => {
     User.find()
         .then( users => (
@@ -187,6 +252,7 @@ router.get("/:userId", (request, response) => {
         });
 })
 
+// user update
 router.patch("/:userId", (request, response) => {
     User.findByIdAndUpdate(request.params.userId, { $set: request.body }, {new: true})
         .then ( user => {
@@ -198,6 +264,7 @@ router.patch("/:userId", (request, response) => {
 
 })
 
+// user delete
 router.delete("/:userId", (request, response) => {
     User.findByIdAndRemove(request.params.userId)
         .then( user => {
