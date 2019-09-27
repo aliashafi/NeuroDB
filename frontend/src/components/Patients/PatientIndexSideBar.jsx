@@ -24,19 +24,16 @@ class PatientIndexSideBar extends React.Component {
                         <div className='sort-by-options'>
                             Last visited
                         </div>
-                        <div className='sort-by-options'>
+                        <div className='sort-by-options' onClick={() => this.props.sortByDemographics('age')}>
                             Age
                         </div>
-                        <div className='sort-by-options'>
-                            Sex
+                        <div className='sort-by-options' onClick={() => this.props.sortByDemographics('gender')}>
+                            Gender
                         </div>
-                        <div className='sort-by-options'>
-                            Ethnicity
+                        <div className='sort-by-options' onClick={() => this.props.sortByDemographics('dominantHand')}>
+                            Dominant Hand
                         </div>
-                        <div className='sort-by-options'>
-                            Hand Dominance
-                        </div>
-                        <div className='sort-by-options'>
+                        <div className='sort-by-options' onClick={() => this.props.sortByDemographics('nativeLanguage')}>
                             Native Language
                         </div>
                     </div>
