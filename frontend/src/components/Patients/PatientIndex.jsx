@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/patient_index.scss';
+import '../../css/patient_table.scss'
 // import PatientIndexItem from './PatientIndexItem';
 import PatientIndexSideBar from './PatientIndexSubcomp/PatientIndexSideBar';
 import PatientIndexQuickView from './PatientIndexSubcomp/PatientIndexQuickView';
@@ -16,14 +16,15 @@ class PatientIndex extends React.Component {
             quickView: '',
             patients: [],
             sortStatus: 'unsorted',
-            arrow: '>'
+            arrow: '>',
+            slide: "false"
         }
 
         this.handleClick = this.handleClick.bind(this);
         this.handleQuickView = this.handleQuickView.bind(this);
         this.sortBy = this.sortBy.bind(this);
         this.sortByDemographics = this.sortByDemographics.bind(this);
-
+        this.toggleSlide = this.toggleSlide.bind(this)
         this.closeQuickView = this.closeQuickView.bind(this);
     }
 
@@ -138,27 +139,53 @@ class PatientIndex extends React.Component {
         }
     }
 
+    toggleSlide(){
+        if (!this.state.slide){
+            this.openNav();
+        }else{
+            this.closeNav();
+        }
+
+        this.setState({
+            slide: !this.state.slide
+        })
+
+        
+    }
+
+    openNav() {
+        document.querySelector(".side-nav-container").style.width = "300px";
+        // document.querySelector(".hold-advanced-search").style.marginLeft = "250px";
+    }
+
+    closeNav() {
+        document.querySelector(".side-nav-container").style.width = "0";
+        document.querySelector(".hold-advanced-search").style.marginLeft = "0";
+    }
+
     render() {
         return (
-            <div className='index-page-main-container'>
-                {this.state.component}
+            <div className="hold-advanced-search">
+                {/* {this.state.component} */}
 
-                <button className='sidebar-trigger' onClick={this.handleClick}>
+                <button onClick={this.toggleSlide}>
                     {this.state.arrow}
                 </button>
-                <div className='patient-index-main'>
-                    <div className='patient-index-main-body'>
-                        <div className='patients-title'>
-                            PATIENTS
-                        </div>
-                        <div className='header-divider'></div>
-                        <div className='patient-index-item-container'>
-                            <PatientTable patients={this.props.patients} handleQuickView={this.handleQuickView}/>
-                        </div> 
-                    </div>
-                </div>
 
-                {this.state.quickView}
+                <div className="side-nav-container slide">
+                    
+                </div>
+                <div className="patient-index-page">
+                    <div className="patient-index-page__headers">
+                        <h2>NeuroDB Database</h2>
+                        <h3>All Patients</h3>
+                    </div>
+
+                    
+                    <PatientTable patients={this.props.patients} handleQuickView={this.handleQuickView}/>
+                    
+                    {/* {this.state.quickView} */}
+                </div>
                 
             </div>
         )

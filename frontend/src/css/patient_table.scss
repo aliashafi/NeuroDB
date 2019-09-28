@@ -1,0 +1,136 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+@import './patient_show.scss';
+
+
+
+///for the main table 
+
+.hold-advanced-search{
+    display: flex;
+}
+
+.patient-index-page{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__headers{
+        width: 100%;
+        font-family: $font;
+        h2{
+            text-align: start;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 30px 30px 10px;
+            text-transform: uppercase;
+        }
+        h3{
+            padding: 0px 30px 10px;
+            text-align: start;
+        }
+    }
+}
+
+.patient-table-page{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-table-card{
+    // background-color: white;
+    // height: 80vh;
+    overflow: scroll;
+    margin-top: 50px;
+    border-radius: 12px;
+    padding: 50px 80px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.patient-table-container{
+    display: flex;
+    flex-direction: column;
+    font-family: $font;
+    width: 95%;
+    justify-content: center;
+    align-items: end;
+   
+
+    h2{
+        font-family: $font;
+        
+    }
+}
+
+.patient-table{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    &__headers{
+        display: flex;
+        // justify-content: center;
+        padding: 30px;
+        background-color: $lightgray-one;
+        color: white;
+        font-weight: 700;
+
+        div{
+            width: 16%
+            
+        }
+    }
+
+    &__rows{
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        border-bottom: 1px solid $grey;
+        
+        div{
+            width: 16%
+            
+        }
+
+        
+    }
+
+    &__rows:hover{
+        background-color: $workspace-light-blue;
+    }
+
+
+}
+
+.search-bar{
+    display: flex;
+    padding: 3%;
+
+    &__researchId{
+        background-color: $search-bar-grey;
+        min-height: 40px;
+        border: none;
+        width: 208px;
+        padding: 9px;
+        padding-left: 14px;
+        font-size: 13px;
+        border-radius: 5px;
+
+    }
+}
+
+.search-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+

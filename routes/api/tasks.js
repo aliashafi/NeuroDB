@@ -8,6 +8,7 @@ const validateTaskInput = require('../../validations/tasks');
 
 // nested index, show, create, update, delete
 
+
 // INDEX
 router.get('/', (req, res) => {
     const patientId = req.params.patientId;
@@ -53,20 +54,34 @@ router.post('/', (req, res) => {
     //     });
     // });
     
-    newTask.save(function (err) {
+    newTask.save()
+    .then((task) => {
+        Patient.findById(patientId).then(currPatient => {
+            currPatient.tasks.push(task._id);        
+            currPatient.save()
+            .then(patient => {
+                Patient.populate(patient, {path: 'tasks', populate: {path: 'researchers', select: 'firstName lastName email', model: 'User'}})
+                .then(patient => res.json(patient));
+            })
+            ;
+            // .populate({path: 'tasks', populate: {path: 'researchers', select: 'firstName lastName email', model: 'User'}})
+            // .then((updatedPatient) => {
+            //     return res.json(updatedPatient);
+            // });
+
+        });
+
+    })
+    .catch((err) => {
         if (err) return res.status(400).json({ problemAddingTask: 'Could not create a new task' });
     });
 
-    Patient.findById(patientId).then(currPatient => {
-        currPatient.tasks.push(newTask._id);        
-        currPatient.save();
-    });
 
-    Patient.findById(patientId)
-        .populate({path: 'tasks', populate: {path: 'tasks.researchers', select: 'firstName lastName email'}})
-        .then((updatedPatient) => {
-            return res.json(updatedPatient);
-        });
+    // Patient.findById(patientId)
+    //     .populate({path: 'tasks', populate: {path: 'researchers', select: 'firstName lastName email', model: 'User'}})
+    //     .then((updatedPatient) => {
+    //         return res.json(updatedPatient);
+    //     });
 
 });
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { EventEmitter } from 'events';
-
+import '../../../css/patient_table.scss'
+import '../../../css/_tackons.scss'
 class PatientTable extends React.Component {
     constructor(props) {
         super(props)
@@ -109,15 +110,17 @@ class PatientTable extends React.Component {
         console.log(patients)
 
         return (
-            <div>
-                <div>
-                    <input type="text" placeholder='Search by Research ID' 
+            <div className="patient-table-page">
+                <div className="patient-table-card patient-table-container std-shadow" id="no-padding">
+                <div className="search-bar no-padding">
+                    <div className="search-icon"><i class="fas fa-search"></i></div>
+                    <input className="search-bar__researchId" type="text" placeholder='Search by Research ID' 
                         onChange={(e) => this.handleSearchInput(e)}
                         id="researchId" 
                         value={this.state.filters.researchId}/>
 
 
-                    <input type="text" 
+                    {/* <input type="text" 
                         placeholder='Search by Gender (M/F)'
                         id="gender"
                         value={this.state.filters.gender} 
@@ -133,36 +136,40 @@ class PatientTable extends React.Component {
                         placeholder='Native Language'
                         id="nativeLanguage"
                         value={this.state.filters.nativeLanguage}
-                        onChange={(e) => this.handleSearchInput(e)} />
+                        onChange={(e) => this.handleSearchInput(e)} /> */}
                 </div>
+            </div>
                 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>Research ID</th>
-                            <th>Date of surgery</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Dominant hand</th>
-                            <th>Native language</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div className=" patient-table-card patient-table-container std-shadow">
+                <div className="patient-table">
+
+                    <div className="patient-table__headers">
+                            <div>Research ID</div>
+                            <div>Date of surgery</div>
+                            <div>Age</div>
+                            <div>Gender</div>
+                            <div>Coverage (L/R)</div>
+                            <div>Native Language</div>
+                    </div>
+
+                    <div>
                         {patients.map((patient, index) => (
-                            <tr onClick={() => this.props.handleQuickView(this.props.patients.indexOf(this.state.filteredPatients[index]))}>
-                                <td>{patient.researchId}</td>
-                                <td>{patient.dateOfSurgery}</td>
-                                <td>{patient.demographics.age}</td>
-                                <td>{patient.demographics.gender}</td>
-                                <td>{patient.demographics.dominantHand}</td>
-                                <td>{patient.demographics.nativeLanguage}</td>
-                            </tr>
+                            <div 
+                            className="patient-table__rows"
+                            onClick={() => this.props.handleQuickView(this.props.patients.indexOf(this.state.filteredPatients[index]))}>
+                                <div>{patient.researchId}</div>
+                                <div>{patient.dateOfSurgery}</div>
+                                <div>{patient.demographics.age}</div>
+                                <div>{patient.demographics.gender}</div>
+                                <div>{patient.demographics.dominantHand}</div>
+                                <div>{patient.demographics.nativeLanguage}</div>
+                            </div>
 
                         ))}
-                    </tbody>
-                </table>
-
+                    </div>
+                
+                </div>
+                </div>
             </div>
         )
     }

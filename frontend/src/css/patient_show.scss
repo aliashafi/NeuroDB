@@ -3,6 +3,7 @@
 @import './base.scss';
 
 
+
 .patient-show-page-container{
     display: flex;
     flex-flow: row nowrap;
@@ -126,9 +127,10 @@
     &__info {
         display: flex;
         flex-flow: row nowrap;
+        justify-content: space-between;
         padding: 0 10px;
         box-sizing: border-box;
-        
+        flex-grow: 1;
         &--medication {
             width: 100%;
         }
@@ -140,17 +142,21 @@
 .patient-show-inner-card__profile-img img {
     width: 100%;
 }
-
+.radio-column, .input-column {
+    min-width: 250px;
+    margin-left: 15px;
+    flex-grow: 1;
+}
 .inner-card {
     
     &__field-grouping {
-        flex: 0 1 200px;
+        // flex: 1 1 200px;
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: flex-start;
         position: relative;
-        width: 90%;
+        // width: 90%;
         box-sizing: border-box;
         margin: 10px auto;
         height: 70px;
@@ -209,10 +215,7 @@
     border-radius: 3px;
     margin: 30px 0;
 }
-.radio-column, .input-column {
-    min-width: 250px;
-    margin-left: 15px;
-}
+
 
 .med-history {
     display: flex;
