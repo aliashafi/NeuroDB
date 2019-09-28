@@ -14,7 +14,8 @@ class PatientIndex extends React.Component {
             component: '',
             quickView: '',
             patients: [],
-            sortStatus: 'unsorted'
+            sortStatus: 'unsorted',
+            arrow: '>'
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleQuickView = this.handleQuickView.bind(this);
@@ -33,6 +34,11 @@ class PatientIndex extends React.Component {
             this.setState({component: <PatientIndexSideBar sortBy={this.sortBy} sortByDemographics={this.sortByDemographics}/>})
         } else {
             this.setState({component: ''})
+        }
+        if (this.state.arrow === '>') {
+            this.setState({arrow: '<'})
+        } else {
+            this.setState({arrow: '>'})
         }
     }
 
@@ -77,6 +83,7 @@ class PatientIndex extends React.Component {
                 sortStatus: 'desc'
             })
         }
+
     }
 
     sortByDemographics(key) {
@@ -116,25 +123,26 @@ class PatientIndex extends React.Component {
 
     render() {
         return (
-            <div className='patient-index-main'>
-
-               {this.state.component}
+            <div className='index-page-main-container'>
+                {this.state.component}
 
                 <button className='sidebar-trigger' onClick={this.handleClick}>
-                    >
+                    {this.state.arrow}
                 </button>
-
-                <div className='patient-index-main-body'>
-                    <div className='patients-title'>
-                        Patients
+                <div className='patient-index-main'>
+                    <div className='patient-index-main-body'>
+                        <div className='patients-title'>
+                            PATIENTS
+                        </div>
+                        <div className='header-divider'></div>
+                        <div className='patient-index-item-container'>
+                            <PatientTable patients={this.props.patients} handleQuickView={this.handleQuickView}/>
+                        </div> 
                     </div>
-                    <div className='patient-index-item-container'>
-                        <PatientTable patients={this.props.patients} handleQuickView={this.handleQuickView}/>
-                    </div> 
                 </div>
-                
-                {this.state.quickView}
 
+                {this.state.quickView}
+                
             </div>
         )
     }
