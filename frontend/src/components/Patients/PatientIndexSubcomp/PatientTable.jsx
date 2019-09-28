@@ -102,39 +102,38 @@ class PatientTable extends React.Component {
 
         return (
             <div>
-                <div>
-                    <input type="text" placeholder='Search by Patient ID' onChange={this.handlePIDSearch}/>
-                    <input type="text" placeholder='Search by Research ID' onChange={this.handleRIDSearch}/>
-                    <input type="text" placeholder='Search by Age' onChange={this.handleAgeSearch}/>
-                    <input type="text" placeholder='Search by Gender (M/F)' onChange={this.handleGenderSearch}/>
+                <div className='search-container'>
+                    Search by
+                    <input className='search-box' type="text" placeholder='Patient ID' onChange={this.handlePIDSearch}/>
+                    <input className='search-box' type="text" placeholder='Research ID' onChange={this.handleRIDSearch}/>
+                    <input className='search-box' type="text" placeholder='Age' onChange={this.handleAgeSearch}/>
+                    <input className='search-box' type="text" placeholder='Gender (M/F)' onChange={this.handleGenderSearch}/>
                 </div>
                 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>Research ID</th>
-                            <th>Date of surgery</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Dominant hand</th>
-                            <th>Native language</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div className='patient-table-main-container'>
+                    <div className='patient-table-headers'>
+                        <div className='table-header1'>Research ID</div>
+                        <div className='table-header2'>Patient ID</div>
+                        <div className='table-header3'>Gender</div>
+                        <div className='table-header4'>Age</div>
+                        <div className='table-header5'>Dominant hand</div>
+                        <div className='table-header6'>Native language</div>
+                        <div className='table-header7'>Date of surgery</div>
+                    </div>
+                    <div>
                         {this.state.filteredPatients.map((patient, index) => (
-                            <tr onClick={() => this.props.handleQuickView(this.props.patients.indexOf(this.state.filteredPatients[index]))}>
-                                <td>{patient._id}</td>
-                                <td>{patient.researchId}</td>
-                                <td>{patient.dateOfSurgery}</td>
-                                <td>{patient.demographics.age}</td>
-                                <td>{patient.demographics.gender}</td>
-                                <td>{patient.demographics.dominantHand}</td>
-                                <td>{patient.demographics.nativeLanguage}</td>
-                            </tr>
+                            <div  className='patient-table-body' onClick={() => this.props.handleQuickView(this.props.patients.indexOf(this.state.filteredPatients[index]))}>
+                                <div className='table-text1'>{patient.researchId}</div>
+                                <div className='table-text2'>{patient._id}</div>
+                                <div className='table-text3'>{patient.demographics.gender}</div>
+                                <div className='table-text4'>{patient.demographics.age}</div>
+                                <div className='table-text5'>{patient.demographics.dominantHand}</div>
+                                <div className='table-text6'>{patient.demographics.nativeLanguage}</div>
+                                <div className='table-text7'>{patient.dateOfSurgery}</div>
+                            </div>
                         ))}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
 
             </div>
         )
