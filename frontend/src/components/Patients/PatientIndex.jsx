@@ -5,6 +5,7 @@ import PatientIndexSideBar from './PatientIndexSubcomp/PatientIndexSideBar';
 import PatientIndexQuickView from './PatientIndexSubcomp/PatientIndexQuickView';
 import PatientTable from './PatientIndexSubcomp/PatientTable';
 import navBar from '../nav_bar';
+import { Agent } from 'https';
 
 class PatientIndex extends React.Component {
     constructor(props) {
@@ -13,7 +14,8 @@ class PatientIndex extends React.Component {
             component: '',
             quickView: '',
             patients: [],
-            sortStatus: 'unsorted'
+            sortStatus: 'unsorted',
+            
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleQuickView = this.handleQuickView.bind(this);
@@ -40,6 +42,21 @@ class PatientIndex extends React.Component {
 
     closeQuickView() {
         this.setState({quickView: ''})
+    }
+
+    searchBy(filters){
+        //filters will be an object with Name, Age
+        let filteredPatients = []
+        this.props.patient.forEach((patient, index) => {
+            if (this.hasAnyLetters(patient.researchID, filters.researchID) && 
+                this.hasAnyLetters(patient.demographics.gender, filters.demographics.gender)) filteredPatients.push(patient);
+        })
+        
+    }
+
+    hasAnyLetters(value, letters){
+        if (letters === "") return true;
+        return letters.split("").some(char => value.inclues(char))
     }
 
     sortBy(key) {

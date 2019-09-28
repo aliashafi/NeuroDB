@@ -5,108 +5,135 @@ class PatientTable extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filteredPatients: []
+            filters: {
+                researchId: "",
+                gender: "",
+                dominantHand: "",
+                nativeLanguage: "",
+                age: "",
+            },
+            patients: [],
         }
-        this.handleRIDSearch = this.handleRIDSearch.bind(this);
-        this.handlePIDSearch = this.handlePIDSearch.bind(this);
-        this.handleGenderSearch = this.handleGenderSearch.bind(this);
-        this.handleAgeSearch = this.handleAgeSearch.bind(this);
+       
     }
 
-    componentDidMount() {
-        this.setState({
-            filteredPatients: this.props.patients
+
+    componentDidUpdate(prevProps, prevState){
+        if (prevState.filters !== this.state.filters){
+            this.searchBy()
+        }
+    }
+
+
+    searchBy() {
+        //filters will be an object with Name, Age
+        let filteredPatients = []
+        let researchCount = []
+        let hasGenderCount = []
+        let nativeLanguageCount = []
+        let dominantHandCount = []
+
+        this.props.patients.forEach((patient, index) => {
+            let hasResearchLetters = this.hasAnyLetters(patient.researchId, this.state.filters.researchId)
+            let hasGenderLetters = this.hasAnyLetters(patient.demographics.gender, this.state.filters.gender)
+            let hasNativeLanguageLetters = this.hasAnyLetters(patient.demographics.nativeLanguage, this.state.filters.nativeLanguage)
+            let hasDominantHandLetters = this.hasAnyLetters(patient.demographics.dominantHand, this.state.filters.dominantHand)
+            if (hasResearchLetters || hasGenderLetters || hasNativeLanguageLetters || hasDominantHandLetters) filteredPatients.push(patient);
+            
+            if (hasResearchLetters) researchCount.push(index);
+            if (hasGenderLetters) hasGenderCount.push(index);
+            if (hasNativeLanguageLetters) nativeLanguageCount.push(index);
+            if (hasDominantHandLetters) dominantHandCount.push(index);
+            console.log(hasDominantHandLetters)
         })
+
+        let order = this.sortByMostRelevant([researchCount, hasGenderCount, nativeLanguageCount, dominantHandCount])
+        
+        this.sortWithOrder(order, this.props.patients)
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            filteredPatients: nextProps.patients
-        })
+    sortWithOrder(order, patients){
+        let sorted = []
+        order = order.reverse()
+        order.forEach(idx => sorted.push(patients[idx]))
+        this.setState({ patients: sorted })
     }
 
-    handleRIDSearch(event) {
-        event.preventDefault();
-        let currentList;
-        let newList;
-        if (event.target.value !== '') {
-            currentList = this.state.filteredPatients;
-            newList = currentList.filter(patient => {
-                let lowercased = patient.researchId.toLowerCase();
-                let filtered = event.target.value.toLowerCase();
-                return lowercased.includes(filtered);
+    sortByMostRelevant(filters){
+        let patientRelevance = {}
+        filters.forEach(filter => {
+            filter.map(patientIndex => {
+                
+                if (!patientRelevance[`patient-${patientIndex}`]) patientRelevance[`patient-${patientIndex}`] = 0;
+                patientRelevance[`patient-${patientIndex}`] += 1
             })
-        } else {
-            newList = this.props.patients
-        }
+        })
+        let keys = Object.keys(patientRelevance);
+        keys.sort(function (a, b) { return patientRelevance[a] - patientRelevance[b] });
+        // debugger
+        let sortedPatientIndicies = keys.map(keyIdx => {
+            let idx = keyIdx.split("-")[1]
+            
+            return parseInt(idx)
+        })
+        // debugger
+        return sortedPatientIndicies;
+    }
+
+    
+
+    ///helper method for searching function
+    hasAnyLetters(value, letters) {
+        if (letters === "") return false;
+        if (value === undefined) return false;
+        value = value.split("").map(v => v.toLowerCase())
+        return letters.split("").every(char => value.includes(char.toLowerCase()))
+    }
+
+    //handleInput for search methods
+    handleSearchInput(e){
+        let id = e.target.id
+        let value = e.target.value
+        let newState = {...this.state.filters};
+        newState[id] = value
         this.setState({
-            filteredPatients: newList
+            filters: newState
         })
     }
 
-    handlePIDSearch(event) {
-        let currentList;
-        let newList;
-        if (event.target.value !== '') {
-            currentList = this.state.filteredPatients;
-            newList = currentList.filter(patient => {
-                let lowercased = patient._id.toLowerCase();
-                let filtered = event.target.value.toLowerCase();
-                return lowercased.includes(filtered);
-            })
-        } else {
-            newList = this.props.patients
+    render() {        
+        let patients = this.props.patients;
+        if (this.state.patients.length > 0){
+            patients = this.state.patients
         }
-        this.setState({
-            filteredPatients: newList
-        })
-    }
-
-    handleGenderSearch(event) {
-        let currentList;
-        let newList;
-        if (event.target.value !== '') {
-            currentList = this.state.filteredPatients;
-            newList = currentList.filter(patient => {
-                let lowercased = patient.demographics.gender.toLowerCase();
-                let filtered = event.target.value.toLowerCase();
-                return lowercased.includes(filtered);
-            })
-        } else {
-            newList = this.props.patients
-        }
-        this.setState({
-            filteredPatients: newList
-        })
-    }
-
-    handleAgeSearch(event) {
-        let currentList;
-        let newList;
-        if (event.target.value !== '') {
-            currentList = this.state.filteredPatients;
-            newList = currentList.filter(patient => {
-                let lowercased = patient.demographics.age.toString();
-                let filtered = event.target.value
-                return lowercased.includes(filtered);
-            })
-        } else {
-            newList = this.props.patients
-        }
-        this.setState({
-            filteredPatients: newList
-        })
-    }
-
-    render() {
+        console.log(patients)
 
         return (
             <div>
                 <div>
-                    <input type="text" placeholder='Search by Patient ID' onChange={this.handlePIDSearch}/>
-                    <input type="text" placeholder='Search by Research ID' onChange={this.handleRIDSearch}/>
-                    <input type="text" placeholder='Search by Age' onChange={this.handleAgeSearch}/>
-                    <input type="text" placeholder='Search by Gender (M/F)' onChange={this.handleGenderSearch}/>
+                    <input type="text" placeholder='Search by Research ID' 
+                        onChange={(e) => this.handleSearchInput(e)}
+                        id="researchId" 
+                        value={this.state.filters.researchId}/>
+
+
+                    <input type="text" 
+                        placeholder='Search by Gender (M/F)'
+                        id="gender"
+                        value={this.state.filters.gender} 
+                        onChange={(e) => this.handleSearchInput(e)}/>
+
+                    <input type="text"
+                        placeholder='Dominant Hand'
+                        id="dominantHand"
+                        value={this.state.filters.dominantHand}
+                        onChange={(e) => this.handleSearchInput(e)} />
+
+                    <input type="text"
+                        placeholder='Native Language'
+                        id="nativeLanguage"
+                        value={this.state.filters.nativeLanguage}
+                        onChange={(e) => this.handleSearchInput(e)} />
                 </div>
                 
                 <table>
@@ -122,9 +149,8 @@ class PatientTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.filteredPatients.map((patient, index) => (
+                        {patients.map((patient, index) => (
                             <tr onClick={() => this.props.handleQuickView(this.props.patients.indexOf(this.state.filteredPatients[index]))}>
-                                <td>{patient._id}</td>
                                 <td>{patient.researchId}</td>
                                 <td>{patient.dateOfSurgery}</td>
                                 <td>{patient.demographics.age}</td>

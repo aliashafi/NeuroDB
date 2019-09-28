@@ -13,7 +13,7 @@ class MedicalHistoryForm extends React.Component {
         }
         return(
             <div className="patient-dem-container">
-                <h1 className="patient-show-inner-card__header initial-header">Demographics</h1>
+                <h1 className="patient-show-inner-card__header initial-header">Medical History</h1>
                 <div className='header-divider'></div>
                 <div className="patient-show-inner-card bigger flex-row">
 
