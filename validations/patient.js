@@ -10,6 +10,7 @@ module.exports = function validatePatientInput(data) {
     console.log(data);
     data.researchId = validText(data.researchId) ? data.researchId : "";
 
+
     // TODO: add validation to check there are no duplicate researchId
     if (Validator.isEmpty(data.researchId)) {
         errors.researchId = "Patient ECID field is required";
@@ -18,8 +19,7 @@ module.exports = function validatePatientInput(data) {
     if (!data.dateOfSurgery instanceof Date) {
         errors.dateOfSurgery = "Date of surgery must be in date format";
     }
-
-    if (typeof data.consent === 'boolean') {
+    if (typeof data.consent !== 'boolean') {
         errors.consent = "Consent field must be true or false";
     }
 

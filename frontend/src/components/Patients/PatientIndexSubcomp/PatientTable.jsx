@@ -158,6 +158,7 @@ class PatientTable extends React.Component {
                                 <td>{patient.demographics.dominantHand}</td>
                                 <td>{patient.demographics.nativeLanguage}</td>
                             </tr>
+
                         ))}
                     </tbody>
                 </table>

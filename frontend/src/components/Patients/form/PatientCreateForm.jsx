@@ -10,46 +10,46 @@ class PatientCreateForm extends React.Component {
         super(props)
         this.state = {
             currentStep: this.props.visibleCard,
-            researchId: undefined,
-            dateOfSurgery: undefined,
-            consent: undefined,
+            researchId: "",
+            dateOfSurgery: "",
+            consent: false,
             demographics: {
-                birthDate: undefined,
-                age: undefined,
-                gender: undefined,
-                languageDominance: undefined,
-                dominantHand: undefined,
-                nativeLanguage: undefined
+                birthDate: "",
+                age: "",
+                gender: "",
+                languageDominance: "",
+                dominantHand: "",
+                nativeLanguage: ""
             },
             medication: {
-                medicationName: undefined,
-                medicationPurpose: undefined
+                medicationName: "",
+                medicationPurpose: ""
             },
             medicalHistory: {
-                BDI: undefined,
-                BAI: undefined,
-                epilepsyDiagnosis: undefined,
-                previousResection: undefined,
-                neuroPace: undefined
+                BDI: "",
+                BAI: "",
+                epilepsyDiagnosis: "",
+                previousResection: false,
+                neuroPace: false
             },
             imaging: {
-                patientID: undefined,
                 electrodeMontage: []
             },
             relatedRecords: [],
-        }
+        };
 
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.updateForm = this.updateForm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
+        // debugger
         const { id, name, value } = event.target
         if (id){
-            this.setState({
-                [id] : {
-                    [name]: value
-                }
-            })
+            let newSubState = this.state[id]
+            newSubState[name] = value
+            this.setState({ [id]: newSubState })
 
         }else{
             this.setState({
@@ -61,17 +61,32 @@ class PatientCreateForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const { researchId, dateOfSurgery, consent,
-            demographics, medication, medicalHistory,
-            imaging, relatedRecords
-             } = this.state
-        this.props.processForm(this.state)
+
+        const patient = Object.assign({}, this.state)
+        delete patient["currentStep"]
+        // const { researchId, dateOfSurgery, consent,
+        //     demographics, medication, medicalHistory,
+        //     imaging, relatedRecords
+        //      } = this.state
+        console.log(patient)
+        this.props.processForm(patient)
         
+    }
+
+    updateForm(key, value, parent){
+        // debugger
+        if (!parent){
+            this.setState({[key]: value});
+        }else{
+            let newSubState = this.state[parent]
+            newSubState[key] = value
+            this.setState({[parent]: newSubState});
+        }
     }
 
 
     render() {
-       
+    //    console.log(this.state.imaging)
         return (
             <div className="patient-show-card std-shadow">
             <React.Fragment >
@@ -81,27 +96,31 @@ class PatientCreateForm extends React.Component {
                         currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         demographics={this.state}
+                        updateForm={this.updateForm}
                     />
 
                     <MedicalHistoryForm
                         currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         medicalHistory={this.state.medicalHistory}
+                        updateForm={this.updateForm}
                     />
 
                     <ImagingForm
                         currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         imaging={this.state.imaging}
+                        updateForm={this.updateForm}
                     />
 
                     <MedicationForm
                         currentStep={this.props.visibleCard}
                         handleChange={this.handleChange}
                         imaging={this.state.imaging}
+                        updateForm={this.updateForm}
                     />
                     
-                    <div id="button-submit">Add Patient
+                    <div onClick={this.handleSubmit} id="button-submit">Add Patient
                         {/* <input type="submit" value="Add Patient"/> */}
                     </div>
                 </form>
