@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ElectrodeItem from './patient_show_electrodeItem';
+import PlaceholderBrainProfile from '../../../images/placeholder_rotating_brain.gif';
+
 
 function PatientShowImagingData(props) {
     const [renderEdit, setRenderEdit] = useState(false);
@@ -73,6 +75,7 @@ function PatientShowImagingData(props) {
             <div className='patient-show-inner-card__header'>Imaging Data</div>
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__body'>
+                <div className='patient-show-inner-card__profile-img'><img src={PlaceholderBrainProfile} /></div>
                 <div className='patient-show-inner-card__info'>
                 {renderComp()}
                 </div>

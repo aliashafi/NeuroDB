@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PlaceholderBrainProfile from '../../../images/placeholder_rotating_brain.gif';
 
 
 function PatientShowPatientInfo(props) {
@@ -10,6 +9,7 @@ function PatientShowPatientInfo(props) {
     
     const initBirthDate = 
         (props.patient.demographics) ? props.patient.demographics.birthDate : '';
+
     const initAge = (props.patient.demographics) ? props.patient.demographics.age : '';
     const initGender = (props.patient.demographics) ? props.patient.demographics.gender : '';
     const initLanguageDominance = (props.patient.demographics) ? props.patient.demographics.languageDominance : '';
@@ -131,6 +131,17 @@ function PatientShowPatientInfo(props) {
         setLanguageDominance(e.target.value);
     }
 
+    // function convertToDisplayableDate(dateString){
+    //     debugger
+    //     if (dateString === '') return 'mm/dd/yyyy';
+    //     const convertedDate = new Date(dateString);
+    //     const yr = convertedDate.getFullYear().toString();
+    //     const month = (convertedDate.getMonth() + 1).toString();
+    //     const date = convertedDate.getDate().toString();
+    //     console.log([month, date, yr].join('-'));
+    //     return  [month, date, yr].join('-');
+    // }
+
     function renderBasicInfo(){
         return (
             <div className='input-column'>
@@ -141,7 +152,7 @@ function PatientShowPatientInfo(props) {
             
             <div className='inner-card__field-grouping'>
                 <div className='inner-card__field-label'>Date of Surgery</div>
-                <input onChange={handleDateOfSurgeryChange} className='inner-card__field-value no-border' value={dateOfSurgery} disabled={!renderEdit} />
+                <input onChange={handleDateOfSurgeryChange} className='inner-card__field-value no-border' value={dateOfSurgery} disabled={!renderEdit} placeholder='MM/DD/YYYY'/>
             </div>
             <div className='inner-card__field-grouping'>
                 <div className='inner-card__field-label'>Birth Date</div>
@@ -324,7 +335,7 @@ function PatientShowPatientInfo(props) {
             <div className='patient-show-inner-card__header'>Patient info</div>
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__body'>
-                <div className='patient-show-inner-card__profile-img'><img src={PlaceholderBrainProfile} /></div>
+                
                 <div className='patient-show-inner-card__info'>
                     {renderBasicInfo()}
                     {renderCheckboxItems()} 
