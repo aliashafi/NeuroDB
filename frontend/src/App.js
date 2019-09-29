@@ -8,6 +8,7 @@ import PatientShowContainer from './components/Patients/patient_show_container';
 import UserShowContainer from "./components/User/user_show_container";
 import LoginFormContainer from "./components/Session/login_form_container";
 import RegisterFormContainer from "./components/Session/register_form_container";
+import DeeThree from './components/Experimental/deethree';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -26,6 +27,8 @@ function App() {
         <Route exact path="/login" component={LoginFormContainer}/>
 
         <Route exact path="/register" component={RegisterFormContainer}/>
+
+        <Route exact path='/testing/deethree' component={DeeThree} />
 
 
 

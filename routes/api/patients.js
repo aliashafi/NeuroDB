@@ -76,8 +76,6 @@ router.post('/', (req, res) => {
     newPatient.save(function (err, patient) {
         if (err) return res.status(400).json({ addPatient: 'Could not create a new patient',
                                                 error: err});
-
-        if (err) return res.status(400).json({ addPatient: 'Could not create a new patient' });
         
         Patient.findById(patient._id)
         .populate({path: 'relatedRecord', select: 'researchId'})
