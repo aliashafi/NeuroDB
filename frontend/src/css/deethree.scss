@@ -1,0 +1,42 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+
+rect {
+    fill: $core-teal;
+}
+text {
+    font-family: $font;
+    font-size: 0.8rem;
+}
+.title {
+    font-size: 1.3rem;
+}
+
+.right-bar {
+    fill: $core-coral;
+}
+
+.category-group{
+    // margin-top: 20px;
+}
+.arcs {
+    fill: $core-gold;
+}
+
+//radar chart
+
+.gridLabel {
+    font-size: 10px;
+    fill: #737373;
+}
+
+.axisLine {
+    stroke: #848484;
+    stroke-width: 1px;
+}
+
+.axisLabel {
+    font-size: 11px;
+    text-anchor: middle;
+}
