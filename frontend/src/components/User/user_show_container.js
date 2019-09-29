@@ -1,18 +1,21 @@
 import {connect} from "react-redux";
-import {fetchUser, verifyToken} from "../../actions/user_actions";
+import {fetchUsers, verifyToken, updateCurrentUserPendings} from "../../actions/user_actions";
 import UserShow from "./user_show";
-import { stat } from "fs";
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
     // users: state.entities.users,
-    currentUser: state.session.currentUser
     // currentUser: state.entities.users[state.session.currentUser.id]
-})
+    let currentUserId = state.session.currentUserId
+    return {   
+        currentUser: state.entities.users[currentUserId]
+    }
+}
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchUser: (userId) => dispatch(fetchUser(userId)),
-    verifyToken: (token, adminId) => dispatch(verifyToken(token, adminId))
+    fetchUsers: () => dispatch(fetchUsers()),
+    verifyToken: (token, adminId) => dispatch(verifyToken(token, adminId)),
+    updateCurrentUserPendings: (pendUser) => dispatch(updateCurrentUserPendings(pendUser))
     // fetchUsers
     // is admin
 })

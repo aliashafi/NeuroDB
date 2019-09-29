@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link, withRouter} from "react-router-dom";
+import {Link, withRouter, Redirect} from "react-router-dom";
 import '../css/nav_bar.scss'
 import Logo from '../images/NeuroDBLogo.png'
 
 const App = (props) => {
     // function App() {
 
-    const {logout, currentUser} = props;
+    const {logout, currentUserId} = props;
 
     const handleLogout = (event) => {
         event.preventDefault();
@@ -15,10 +15,10 @@ const App = (props) => {
     }
 
     // debugger
-    const rightNav = currentUser ? (
+    const rightNav = currentUserId ? (
         <div className="btn-container">
             <div className="btn custom-link">
-                <Link to={`/users/${currentUser.id}`}>My Account</Link>
+                <Link to={`/users/${currentUserId}`}>My Account</Link>
             </div>
             <div id="button-logout" onClick={handleLogout}>
                 Logout

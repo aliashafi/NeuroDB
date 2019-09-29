@@ -5,6 +5,8 @@ export const RECEIVE_USER = "RECEIVE_USER"
 export const DELETE_USER = "DELETE_USER"
 export const REMOVE_PENDING_USER = "REMOVE_PENDING_USER"
 
+export const UPDATE_CURRENT_USER_PENDINGS = "UPDATE_CURRENT_USER_PENDINGS";
+
 export const receiveUsers = (users) => ({
     type: RECEIVE_USERS,
     users
@@ -18,6 +20,12 @@ export const receiveUser = (user) => ({
 export const removeUser = (userId) => ({
     type: DELETE_USER,
     userId
+})
+
+export const updateCurrentUserPendings = (pendUserEmail) => ({
+    type: UPDATE_CURRENT_USER_PENDINGS,
+    pendUserEmail,
+    // adminId
 })
 
 

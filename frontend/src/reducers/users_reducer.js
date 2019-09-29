@@ -16,18 +16,19 @@ const UserReducer = (state={}, action) => {
             action.users.data.forEach(user => (nextState[user._id] = user))
             return nextState;
         case RECEIVE_CURRENT_USER:
+            // debugger
             // nextState[action.currentUser.id] = action.currentUser
-            return Object.assign({}, state, {[action.currentUser.id]: action.currentUser})
+            return Object.assign({}, state, {[action.currentUser._id]: action.currentUser})
         case RECEIVE_USER:
             nextState[action.user.data._id] = action.user.data
             return nextState;
         case DELETE_USER:
             delete nextState[action.userId]
             return nextState;
-        case REMOVE_PENDING_USER:
-            let pendUser = action.pendUser.data.email
-            delete nextState[action.adminId].pendingUsers[pendUser];
-            return nextState;
+        // case REMOVE_PENDING_USER:
+        //     let pendUser = action.pendUser.data.email
+        //     delete nextState[action.adminId].pendingUsers[pendUser];
+        //     return nextState;
         default:
             return state;
     }
