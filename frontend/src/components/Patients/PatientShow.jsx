@@ -42,6 +42,7 @@ class PatientShow extends React.Component {
     }
 
     render() {
+        debugger;
         return (
             <div className='patient-show-page-container'>
                 <PatientShowSideNav 

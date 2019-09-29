@@ -68,9 +68,8 @@ function PatientShowImagingData(props) {
         Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
     }
 
-    
     return (
-        <div className='patient-show-inner-card'>
+        <div className='patient-show-inner-card-show'>
             {renderButton()}
             <div className='patient-show-inner-card__header'>Imaging Data</div>
             <div className='header-divider'></div>
