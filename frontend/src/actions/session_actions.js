@@ -33,13 +33,13 @@ export const clearErrors = () => ({
 })
 
 
-export const registerUser = (user) => (dispatch) => {
+export const registerUser = (user) => (dispatch) => (
     SessionApiUtil.register(user)
         .then( (user) => dispatch(createdUser(user)))
         .catch( (errors) => dispatch(receiveErrors(errors.response.data)))
-}
+)
 
-export const loginUser = (user) => (dispatch) => {
+export const loginUser = (user) => (dispatch) => (
     SessionApiUtil.login(user)
         .then( (response) => {
             const {token} = response.data;
@@ -52,7 +52,7 @@ export const loginUser = (user) => (dispatch) => {
         .catch( (errors) => {
             dispatch(receiveErrors(errors.response.data))
         })
-}
+)
 
 
 export const logout = () => (dispatch) => {

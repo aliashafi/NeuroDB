@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
+    window.logout = logout;
+
     window.fetchUsers = fetchUsers;
     window.fetchUser = fetchUser;
     window.deleteUser = deleteUser;

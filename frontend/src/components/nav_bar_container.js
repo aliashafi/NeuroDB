@@ -3,6 +3,7 @@ import {logout} from "../actions/session_actions"
 import NavBar from "./nav_bar";
 
 const mapStateToProps = (state) => {
+    // debugger
     return {
         currentUser: state.session.currentUser
     }

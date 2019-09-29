@@ -64,13 +64,14 @@ router.get("/confirmation/:token", (request, response) => {
                             from: "neurodb.io@gmail.com",
                             to: user.email,
                             subject: "Thank you for joining NeuroDB!",
-                            text: `${user.email}, your account has been verified`
+                            text: `Thank you, ${user.email}. Your account has been verified.`
                         }
                         transporter.sendMail(mailOptions, function (error, data) {
                             if (error) {
                                 console.log("Unable to send email" + error)
                             } else {
                                 console.log("Email successfully sent")
+                                response.json(user)
                             }
                         })
                     }
@@ -196,7 +197,7 @@ router.post("/login", (request, response) => {
                 errors.email = "User not found";
                 return response.status(404).json(errors);
             } else if (!user.isVerified) {
-                return response.status(400).json({msg: "Your account has not been verified"})
+                return response.status(400).json({notVerified: "Your account has not been verified"})
             }
 
             bcrypt.compare(password, user.password)

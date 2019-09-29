@@ -3,7 +3,7 @@ import * as UserApiUtil from "../util/user_api_util";
 export const RECEIVE_USERS = "RECEIVE_USERS"
 export const RECEIVE_USER = "RECEIVE_USER"
 export const DELETE_USER = "DELETE_USER"
-// export const REMOVE_PENDING_USER = "REMOVE_PENDING_USER"
+export const REMOVE_PENDING_USER = "REMOVE_PENDING_USER"
 
 export const receiveUsers = (users) => ({
     type: RECEIVE_USERS,
@@ -20,17 +20,26 @@ export const removeUser = (userId) => ({
     userId
 })
 
-// export const removePendingUser = (pendUser) => ({
-//     type: REMOVE_PENDING_USER,
-//     pendUser
-// })
 
-// export const verifyToken = (token) => (dispatch) => (
-//     UserApiUtil.verifyToken(token)
-//         .then(
-//             (pendUser) => dispatch(removePendingUser(pendUser))
-//         )
-// )
+
+export const removePendingUser = (pendUser, adminId) => {
+    // debugger
+    return {
+        type: REMOVE_PENDING_USER,
+        pendUser,
+        adminId
+    }
+}
+
+export const verifyToken = (token, adminId) => (dispatch) => {
+    // debugger
+    return (
+        UserApiUtil.verifyToken(token)
+            .then(
+                (pendUser) => dispatch(removePendingUser(pendUser, adminId))
+            )
+    )
+}
 
 export const fetchUsers = () => (dispatch) => (
     UserApiUtil.getUsers()

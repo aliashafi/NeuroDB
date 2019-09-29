@@ -14,6 +14,7 @@ const App = (props) => {
         props.history.push("/")
     }
 
+    // debugger
     const rightNav = currentUser ? (
         <div className="btn-container">
             <div className="btn custom-link">
