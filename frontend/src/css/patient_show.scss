@@ -3,6 +3,7 @@
 @import './base.scss';
 
 
+
 .patient-show-page-container{
     display: flex;
     flex-flow: row nowrap;
@@ -17,7 +18,8 @@
     background-color: $nav-navy;
     color: white;
     height: 100vh;
-    width: 300px;
+    // width: 0px;
+    overflow: auto;
 }
 
 .side-nav-content {
@@ -95,9 +97,10 @@
 //========== patient info subcomp
 .patient-show-inner-card {
     display: flex; 
-    flex-flow: column nowrap;
+    // flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
+    
     position: relative;
     
 

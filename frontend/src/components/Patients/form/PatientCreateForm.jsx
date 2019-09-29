@@ -3,6 +3,7 @@ import DemographicsForm from './DemographicsForm';
 import MedicalHistoryForm from './MedicalHistoryForm'
 import ImagingForm from './ImagingForm'
 import MedicationForm from './MedicationForm'
+
 import '../../../css/form.scss'
 import '../../../css/button.scss'
 class PatientCreateForm extends React.Component {

@@ -117,26 +117,25 @@ class PatientTable extends React.Component {
                     <button>Clear all</button>
                 </div>
                 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>Research ID</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    
+                    <div>
+                        <div>
+                            <h3>Patient ID</h3>
+                            <h3>Research ID</h3>
+                            <h3>Age</h3>
+                            <h3>Gender</h3>
+                        </div>
+                        
                         {this.state.filteredPatients.map((patient, index) => (
-                            <tr onClick={() => this.props.handleQuickView(index)}>
-                                <td>{patient._id}</td>
-                                <td>{patient.researchId}</td>
-                                <td>{patient.demographics.age}</td>
-                                <td>{patient.demographics.gender}</td>
-                            </tr>
+                            <div onClick={() => this.props.handleQuickView(index)}>
+                                <div>{patient._id}</div>
+                                <div>{patient.researchId}</div>
+                                <div>{patient.demographics.age}</div>
+                                <div>{patient.demographics.gender}</div>
+                            </div>
                         ))}
-                    </tbody>
-                </table>
+                    </div>
+                    
 
             </div>
         )

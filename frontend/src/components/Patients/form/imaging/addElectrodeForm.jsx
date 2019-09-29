@@ -95,6 +95,8 @@ class ElectrodeForm extends React.Component {
                         <AutoComplete
                             className={"inner-card__field-value height-none"}
                             updateState={this.updateState}
+                            suggestionClassName={"suggestions"}
+                            filter={null}
                             suggestions={brainRegions} />
                         {/* <input
                             className='inner-card__field-value height-none'
