@@ -61,6 +61,9 @@ class Autocomplete extends Component {
             showSuggestions: false,
             userInput: e.currentTarget.innerText
         });
+        if (this.props.handleEnter) {
+            this.props.handleEnter(this.props.filter, e.currentTarget.innerText)
+        }
     };
 
     // Event fired when the user presses a key down
@@ -76,6 +79,10 @@ class Autocomplete extends Component {
                 showSuggestions: false,
                 userInput: filteredSuggestions[activeSuggestion]
             });
+
+            if (this.props.handleEnter){
+                this.props.handleEnter(this.props.filter, filteredSuggestions[activeSuggestion])
+            }
         }
         
         // User pressed the up arrow, decrement the index
@@ -114,7 +121,7 @@ class Autocomplete extends Component {
         if (showSuggestions && userInput) {
             if (filteredSuggestions.length) {
                 suggestionsListComponent = (
-                    <ul class="suggestions">
+                    <ul className={this.props.suggestionClassName}>
                         {filteredSuggestions.map((suggestion, index) => {
                             let className;
 
@@ -137,7 +144,7 @@ class Autocomplete extends Component {
                 );
             } else {
                 suggestionsListComponent = (
-                    <div class="no-suggestions">
+                    <div className="no-suggestions">
                         <em>No electrodes with that name</em>
                     </div>
                 );
@@ -152,6 +159,7 @@ class Autocomplete extends Component {
                     onChange={onChange}
                     onKeyDown={onKeyDown}
                     value={userInput}
+                    placeholder="Search by Region"
                 />
                 {suggestionsListComponent}
             </Fragment>

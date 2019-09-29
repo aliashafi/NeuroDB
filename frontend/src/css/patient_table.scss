@@ -4,6 +4,15 @@
 @import './patient_show.scss';
 
 
+//side-nav
+.side-nav-container-index{
+    background-color: $nav-navy;
+    color: white;
+    height: 100vh;
+    width: 0px;
+    overflow: auto;
+}
+
 
 ///for the main table 
 
@@ -112,6 +121,7 @@
 .search-bar{
     display: flex;
     padding: 3%;
+    width: inherit;
 
     &__researchId{
         background-color: $search-bar-grey;
@@ -131,6 +141,65 @@
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+}
+
+
+///SEARCH BAR
+.order-by{
+    margin-left: 30px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    &__inner-text{
+        min-height: 40px;
+        color: grey;
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        border-radius: 5px;
+
+    }
+
+    &__dropdown-menue{
+        position: absolute;
+        background-color: white;
+        top: 57px;
+        width: 99%;
+        right: 0px;
+        border: 1px solid $search-bar-grey;
+        div{
+            font-family: $font;
+            // border-bottom: 1px solid grey;
+            text-align: start;
+            padding: 10px;
+            cursor: pointer;
+        }
+        div:hover{
+                background-color: $search-bar-grey;
+            }
+    }
+}
+
+.dropdown-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.active{
+    transform: rotate(180deg);
+}
+
+.btn-advanced-search{
+    background-color: $core-purple;
+    color: white;
+}
+
+.btn-advanced-search:hover{
+    background-color: $dark-purple;
 }
 
 
