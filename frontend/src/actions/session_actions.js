@@ -9,10 +9,13 @@ export const RECEIVE_CREATED_USER = "RECEIVE_CREATED_USER";
 
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-export const receiveCurrentUser = (currentUser) => ({
-    type: RECEIVE_CURRENT_USER,
-    currentUser
-})
+export const receiveCurrentUser = (currentUser) => {
+    // debugger
+    return {
+        type: RECEIVE_CURRENT_USER,
+        currentUser
+    }
+}
 
 export const createdUser = (user) => ({
     type: RECEIVE_CREATED_USER,
@@ -39,20 +42,23 @@ export const registerUser = (user) => (dispatch) => (
         .catch( (errors) => dispatch(receiveErrors(errors.response.data)))
 )
 
-export const loginUser = (user) => (dispatch) => (
-    SessionApiUtil.login(user)
-        .then( (response) => {
-            const {token} = response.data;
-            // remembers web token between different sessions
-            localStorage.setItem("jwtToken", token);
-            SessionApiUtil.setAuthToken(token);
-            const decoded = jwt_decode(token);
-            dispatch(receiveCurrentUser(decoded))
-        })
-        .catch( (errors) => {
-            dispatch(receiveErrors(errors.response.data))
-        })
-)
+export const loginUser = (user) => (dispatch) => {
+    // debugger
+    return (
+        SessionApiUtil.login(user)
+            .then( (response) => {
+                const {token} = response.data;
+                // remembers web token between different sessions
+                localStorage.setItem("jwtToken", token);
+                SessionApiUtil.setAuthToken(token);
+                const decoded = jwt_decode(token);
+                dispatch(receiveCurrentUser(decoded))
+            })
+            .catch( (errors) => {
+                dispatch(receiveErrors(errors.response.data))
+            })
+    )
+}
 
 
 export const logout = () => (dispatch) => {

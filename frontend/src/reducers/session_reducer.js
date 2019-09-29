@@ -14,6 +14,7 @@ const SessionReducer = (state=initialState, action) => {
     // debugger
     switch(action.type) {
         case RECEIVE_CURRENT_USER: 
+            // debugger
             nextState["isAuthenticated"] = !!action.currentUser;
             nextState["currentUserId"] = action.currentUser._id;
             // nextState["isLoggedIn"] = true;
