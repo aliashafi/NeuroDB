@@ -100,7 +100,7 @@ function PatientShowMedication(props){
             <div className='patient-show-inner-card__header'>Medication</div>
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__body'>
-                <div className='patient-show-inner-card__info'>
+                <div className='patient-show-inner-card__info2'>
 
                     {renderComp()}
                 </div>

@@ -130,15 +130,37 @@
     &__info {
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-between;
         padding: 0 10px;
         box-sizing: border-box;
         flex-grow: 1;
         &--medication {
-            width: 100%;
+           width:50%;
         }
         &--medication-history {
+            
+        }
+    } 
+    &__info2 {
+        display: flex;
+        flex-flow: row nowrap;
+        box-sizing: border-box;
+        &--medication {
 
+        }
+        &--medication-history {
+            
+        }
+    } 
+    &__info3 {
+        display: flex;
+        flex-flow: row nowrap;
+        box-sizing: border-box;
+        margin-left: 90px;
+        &--medication {
+
+        }
+        &--medication-history {
+            
         }
     } 
 }
@@ -147,7 +169,7 @@
 }
 .radio-column, .input-column {
     min-width: 250px;
-    margin-left: 15px;
+    margin-left: 100px;
     flex-grow: 1;
 }
 .inner-card {
@@ -164,6 +186,35 @@
         margin: 10px auto;
         height: 70px;
     }
+
+    &__field-grouping2 {
+        // flex: 1 1 200px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        // width: 90%;
+        box-sizing: border-box;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        height: 70px;
+    }
+
+    &__field-grouping2 {
+        // flex: 1 1 200px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        // width: 90%;
+        box-sizing: border-box;
+        margin: 10px auto;
+        height: 70px;
+        margin-bottom: 35px;
+    }
+
     &__field-label {
         position: absolute;
         top: 10px;
@@ -181,7 +232,7 @@
         border: 1px solid #eff0f1;
         border-radius: 8px;
         height: 70px;
-        width: 100%;
+        width: 50%;
         min-width: 200px;
         box-sizing: border-box;
     }
@@ -249,6 +300,11 @@
         margin-right: auto;
         max-width: 1000px;
     }
+}
+
+.radio-label {
+    color: $core-teal;
+    font-size: 13px;
 }
 
 

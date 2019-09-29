@@ -145,26 +145,26 @@ function PatientShowPatientInfo(props) {
     function renderBasicInfo(){
         return (
             <div className='input-column'>
-            <div className='inner-card__field-grouping'>
+            <div className='inner-card__field-grouping2'>
                 <div className='inner-card__field-label'>Research ID</div>
-                <input onChange={handleResearchIdChange} className='inner-card__field-value no-border' value={researchId} disabled={!renderEdit} />
+                <input onChange={handleResearchIdChange} className='inner-card__field-value' value={researchId} disabled={!renderEdit} />
             </div>
             
-            <div className='inner-card__field-grouping'>
+            <div className='inner-card__field-grouping2'>
                 <div className='inner-card__field-label'>Date of Surgery</div>
-                <input onChange={handleDateOfSurgeryChange} className='inner-card__field-value no-border' value={dateOfSurgery} disabled={!renderEdit} placeholder='MM/DD/YYYY'/>
+                <input onChange={handleDateOfSurgeryChange} className='inner-card__field-value' value={dateOfSurgery} disabled={!renderEdit} placeholder='MM/DD/YYYY'/>
             </div>
-            <div className='inner-card__field-grouping'>
+            <div className='inner-card__field-grouping2'>
                 <div className='inner-card__field-label'>Birth Date</div>
-                <input onChange={handleBirthDateChange} className='inner-card__field-value no-border' value={birthDate} disabled={!renderEdit} />
+                <input onChange={handleBirthDateChange} className='inner-card__field-value' value={birthDate} disabled={!renderEdit} />
             </div>
-            <div className='inner-card__field-grouping'>
+            <div className='inner-card__field-grouping2'>
                 <div className='inner-card__field-label'>Native Language</div>
-                <input onChange={handleNativeLanguageChange} className='inner-card__field-value no-border' value={nativeLanguage} disabled={!renderEdit} />
+                <input onChange={handleNativeLanguageChange} className='inner-card__field-value' value={nativeLanguage} disabled={!renderEdit} />
             </div>
-            <div className='inner-card__field-grouping'>
+            <div className='inner-card__field-grouping2'>
                 <div className='inner-card__field-label'>Age</div>
-                <input onChange={handleAgeChange} className='inner-card__field-value no-border' value={age} disabled={!renderEdit} />
+                <input onChange={handleAgeChange} className='inner-card__field-value' value={age} disabled={!renderEdit} />
             </div>
             </div>
         )
@@ -175,8 +175,8 @@ function PatientShowPatientInfo(props) {
     function renderCheckboxItems(){
             return (
                 <div className='radio-column'>
-                <div className='inner-card__field-grouping'>
-                    <div className='inner-card__checkbox-label'>Consent</div>
+                <div className='inner-card__field-grouping2'>
+                    <div className='inner-card__checkbox-label'>CONSENT</div>
                     
                     <div className='radio-grouping'>
                         <div className='radio-btn-container'>
@@ -187,8 +187,8 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="consent" 
                                 value='true' />
-                            <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>Signed</span>
+                            <label className="option"><span><span>✓</span></span></label>
+                            <span className='radio-label'>SIGNED</span>
                         </div>
                         <div className='radio-btn-container'>
                             <input 
@@ -199,13 +199,13 @@ function PatientShowPatientInfo(props) {
                                 name="consent" 
                                 value='false' />
                             <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>Unsigned</span>
+                            <span className='radio-label'>UNSIGNED</span>
                         </div>
                     </div>
                 </div>
                 
-                <div className='inner-card__field-grouping'>
-                    <div className='inner-card__checkbox-label'>Gender</div>
+                <div className='inner-card__field-grouping2'>
+                    <div className='inner-card__checkbox-label'>SEX</div>
                     
                     <div className='radio-grouping'>
                         <div className='radio-btn-container'>
@@ -217,7 +217,7 @@ function PatientShowPatientInfo(props) {
                                 name="gender" 
                                 value='M' />
                             <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>Male</span>
+                            <span className='radio-label'>M</span>
                         </div>
                         <div className='radio-btn-container'>
                             <input 
@@ -228,13 +228,13 @@ function PatientShowPatientInfo(props) {
                                 name="gender" 
                                 value='F' />
                             <label for="option"><span><span>✓</span></span></label>    
-                            <span className='radio-label'>Female</span>
+                            <span className='radio-label'>F</span>
                         </div>
                     </div>
                 </div>
 
-                <div className='inner-card__field-grouping'>
-                    <div className='inner-card__checkbox-label'>Dominant Hand</div>
+                <div className='inner-card__field-grouping2'>
+                    <div className='inner-card__checkbox-label'>DOMINANT HAND</div>
                     
                     <div className='radio-grouping'>
                         <div className='radio-btn-container'>
@@ -246,7 +246,7 @@ function PatientShowPatientInfo(props) {
                                 name="dominantHand" 
                                 value='L' />
                             <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>Left</span>
+                            <span className='radio-label'>L</span>
                         </div>
                         <div className='radio-btn-container'>
                             <input 
@@ -257,14 +257,14 @@ function PatientShowPatientInfo(props) {
                                 name="dominantHand" 
                                 value='R' />
                             <label for="option"><span><span>✓</span></span></label>    
-                            <span className='radio-label'>Right</span>
+                            <span className='radio-label'>R</span>
                         </div>
                     </div>
 
                 </div>
                 
-                <div className='inner-card__field-grouping'>
-                    <div className='inner-card__checkbox-label'>Dominant Language</div>
+                <div className='inner-card__field-grouping2'>
+                    <div className='inner-card__checkbox-label'>DOMINANT LANGUAGE</div>
                     
                     <div className='radio-grouping'>
                         <div className='radio-btn-container'>
@@ -276,7 +276,7 @@ function PatientShowPatientInfo(props) {
                                 name="languageDominance" 
                                 value='L' />
                             <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>Left</span>
+                            <span className='radio-label'>L</span>
                         </div>
                         <div className='radio-btn-container'>
                             <input 
@@ -287,7 +287,7 @@ function PatientShowPatientInfo(props) {
                                 name="languageDominance" 
                                 value='R' />
                             <label for="option"><span><span>✓</span></span></label>    
-                            <span className='radio-label'>Right</span>
+                            <span className='radio-label'>R</span>
                         </div>
                     </div>
                 </div>              
