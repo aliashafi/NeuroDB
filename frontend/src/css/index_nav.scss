@@ -1,0 +1,94 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+
+
+.filters{
+    &__coverage{
+        &__icon{
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: $bright-purple;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+
+        }
+
+
+        &__list{
+                list-style: none;
+                height: 200px;
+                padding-top: 7%;
+
+                li{
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    margin-left: 7%;
+
+                }
+
+                li > i{
+                    color: $core-coral;
+                    margin-right: 5px;
+                    font-size: 10px;
+                }
+        }
+
+        &__dropdown-menue{
+            // height: 200px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+    }
+
+    &__header-container{
+        display: flex;
+        font-family: $font;
+        padding: 3px;
+
+        h2{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin-left: 3px;
+            width: 66%;
+        }
+    }
+}
+
+.coverage-input-filter{
+    padding: 2%;
+    background-color: $search-bar-grey;
+    border: none;
+    height: 26px;
+    width: 156px;
+    border-radius: 2px;
+    position: relative;
+    
+}
+
+///sidenave search bar dropdown
+
+.filter-search-dropdown{
+    background-color: white;
+    color: black;
+    width: 64%;
+    margin-right: 2px;
+    border-radius: 2px;
+    font-family: $font;
+
+    li{
+        padding: 2px;
+        font-family: $font;
+    }
+}
