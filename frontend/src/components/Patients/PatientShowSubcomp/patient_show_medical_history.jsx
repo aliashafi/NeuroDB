@@ -173,7 +173,7 @@ function PatientShowMedicalHistory(props){
     }
    
     return (
-        <div className='patient-show-inner-card'>
+        <div className='patient-show-inner-card-show'>
             {renderButton()}
             <div className='patient-show-inner-card__header'>Medical History</div>
             <div className='header-divider'></div>

@@ -95,11 +95,11 @@ function PatientShowMedication(props){
     }
     
     return (
-        <div className='patient-show-inner-card'>
+        <div className='patient-show-inner-card-show'>
             {renderButton()}
             <div className='patient-show-inner-card__header'>Medication</div>
             <div className='header-divider'></div>
-            <div className='patient-show-inner-card__body'>
+            <div className='patient-show-inner-card__medication-body'>
                 <div className='patient-show-inner-card__info2'>
 
                     {renderComp()}

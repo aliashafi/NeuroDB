@@ -330,7 +330,7 @@ function PatientShowPatientInfo(props) {
     }
 
     return (
-        <div className='patient-show-inner-card'>
+        <div className='patient-show-inner-card-show'>
             {renderButton()}
             <div className='patient-show-inner-card__header'>Patient info</div>
             <div className='header-divider'></div>

@@ -97,6 +97,67 @@
 //========== patient info subcomp
 .patient-show-inner-card {
     display: flex; 
+    flex-direction: row;
+    // flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    position: relative;
+    
+
+    &__header {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+    &__body {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__medication-body {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    &__profile-img {
+        // height: 400px;
+        // height: 80%;
+        flex: 0 0 300px;
+        border-radius: 12px;
+        width: 40%;
+        border: 1px solid $lightgray-three;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__info {
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 0 10px;
+        box-sizing: border-box;
+        flex-grow: 1;
+    } 
+    &__info2 {
+        display: flex;
+        flex-flow: row nowrap;
+        box-sizing: border-box;
+        width: 80%;
+    } 
+    &__info3 {
+        display: flex;
+        flex-flow: row nowrap;
+        box-sizing: border-box;
+        margin-left: 20px;
+    } 
+}
+
+.patient-show-inner-card-show {
+    display: flex; 
     flex-direction: column;
     // flex-flow: column nowrap;
     justify-content: flex-start;
