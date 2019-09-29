@@ -169,7 +169,7 @@ class PatientBasicSearchBar extends React.Component{
                     
                 </div>
 
-                <div onClick={this.props.toggleSlide} className="btn-advanced-search">
+                <div onClick={this.props.toggleSlide} className="btn_advanced-search">
                     Advanced Search
                 </div>
                 {/* <input type="text" 
