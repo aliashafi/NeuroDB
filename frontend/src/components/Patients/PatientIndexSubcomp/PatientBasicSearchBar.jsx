@@ -3,6 +3,7 @@ import { sortByDate, sortByAge, sortByResearchID } from '../../../util/sort_api_
 import '../../../css/patient_table.scss'
 import '../../../css/_tackons.scss'
 
+
 class PatientBasicSearchBar extends React.Component{
     constructor(props){
         super(props)
@@ -34,7 +35,7 @@ class PatientBasicSearchBar extends React.Component{
 
     ///SEARCH
     searchBy() {
-        //filters will be an object with Name, Age
+        //filters will be an object with search options
         let filteredPatients = []
         let researchCount = []
         let hasGenderCount = []
@@ -169,7 +170,7 @@ class PatientBasicSearchBar extends React.Component{
                     
                 </div>
 
-                <div onClick={this.props.toggleSlide} className="btn-advanced-search">
+                <div onClick={this.props.toggleSlide} className="btn_advanced-search">
                     Advanced Search
                 </div>
                 {/* <input type="text" 

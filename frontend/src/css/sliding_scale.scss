@@ -1,0 +1,94 @@
+@import './reset.scss';
+@import './config.scss';
+
+input[type=range] {
+//   height: 34px;
+  -webkit-appearance: none;
+//   margin: 10px 0;
+  background-color: transparent;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #002200;
+  background: $core-purple;
+  border-radius: 1px;
+  border: 1px solid $core-purple;
+}
+input[type=range]::-webkit-slider-thumb {
+//   box-shadow: 3px 3px 3px $bright-purple;
+  border: 2px solid lavender;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: $core-purple;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: $core-purple;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #002200;
+  background: $dark-purple;
+  border-radius: 1px;
+  border: 1px solid $dark-purple;
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 3px 3px 3px lavender;
+  border: 2px solid lavender;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: $core-purple;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: $workspace-light-blue;
+  border: 1px solid $core-purple;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #002200;
+}
+input[type=range]::-ms-fill-upper {
+  background: $workspace-light-blue;
+  border: 1px solid $core-purple;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #002200;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 3px 3px 3px lavender;
+  border: 2px solid lavender;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: $core-purple;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+//   background: $workspace-light-blue;
+}
+input[type=range]:focus::-ms-fill-upper {
+//   background: $workspace-light-blue;
+}

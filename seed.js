@@ -3,6 +3,12 @@ const mongoose = require("mongoose");
 var seeder = require('mongoose-seed');
 const db = require("./config/keys").mongoURI;
 
+const studyOptions = [
+    "pain",
+    "depression",
+    "speech-language"
+]
+
 const EpilepsyOptions = [
     "temporal",
     "benign rolandic",
@@ -108,6 +114,11 @@ const generateMontage = (regions,len = [10,4,10,64,8,6,4]) => {
     return montage;
 }
 
+const getRandomStudies = () => {
+    let amt = getRandomInt(3)
+    return studyOptions.slice(amt + 1);
+}
+
 const getRandomLanguage = ()=>{
     let languages = ["English", "Spanish", "Mandarin"]
     let idx = getRandomInt(3)
@@ -154,8 +165,9 @@ const generateData = () => {
         let nativeLanguage = getRandomLanguage();
         let BDI = getRandomInt(40);
         let BAI = getRandomInt(40);
-        let epilepsyDiagnosis = getRandomEpilepsyDiagnosis()
-        let medications = [getRandomMedications(), getRandomMedications(), getRandomMedications()]
+        let epilepsyDiagnosis = getRandomEpilepsyDiagnosis();
+        let medications = [getRandomMedications(), getRandomMedications(), getRandomMedications()];
+        let studies = getRandomStudies();
         let researchId = "EC"
         if (i < 10){
             researchId += `0${i}`
@@ -166,6 +178,7 @@ const generateData = () => {
         let patient = { researchId: researchId,
                 dateOfSurgery: dateOfSurgery,
                 consent: getRandomOption([true, false]),
+                studies: getRandomStudies(),
                 demographics:
                 { birthDate: birthDate,
                     age: age,

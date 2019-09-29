@@ -39,8 +39,10 @@
                     margin-right: 5px;
                     font-size: 10px;
                 }
+
         }
 
+       
         &__dropdown-menue{
             // height: 200px;
             position: relative;
@@ -64,6 +66,15 @@
             width: 66%;
         }
     }
+
+    &__demographics__age{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            margin-top: 23px;
+        }
 }
 
 .coverage-input-filter{
@@ -91,4 +102,26 @@
         padding: 2px;
         font-family: $font;
     }
+}
+
+///demographics 
+
+.filter-sex{
+    display: flex;
+    justify-content: center;
+    // flex-direction: column;
+
+    &__bullet{
+        display: flex;
+        margin-right: 10px;
+        cursor: pointer;
+
+    }
+
+}
+
+
+
+.checked-bullet{
+    color: $bright-green;
 }

@@ -54,6 +54,7 @@ class PatientIndex extends React.Component {
 
     render() {
         const patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
+        // console.log(this.props.patients)
         console.log(this.state.patients)
         return (
             <div className="hold-advanced-search">
