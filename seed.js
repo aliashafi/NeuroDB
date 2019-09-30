@@ -20,13 +20,13 @@ const EpilepsyOptions = [
 ]
 
 const medicaionOptions = [
-    {medicationName: "tegretol", purpose: "epilepsy"},
-    {medicationName: "diamox", purpose: "epilepsy"},
-    {medicationName: "keppra", purpose: "epilepsy"},
-    {medicationName: "trileptal", purpose: "epilepsy"},
-    { medicationName: "banzel", purpose: "depression"},
-    { medicationName: "banzel", purpose: "depression"},
-    { medicationName: "bupropion", purpose: "depression"},
+    {medicationName: "tegretol", medicationPurpose: "epilepsy"},
+    {medicationName: "diamox", medicationPurpose: "epilepsy"},
+    {medicationName: "keppra", medicationPurpose: "epilepsy"},
+    {medicationName: "trileptal", medicationPurpose: "epilepsy"},
+    { medicationName: "banzel", medicationPurpose: "depression"},
+    { medicationName: "banzel", medicationPurpose: "depression"},
+    { medicationName: "bupropion", medicationPurpose: "depression"},
 ]
 
 const brainRegions =
@@ -116,7 +116,7 @@ const generateMontage = (regions,len = [10,4,10,64,8,6,4]) => {
 
 const getRandomStudies = () => {
     let amt = getRandomInt(3)
-    return studyOptions.slice(amt + 1);
+    return studyOptions.slice(amt);
 }
 
 const getRandomLanguage = ()=>{
@@ -178,7 +178,7 @@ const generateData = () => {
         let patient = { researchId: researchId,
                 dateOfSurgery: dateOfSurgery,
                 consent: getRandomOption([true, false]),
-                studies: getRandomStudies(),
+                studies: studies,
                 demographics:
                 { birthDate: birthDate,
                     age: age,

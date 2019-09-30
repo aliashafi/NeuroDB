@@ -12,6 +12,11 @@
     height: 100vh;
     width: 0px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: sticky;
+    top: 0;
 }
 
 
@@ -22,7 +27,6 @@
 }
 
 .patient-index-page{
-    height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -202,6 +206,15 @@
 .btn_advanced-search:hover{
     background-color: $dark-purple;
 }
+
+.search-errors{
+    padding-top: 2%;
+    font-weight: 700;
+    color: $core-coral;
+    font-family: $font;
+}
+
+
 
 
 

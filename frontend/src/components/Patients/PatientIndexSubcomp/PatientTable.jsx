@@ -1,5 +1,6 @@
 import React from 'react';
-import { sortByDate, sortByAge, sortByResearchID} from '../../../util/sort_api_util'
+import { sortByDate, sortByAge, sortByResearchID} from '../../../util/sort_api_util';
+import { formatDate } from '../../../util/date_api_uil';
 import '../../../css/patient_table.scss'
 import '../../../css/_tackons.scss'
 import PatientBasicSearchBar from './PatientBasicSearchBar';
@@ -19,12 +20,10 @@ class PatientTable extends React.Component {
         this.setState({patients: newPatients})
     }    
 
-    render() {        
-        let patients = this.props.patients;
-        if (this.state.patients.length > 0){
-            patients = this.state.patients
-        }
-
+    render() {  
+              
+        let patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
+        
         return (
             <div className="patient-table-page">
                 <div className="patient-table-card patient-table-container std-shadow" id="no-padding">
@@ -33,8 +32,11 @@ class PatientTable extends React.Component {
                     toggleSlide={this.props.toggleSlide}
                     patients={this.props.patients} 
                     updateTablePatients={this.updateTablePatients}/>
-                
+        
                 </div>
+
+                
+                <div className="search-errors"> {this.props.notFound ? "No patients found with those filters" : ""} </div>
                 
                 <div className=" patient-table-card patient-table-container std-shadow">
                 <div className="patient-table">
@@ -53,7 +55,7 @@ class PatientTable extends React.Component {
                             <div 
                             className="patient-table__rows">
                                 <div>{patient.researchId}</div>
-                                <div>{patient.dateOfSurgery}</div>
+                                <div>{formatDate(patient.dateOfSurgery)}</div>
                                 <div>{patient.demographics.age}</div>
                                 <div>{patient.demographics.gender}</div>
                                 <div>{patient.demographics.dominantHand}</div>

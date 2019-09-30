@@ -3,17 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 
-const useStyles = makeStyles({
-    root: {
-        width: 100,
-    },
-});
-
-function valuetext(value) {
-    return `${value}`;
-}
 
 export default function RangeSlider(props) {
+    const useStyles = makeStyles({
+        root: {
+            width: 100,
+        },
+    });
     const classes = useStyles();
     const [value, setValue] = React.useState([20, 70]);
 
@@ -22,14 +18,18 @@ export default function RangeSlider(props) {
     };
 
     useEffect(() => {
-        props.handleRadioInput("age", value)
+        props.handleRadioInput(props.title, value)
     }, [value])
+
+    const valuetext = (value) => {
+        return `${value}`;
+    }
 
 
     return (
         <div className={classes.root}>
             <Typography id="range-slider" gutterBottom>
-                Age Range
+                {`${props.title} range`}
             </Typography>
 
             <Slider

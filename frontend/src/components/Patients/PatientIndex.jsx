@@ -13,11 +13,13 @@ class PatientIndex extends React.Component {
         super(props);
         this.state = {
             patients: [],
-            slide: "false"
+            slide: "false",
+            notFound: false
         }
 
         this.toggleSlide = this.toggleSlide.bind(this)
         this.updatePatientsWithFilter = this.updatePatientsWithFilter.bind(this);
+        // this.handleFilter = this.handleFilter.bind(this);
     }
 
     componentDidMount() {
@@ -25,9 +27,14 @@ class PatientIndex extends React.Component {
     }
 
     updatePatientsWithFilter(filteredPatients){
-        this.setState({
-            patients: filteredPatients
+        if (filteredPatients.length == 0){
+            this.setState({notFound: true})
+        }else{
+            this.setState({
+            patients: filteredPatients,
+            notFound: false
         })
+        }
     }
 
     toggleSlide(){
@@ -55,7 +62,6 @@ class PatientIndex extends React.Component {
     render() {
         const patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
         // console.log(this.props.patients)
-        console.log(this.state.patients)
         return (
             <div className="hold-advanced-search">
                 {/* {this.state.component} */}
@@ -76,6 +82,7 @@ class PatientIndex extends React.Component {
                         patients={patients} 
                         handleQuickView={this.handleQuickView}
                         toggleSlide={this.toggleSlide}
+                        notFound={this.state.notFound}
                         />
                     
                     {/* {this.state.quickView} */}
