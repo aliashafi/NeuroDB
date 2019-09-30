@@ -1,0 +1,130 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+
+.patient-popup{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    opacity: .9;
+    border: 1px solid $search-bar-grey;
+    width: 400px;
+    height: 400px;
+    box-shadow: $shadow;
+    padding: 10px;
+
+    &__timeline{
+        font-family: $font;
+        font-weight: 700;
+    }
+
+    &__close{
+        font-family: $font;
+        width: min-content;
+        display: flex;
+        justify-content: flex-start;
+        padding: 8px;
+        font-weight: 800;
+        color: $dark-navy;
+        cursor: pointer;
+    }
+
+    &__close:hover{
+        color: $grey;
+    }
+
+    &__header{
+        font-size: 30px;
+        padding: 15px;
+        font-family: $font;
+        font-weight: 700;
+    }
+
+    &__montage{
+        font-family: $font;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+        li{
+            display: flex;
+            width: 100%;
+            padding: 2px;
+            justify-content: space-between;
+        }
+    }
+
+    &__medical-history{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        div{
+            padding: 3px;
+            font-family: $font;
+            display: flex;
+            justify-content: start;
+            flex-direction: row;
+        }
+    }
+
+    &__studies{
+        font-family: $font;
+        display: flex;
+        // justify-content: flex-end;
+        flex-direction: column; 
+        padding: 4px;
+        margin-left: 9%;
+    }
+}
+
+.brain-container{
+    display: flex;
+    justify-content: flex-start;
+    .brain-quick-show{
+        height: 20%;
+        width: 45%;
+    }
+
+    div{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+
+}
+
+
+.pop-up-bottom-container{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row; 
+}
+
+.see-details{
+    font-weight: 700;
+    color: $core-coral;
+    font-family: $font;
+    text-align: end;
+    cursor: pointer;
+}
+
+.see-details:hover{
+    color: coral;
+}
+
+///add blue header 
+.add-green{
+    color: $core-green;
+}
+
+///adding bold to necessary elements
+.scores{
+    font-weight: 700;
+}
+
+.scores-light{
+    font-weight: 500;
+}
