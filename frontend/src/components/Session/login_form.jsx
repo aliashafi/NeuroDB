@@ -28,8 +28,7 @@ class LoginForm extends React.Component {
         event.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.loginUser(user)
-            // .then( (user) => {
-            //     debugger
+            // .then( () => {
             //     this.props.history.push(`/users/${user._id}`)
             // })
     }
@@ -45,21 +44,25 @@ class LoginForm extends React.Component {
                 <div className="session-card">
                     <form className="session-form">
                         <h1 className="session-form-header">Login</h1>
-                        <input
-                            className="session-form-input"
-                            type="text"
-                            value={this.state.email}
-                            placeholder="Email"
-                            onChange={this.handleInput("email")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Email</h3>
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                // placeholder="example@example.com"
+                                onChange={this.handleInput("email")}
+                            />
+                        </div>
                         <div className="errors-container">{notVerified ? notVerified : emailErrors}</div>
-                        <input
-                            className="session-form-input"
-                            type="password"
-                            value={this.state.password}
-                            placeholder="Password"
-                            onChange={this.handleInput("password")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Password</h3>
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                // placeholder="Password"
+                                onChange={this.handleInput("password")}
+                            />
+                        </div>
                         <div className="errors-container">{passwordErrors}</div>
 
                         <button id="session-btn" className="btn btn--card" onClick={this.handleSubmit}>Login</button>

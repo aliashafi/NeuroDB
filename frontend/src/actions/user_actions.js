@@ -22,10 +22,10 @@ export const removeUser = (userId) => ({
     userId
 })
 
-export const updateCurrentUserPendings = (pendUserEmail) => ({
+export const updateCurrentUserPendings = (pendUserEmail, adminId) => ({
     type: UPDATE_CURRENT_USER_PENDINGS,
     pendUserEmail,
-    // adminId
+    adminId
 })
 
 

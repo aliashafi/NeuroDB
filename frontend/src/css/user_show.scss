@@ -4,5 +4,128 @@
 
 .user-show-container {
     font-family: $font;
+    background-color: #eff0f1;
+    height: 100vh;
+    padding-top: 3%;
 }
 
+.user-show-card {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: $shadow;
+    border-radius: 12px;
+}
+
+.user-welcome-container {
+    // border: 5px solid red;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.user-show-divider {
+    height: 5px;
+    width: 95%;
+    background-color: #d5dce0;
+    border-radius: 3px;
+    margin: 20px auto;
+}
+
+.user-welcome-name {
+    // border: 5px solid red;
+    font-size: 22px;
+    // padding-bottom: 20px;
+    display: flex;
+    margin-left: 5%;
+}
+
+.user-info-container {
+    // border: 5px solid blue;
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.user-info-container h3 {
+    font-size: 18px;
+    // text-decoration: underline;
+    color: #14aaf5;
+}
+
+.user-attributes-container {
+    // border: 5px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    // align-items: flex-end;
+    width: 40%;
+}
+
+.user-attributes-container p {
+    font-size: 16px;
+}
+
+.user-att {
+    border: 1px solid #eff0f1;
+    border-radius: 8px;
+    padding: 10px;
+    width: 50%;
+    // margin: 0 auto;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.user-att p {
+    font-size: 16px;
+}
+
+.user-pending-container {
+    // border: 5px solid black;
+    width: 40%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+
+.user-pend {
+    border: 1px solid #eff0f1;
+    border-radius: 8px;
+    margin: 0 5%;
+    margin-top: 5%;
+    width: 90%;
+    height: 90%;
+}
+
+.user-pend h3 {
+    margin: 20px 0;
+}
+
+.pend-list {
+    // border: 5px solid purple;
+    margin: 0 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#verify-btn {
+    color: white;
+    background-color: #14aaf5;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#verify-btn:hover {
+    color: #14aaf5;
+    background-color: white;
+}
+
+.banana {
+    display: flex;
+}

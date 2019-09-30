@@ -15,9 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     fetchUsers: () => dispatch(fetchUsers()),
     verifyToken: (token, adminId) => dispatch(verifyToken(token, adminId)),
-    updateCurrentUserPendings: (pendUser) => dispatch(updateCurrentUserPendings(pendUser))
-    // fetchUsers
-    // is admin
+    // updateCurrentUserPendings: (pendUserEmail, adminId) => dispatch(updateCurrentUserPendings(pendUserEmail, adminId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow)

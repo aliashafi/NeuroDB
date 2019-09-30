@@ -1,5 +1,5 @@
 import {RECEIVE_USER_LOGOUT, RECEIVE_CURRENT_USER, RECEIVE_CREATED_USER} from "../actions/session_actions";
-import {REMOVE_PENDING_USER, UPDATE_CURRENT_USER_PENDINGS} from "../actions/user_actions";
+// import {REMOVE_PENDING_USER, UPDATE_CURRENT_USER_PENDINGS} from "../actions/user_actions";
 // import {REMOVE_PENDING_USER} from "../actions/user_actions";
 
 const initialState = {
@@ -28,11 +28,12 @@ const SessionReducer = (state=initialState, action) => {
             nextState["status"] = "Pending"
             return nextState;
 
-        case UPDATE_CURRENT_USER_PENDINGS:
+        // case UPDATE_CURRENT_USER_PENDINGS:
 
-            let pendUser = action.pendUserEmail;
-            delete nextState.currentUser.pendingUsers[pendUser];
-            return nextState;
+        //     let pendUser = action.pendUserEmail;
+        //     debugger
+        //     delete nextState.currentUser.pendingUsers[pendUser];
+        //     return nextState;
 
         default:
             return state;

@@ -46,53 +46,59 @@ class RegisterForm extends React.Component {
                 <div className="session-card">
                     <form className="session-form">
                         <h1 className="session-form-header">Register</h1>
-                        <input
-                            className="session-form-input"
-                            type="text"
-                            value={this.state.firstName}
-                            placeholder="First name"
-                            onChange={this.handleInput("firstName")}
-                        />
+                        <div className="session-form-input">
+                            <h3>First name</h3>
+                            <input
+                                type="text"
+                                value={this.state.firstName}
+                                onChange={this.handleInput("firstName")}
+                            />
+                        </div>
                         <div className="errors-container">{firstNameErrors}</div>
-                        <input
-                            className="session-form-input"
-                            type="text"
-                            value={this.state.lastName}
-                            placeholder="Last name"
-                            onChange={this.handleInput("lastName")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Last name</h3>
+                            <input
+                                type="text"
+                                value={this.state.lastName}
+                                onChange={this.handleInput("lastName")}
+                            />
+                        </div>
                         <div className="errors-container">{lastNameErrors}</div>
-                        <input
-                            className="session-form-input"
-                            type="text"
-                            value={this.state.affiliation}
-                            placeholder="Affiliation"
-                            onChange={this.handleInput("affiliation")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Affiliation</h3>
+                            <input
+                                type="text"
+                                value={this.state.affiliation}
+                                onChange={this.handleInput("affiliation")}
+                            />
+                        </div>
                         <div className="errors-container">{affiliationErrors}</div>
-                        <input
-                            className="session-form-input"
-                            type="text"
-                            value={this.state.email}
-                            placeholder="Email"
-                            onChange={this.handleInput("email")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Email address</h3>
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.handleInput("email")}
+                            />
+                        </div>
                         <div className="errors-container">{emailErrors}</div>
-                        <input
-                            className="session-form-input"
-                            type="password"
-                            value={this.state.password}
-                            placeholder="Password"
-                            onChange={this.handleInput("password")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Password</h3>
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.handleInput("password")}
+                            />
+                        </div>
                         <div className="errors-container">{passwordErrors}</div>
-                        <input
-                            className="session-form-input"
-                            type="password"
-                            value={this.state.password2}
-                            placeholder="Confirm password"
-                            onChange={this.handleInput("password2")}
-                        />
+                        <div className="session-form-input">
+                            <h3>Confirm password</h3>
+                            <input
+                                type="password"
+                                value={this.state.password2}
+                                onChange={this.handleInput("password2")}
+                            />
+                        </div>
                         <button id="session-btn" className="btn btn--card" onClick={this.handleSubmit}>Register</button>
                     </form>
                 </div>

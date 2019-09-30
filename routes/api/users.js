@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
+require("dotenv").config();
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
@@ -20,8 +21,8 @@ const Token = require("../../models/Token");
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "neurodb.io@gmail.com",
-        pass: "go_neuro_go"
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
     }
     // .env package for storing info later
 })
@@ -203,7 +204,7 @@ router.post("/login", (request, response) => {
             bcrypt.compare(password, user.password)
                 .then( isMatch => {
                     if (isMatch) {
-                        console.log(user)
+                        // console.log(user)
                         const payload = {
                             _id: user._id,
                             firstName: user.firstName,
@@ -224,7 +225,8 @@ router.post("/login", (request, response) => {
                                     success: true,
                                     token: "Bearer " + token
                                 });
-                            });
+                            }
+                        );
                     } else {
                         return response.status(400).json({ password: "Incorrect Password"});
                     }
