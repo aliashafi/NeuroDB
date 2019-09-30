@@ -15,10 +15,10 @@ class PatientShow extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchPatient(this.props.match.params.patientId);
+        this.props.fetchPatient(this.props.match.params.patientId);
         // 5d898eaf55c6d054529b7853
-        this.props.fetchPatient('5d8e4c79e9b0122dd7c44ad9');
-        // const navIdSuffix = this.state.visibleCard.split(' ').join('-');
+        // this.props.fetchPatient('5d8e4c79e9b0122dd7c44ad9');
+        const navIdSuffix = this.state.visibleCard.split(' ').join('-');
         setTimeout( () => {
             const navItem = document.querySelector(`#side-nav-patient-info`);
             navItem.classList.add('nav-selected');

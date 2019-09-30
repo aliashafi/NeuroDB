@@ -68,16 +68,27 @@ function PatientShowImagingData(props) {
         Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
     }
 
-    
     return (
-        <div className='patient-show-inner-card'>
+        <div className='patient-show-inner-card-show'>
             {renderButton()}
-            <div className='patient-show-inner-card__header'>Imaging Data</div>
+            <div><div className='patient-show-inner-card__header-imaging'>Imaging Data</div></div>
             <div className='header-divider'></div>
-            <div className='patient-show-inner-card__body'>
-                <div className='patient-show-inner-card__profile-img'><img src={PlaceholderBrainProfile} /></div>
-                <div className='patient-show-inner-card__info'>
-                {renderComp()}
+            <div className='patient-show-inner-card__body-imaging-data'>
+                <div className='patient-show-inner-card__info-imaging-data'>
+                    <div className='imaging-header-container'>
+                        <div className='electrodes-title'>Electrodes</div>
+                        <img className='brain-gif' src={PlaceholderBrainProfile} />
+                    </div>
+                    <div className='electrode-table-main-container'>
+                        <div className='patient-show-inner-card__chart-headers'>
+                            <div className='electrode-header-number'>Number</div>
+                            {/* <div className='electrode-header-id'>ID</div> */}
+                            <div className='electrode-header-region'>Region</div>
+                        </div>
+                        <div className='electrode-table-body-container'>
+                            {renderComp()}
+                        </div>
+                    </div>
                 </div>
             </div>           
 

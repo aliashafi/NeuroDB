@@ -3,7 +3,6 @@ import { sortByDate, sortByAge, sortByResearchID } from '../../../util/sort_api_
 import '../../../css/patient_table.scss'
 import '../../../css/_tackons.scss'
 
-
 class PatientBasicSearchBar extends React.Component{
     constructor(props){
         super(props)
@@ -35,7 +34,6 @@ class PatientBasicSearchBar extends React.Component{
 
     ///SEARCH
     searchBy() {
-        //filters will be an object with search options
         let filteredPatients = []
         let researchCount = []
         let hasGenderCount = []
@@ -173,6 +171,25 @@ class PatientBasicSearchBar extends React.Component{
                 <div onClick={this.props.toggleSlide} className="btn_advanced-search">
                     Advanced Search
                 </div>
+
+                {/* <input type="text" 
+                        placeholder='Search by Gender (M/F)'
+                        id="gender"
+                        value={this.state.filters.gender} 
+                        onChange={(e) => this.handleSearchInput(e)}/>
+
+                    <input type="text"
+                        placeholder='Dominant Hand'
+                        id="dominantHand"
+                        value={this.state.filters.dominantHand}
+                        onChange={(e) => this.handleSearchInput(e)} />
+
+                    <input type="text"
+                        placeholder='Native Language'
+                        id="nativeLanguage"
+                        value={this.state.filters.nativeLanguage}
+                        onChange={(e) => this.handleSearchInput(e)} /> */}
+
             </div>
         )
     }

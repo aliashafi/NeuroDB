@@ -119,6 +119,7 @@ const getRandomStudies = () => {
     return studyOptions.slice(amt);
 }
 
+
 const getRandomLanguage = ()=>{
     let languages = ["English", "Spanish", "Mandarin"]
     let idx = getRandomInt(3)
@@ -168,6 +169,7 @@ const generateData = () => {
         let epilepsyDiagnosis = getRandomEpilepsyDiagnosis();
         let medications = [getRandomMedications(), getRandomMedications(), getRandomMedications()];
         let studies = getRandomStudies();
+
         let researchId = "EC"
         if (i < 10){
             researchId += `0${i}`
@@ -179,6 +181,7 @@ const generateData = () => {
                 dateOfSurgery: dateOfSurgery,
                 consent: getRandomOption([true, false]),
                 studies: studies,
+
                 demographics:
                 { birthDate: birthDate,
                     age: age,

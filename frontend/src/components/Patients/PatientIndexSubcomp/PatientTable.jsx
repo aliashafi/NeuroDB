@@ -20,6 +20,13 @@ class PatientTable extends React.Component {
         this.setState({patients: newPatients})
     }    
 
+
+    render() {        
+        let patients = this.props.patients;
+        if (this.state.patients.length > 0){
+            patients = this.state.patients
+        }
+
     render() {  
               
         let patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
@@ -32,7 +39,7 @@ class PatientTable extends React.Component {
                     toggleSlide={this.props.toggleSlide}
                     patients={this.props.patients} 
                     updateTablePatients={this.updateTablePatients}/>
-        
+
                 </div>
 
                 
@@ -56,6 +63,7 @@ class PatientTable extends React.Component {
                             className="patient-table__rows">
                                 <div>{patient.researchId}</div>
                                 <div>{formatDate(patient.dateOfSurgery)}</div>
+
                                 <div>{patient.demographics.age}</div>
                                 <div>{patient.demographics.gender}</div>
                                 <div>{patient.demographics.dominantHand}</div>
