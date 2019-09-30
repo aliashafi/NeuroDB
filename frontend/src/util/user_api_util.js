@@ -17,6 +17,7 @@ export const deleteUser = (userId) => {
 }
 
 export const verifyToken = (token) => {
+    // debugger
     return axios.get(`/api/users/confirmation/${token}`)
 }
 
