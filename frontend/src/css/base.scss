@@ -23,6 +23,17 @@
         right: 30px;
         display: flex;
         
+        
+    }
+    &--nav {
+        padding: 8px 12px;
+        background-color: transparent;
+        line-height: 12px;
+        margin: 10px 5px;
+        border: 1px solid $lightgray-three;
+        color: $core-teal;
+        font-weight: 300;
+        
     }
     &--card {
        background-color: $core-teal;
@@ -30,6 +41,7 @@
        
     }
 }
+
 
 .btn-group {
     display: flex;
