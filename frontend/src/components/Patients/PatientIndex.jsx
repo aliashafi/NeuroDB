@@ -34,7 +34,6 @@ class PatientIndex extends React.Component {
             notFound: false
         })
         }
-
     }
 
     toggleSlide(){
@@ -53,7 +52,6 @@ class PatientIndex extends React.Component {
         document.querySelector(".side-nav-container-index").style.width = "300px";
         // document.querySelector(".hold-advanced-search").style.marginLeft = "250px";
     }
-
     closeNav() {
         document.querySelector(".side-nav-container-index").style.width = "0";
         document.querySelector(".hold-advanced-search").style.marginLeft = "0";
@@ -61,8 +59,8 @@ class PatientIndex extends React.Component {
 
     render() {
         const patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
+        // console.log(this.props.patients)
 
-        console.log(this.state.patients)
         return (
             <div className="hold-advanced-search">
                 {/* {this.state.component} */}
@@ -84,7 +82,6 @@ class PatientIndex extends React.Component {
                         handleQuickView={this.handleQuickView}
                         toggleSlide={this.toggleSlide}
                         notFound={this.state.notFound}
-
                         />
                     
                     {/* {this.state.quickView} */}

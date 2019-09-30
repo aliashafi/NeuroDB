@@ -5,7 +5,6 @@ import MedicalHistorySearch from './patient_search_by/MedicalHistory'
 import '../../../css/index_nav.scss'
 import '../../../css/_tackons.scss'
 
-
 class PatientIndexSideBar extends React.Component {
 
     constructor(props){
@@ -129,10 +128,6 @@ class PatientIndexSideBar extends React.Component {
             this.props.patients.forEach((patient, index) => {
                 if (patient.medicalHistory[filter] > value[0] && patient.medicalHistory[filter] < value[1]) indiciesOfPatients.push(index);
             })
-
-        }else{
-            // indiciesOfPatients = this.props.patients.map( (patient, index) => {
-            //     if (patient[filter] === value) return index });
         }
         return indiciesOfPatients;
     }
@@ -154,7 +149,6 @@ class PatientIndexSideBar extends React.Component {
 
     //handle enter on search bar for anantomy 
     handleEnter(filter, input){
-
         if (filter === "coverage"){
             let newCoverage = this.state.filters.coverage
             newCoverage.push(input)
@@ -235,7 +229,13 @@ class PatientIndexSideBar extends React.Component {
 
             </div>
             </div>
+<<<<<<< HEAD
             )}
+=======
+            </div>
+        )
+    }
+>>>>>>> b4124c9c1ae43828e70ae5549b14e9c7613be08a
 };
 
 export default PatientIndexSideBar;
