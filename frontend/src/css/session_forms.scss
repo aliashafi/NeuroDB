@@ -1,0 +1,79 @@
+@import "./form.scss";
+@import "./reset.scss";
+@import "./config.scss";
+
+
+.session-form-container {
+    background-color: #eff0f1;
+    font-family: $font;
+    height: 100vh;
+    // border: 5px solid red;
+    padding-top: 5%;
+}
+
+.session-card {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    // margin-top: 5%;
+    box-shadow: $shadow;
+    border-radius: 12px;
+    background-color: white;
+    // border: 5px solid blue;
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    // border: 5px solid green;
+}
+
+.session-form-header {
+    // text-transform: uppercase;
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.session-form-input {
+    font-size: 0.94rem;
+    padding: 10px;
+    border: 1px solid #eff0f1;
+    border-radius: 8px;
+    height: 56px;
+    width: 80%;
+    min-width: 200px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom:5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.session-form-input h3 {
+    font-size: 0.98rem;
+    color: #14aaf5;
+}
+
+.session-form-input input {
+    border: none;
+    font-size: 0.94rem;
+    margin-top: 4px;
+    width: 100%;
+}
+
+#session-btn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 32%;
+}
+
+.errors-container {
+    color: red;
+    font-size: 14px;
+    height: 12px;
+    padding: 5px;
+}
