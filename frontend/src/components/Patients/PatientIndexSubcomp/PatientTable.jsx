@@ -26,6 +26,7 @@ class PatientTable extends React.Component {
         if (this.state.patients.length > 0){
             patients = this.state.patients
         }
+    }
 
     render() {  
               
@@ -76,8 +77,9 @@ class PatientTable extends React.Component {
                 </div>
                 </div>
             </div>
-        )
-    }
+        )}
 }
+    
+
 
 export default PatientTable;
