@@ -229,13 +229,8 @@ class PatientIndexSideBar extends React.Component {
 
             </div>
             </div>
-<<<<<<< HEAD
             )}
-=======
-            </div>
-        )
-    }
->>>>>>> b4124c9c1ae43828e70ae5549b14e9c7613be08a
+
 };
 
 export default PatientIndexSideBar;
