@@ -2,8 +2,40 @@
 @import './config.scss';
 @import './base.scss';
 
-rect {
-    fill: $core-teal;
+.dashboard-page-title {
+    width: 80vw;
+    height: 100px;
+    font-size: 2.5rem;
+    font-family: $font;
+    margin: 10px auto;
+    background-color: white;
+    box-shadow: $shadow;
+    border-radius: 12px;
+    line-height: 100px;
+    text-transform: uppercase;
+    color: $text-gray;
+}
+.dashboard-items-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 80vw;
+    margin: 10px auto;
+
+}
+.dashboard-item-wrap {
+    border: 1px solid $lightgray-three;
+    border-radius: 12px;
+    box-shadow: $shadow;
+    margin-bottom: 30px;
+}
+
+// percentage bar 
+.right-bar {
+    fill: #fe9b99;
+}
+.left-bar {
+    fill: #76c0e8;
 }
 text {
     font-family: $font;
@@ -11,14 +43,26 @@ text {
 }
 .title {
     font-size: 1.3rem;
+    text-anchor: middle;
+    alignment-baseline: middle;
+}
+.bar-percent-label {
+    font-size: 2rem;
+    fill: white;
+    alignment-baseline: middle;
+}
+.percent-bar-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    fill: $text-gray;
+    text-anchor: middle;
 }
 
-.right-bar {
-    fill: $core-coral;
-}
+//
 
 .category-group{
-    // margin-top: 20px;
+    // margin-top: 50px;
 }
 .arcs {
     fill: $core-gold;
@@ -39,4 +83,19 @@ text {
 .axisLabel {
     font-size: 11px;
     text-anchor: middle;
+}
+
+
+//bar graph
+
+.bar-graph-xlabel {
+
+}
+
+.bar-graph-ylabel {
+    text-transform: capitalize;
+}
+
+.tick line{
+    color: $lightgray-two;
 }
