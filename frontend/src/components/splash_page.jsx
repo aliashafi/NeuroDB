@@ -1,13 +1,22 @@
 import React from 'react';
-import Brain from '../images/brain.png'
+import Brain from '../images/brain.png';
+import BrainGrid from '../images/brain_grid.png';
 import '../css/splash-page.scss';
 
+
 function SplashPage() {
+
+
     return (
         <div className="splash-page">
-            <h1>NeuroDB</h1>
-            <img src={Brain} alt=""/>
-           
+            <div className='splash-page__top'>
+                <img src={BrainGrid} alt=""/>
+                <h1>Welcome to NeuroDB Lab</h1>
+                <p className='splash-page-text'> Register to collaborate and make a difference with NeuroDB lab</p>
+            </div>
+            <div className="splash-page__bottom">
+                
+            </div>
         </div>
     );
 }
