@@ -2,11 +2,8 @@ import React from 'react';
 import '../../css/patient_table.scss'
 // import PatientIndexItem from './PatientIndexItem';
 import PatientIndexSideBar from './PatientIndexSubcomp/PatientIndexSideBar';
-import PatientIndexQuickView from './PatientIndexSubcomp/PatientIndexQuickView';
 import PatientTable from './PatientIndexSubcomp/PatientTable';
-
-import navBar from '../nav_bar';
-import { Agent } from 'https';
+import PatientPopUp from './PatientIndexSubcomp/PatientPopUp'
 
 class PatientIndex extends React.Component {
     constructor(props) {
@@ -14,11 +11,14 @@ class PatientIndex extends React.Component {
         this.state = {
             patients: [],
             slide: "false",
-            notFound: false
+            notFound: false,
+            currentPatient: {}
         }
 
         this.toggleSlide = this.toggleSlide.bind(this)
         this.updatePatientsWithFilter = this.updatePatientsWithFilter.bind(this);
+        this.handleQuickView = this.handleQuickView.bind(this);
+        this.closeQuickView = this.closeQuickView.bind(this);
     }
 
     componentDidMount() {
@@ -57,6 +57,16 @@ class PatientIndex extends React.Component {
         document.querySelector(".hold-advanced-search").style.marginLeft = "0";
     }
 
+    handleQuickView(patient){
+        this.setState({currentPatient: patient})
+    }
+
+    closeQuickView(){
+        this.setState({ currentPatient: {} })
+    }
+
+    
+
     render() {
         const patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
         // console.log(this.props.patients)
@@ -80,12 +90,15 @@ class PatientIndex extends React.Component {
                     <PatientTable 
                         patients={patients} 
                         handleQuickView={this.handleQuickView}
+                        closeQuickView={this.closeQuickView}
                         toggleSlide={this.toggleSlide}
                         notFound={this.state.notFound}
                         />
                     
-                    {/* {this.state.quickView} */}
                 </div>
+
+                {Object.values(this.state.currentPatient).length !== 0 ? 
+                <PatientPopUp />: "" }
                 
             </div>
         )

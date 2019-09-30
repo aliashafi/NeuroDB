@@ -20,17 +20,7 @@ class PatientTable extends React.Component {
         this.setState({patients: newPatients})
     }    
 
-<<<<<<< HEAD
 
-    render() {        
-        let patients = this.props.patients;
-        if (this.state.patients.length > 0){
-            patients = this.state.patients
-        }
-    }
-
-=======
->>>>>>> b4124c9c1ae43828e70ae5549b14e9c7613be08a
     render() {  
               
         let patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
@@ -64,6 +54,7 @@ class PatientTable extends React.Component {
                     <div>
                         {patients.map((patient, index) => (
                             <div 
+                            
                             className="patient-table__rows">
                                 <div>{patient.researchId}</div>
                                 <div>{formatDate(patient.dateOfSurgery)}</div>
