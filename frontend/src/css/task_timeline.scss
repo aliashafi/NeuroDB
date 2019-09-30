@@ -1,0 +1,77 @@
+@import './reset.scss';
+@import './config.scss';
+@import './base.scss';
+
+.line{
+    height:9px;
+    background-color: $dark-navy;
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .task1{
+        width: 5px;
+        background: coral;
+        height: 22px;
+        position: absolute;
+        left: 37px;
+        top: -6px;
+    }
+
+     .task2{
+        width: 5px;
+        background: coral;
+        height: 22px;
+        position: absolute;
+        left: 100px;
+        top: -6px;
+    }
+
+    .task3{
+        width: 5px;
+        background: coral;
+        height: 22px;
+        position: absolute;
+        left: 200px;
+        top: -6px;
+    }
+
+    .implant-date{
+        position: absolute;
+        left: -4px;
+        bottom: -8px;
+        i{  
+            font-size: 23px;
+            color: $bright-green;
+        }
+    }
+
+    .explant-date{
+        position: absolute;
+        bottom: -5px;
+        right: -4px;
+        i{
+            font-size: 23px;
+            color: $workspace-red;
+        }
+    }
+
+}
+
+.implant-date-hover{
+    background-color: white;
+    font-family: $font;
+    font-weight: 400px;
+    position: absolute;
+    padding: 10px;
+    top: -66px;
+    width: 56px;
+    font-size: 10px;
+    left: -9px;
+    display: none;
+}
+
+ .hover:hover .implant-date-hover{
+     display: flex;
+ }

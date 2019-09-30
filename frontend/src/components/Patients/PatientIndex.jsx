@@ -98,7 +98,9 @@ class PatientIndex extends React.Component {
                 </div>
 
                 {Object.values(this.state.currentPatient).length !== 0 ? 
-                <PatientPopUp />: "" }
+                <PatientPopUp 
+                closeQuickView={this.closeQuickView}
+                patient={this.state.currentPatient}/>: "" }
                 
             </div>
         )
