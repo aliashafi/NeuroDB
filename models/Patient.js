@@ -6,15 +6,7 @@ const imagingSchema = require('./Imaging').schema;
 const demographicSchema = require('./Demographic').schema;
 const taskSchema = require('./Task').schema;
 
-// RelatedRecrodSchema represents other records present in the system for the same patient. It only contains the objectId of the record.
-// const RelatedRecordSchema = new Schema({
-//     type: Schema.Types.ObjectId,
-//     ref: 'patients'
-// });
-// const TaskSchema = new Schema({
-//     type: Schema.Types.ObjectId,
-//     ref: 'tasks'
-// });
+
 
 const PatientSchema = new Schema({
     researchId: {
@@ -29,12 +21,15 @@ const PatientSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    studies: {
+        type: Array,
+    },
     demographics: demographicSchema,
-    medication: medicationSchema,
+    medication: [medicationSchema],
     medicalHistory: medicalHistorySchema,
     imaging: imagingSchema,
-    relatedRecord: [{_id: {type: String, ref: 'patients'}}],
-    tasks: [taskSchema]
+    relatedRecord: [{type: Schema.Types.ObjectId, ref: 'Patient'}],
+    tasks: [{type: Schema.Types.ObjectId, ref: 'Task'}]
 });
 
-module.exports = Patient = mongoose.model('patients', PatientSchema);
+module.exports = Patient = mongoose.model('Patient', PatientSchema);

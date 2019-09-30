@@ -17,4 +17,4 @@ const ElectrodeSchema = new Schema({
 
 });
 
-module.exports = Electrode = mongoose.model('electrode', ElectrodeSchema)
+module.exports = Electrode = mongoose.model('Electrode', ElectrodeSchema)

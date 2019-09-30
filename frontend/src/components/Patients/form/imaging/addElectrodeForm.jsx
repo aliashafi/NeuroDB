@@ -95,6 +95,8 @@ class ElectrodeForm extends React.Component {
                         <AutoComplete
                             className={"inner-card__field-value height-none"}
                             updateState={this.updateState}
+                            suggestionClassName={"suggestions"}
+                            filter={null}
                             suggestions={brainRegions} />
                         {/* <input
                             className='inner-card__field-value height-none'
@@ -113,7 +115,7 @@ class ElectrodeForm extends React.Component {
                             value={this.state.numElecs}
                         />
                     </div>
-                    <i onClick={() => this.props.deleteElec(this.props.num)} class="fas fa-trash-alt trash-icon clickable"></i>
+                    <i onClick={() => this.props.deleteElec(this.props.num)} className="fas fa-trash-alt trash-icon clickable"></i>
 
                     </section>
 

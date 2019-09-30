@@ -4,12 +4,7 @@ const electrodeSchema = require('./Electrode').schema;
 
 
 const ImagingSchema = new Schema({
-    patientId: {
-        type: Schema.Types.ObjectId,
-        ref: 'patients',
-        required: false
-    },
     electrodeMontage: [electrodeSchema]
 });
 
-module.exports = Imaging = mongoose.model('imaging', ImagingSchema)
+module.exports = Imaging = mongoose.model('Imaging', ImagingSchema)

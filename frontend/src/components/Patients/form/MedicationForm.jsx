@@ -15,6 +15,12 @@ class MedicationForm extends React.Component {
         this.updateState = this.updateState.bind(this);
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if (prevState !== this.state){
+            this.props.updateForm("medication", Object.values(this.state))
+        }
+    }
+
     addMed() {
         this.state.numMeds.push(1 + this.state.numMeds[this.state.numMeds.length - 1]);
         this.setState({ numMeds: this.state.numMeds });
@@ -23,6 +29,7 @@ class MedicationForm extends React.Component {
     updateState(med, idx) {
         let newMed = Object.assign({}, this.state.medication, { [idx]: med })
         this.setState({ medication: newMed })
+        
     }
 
     deleteMed(num) {

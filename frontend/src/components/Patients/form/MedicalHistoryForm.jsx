@@ -5,6 +5,19 @@ class MedicalHistoryForm extends React.Component {
 
     constructor(props){
         super(props)
+
+        this.handleResectionToggle = this.handleResectionToggle.bind(this);
+        this.handleNeuroPace = this.handleNeuroPace.bind(this);
+    }
+
+    handleResectionToggle(e){
+        const val = (e.target.value === 'true') ? true : false;
+        this.props.updateForm("previousResection", val, "medicalHistory")
+    }
+
+    handleNeuroPace(e){
+        const val = (e.target.value === 'true') ? true : false;
+        this.props.updateForm("neuroPace", val, "medicalHistory")
     }
 
     render(){
@@ -13,7 +26,7 @@ class MedicalHistoryForm extends React.Component {
         }
         return(
             <div className="patient-dem-container">
-                <h1 className="patient-show-inner-card__header initial-header">Demographics</h1>
+                <h1 className="patient-show-inner-card__header initial-header">Medical History</h1>
                 <div className='header-divider'></div>
                 <div className="patient-show-inner-card bigger flex-row">
 
@@ -25,7 +38,7 @@ class MedicalHistoryForm extends React.Component {
                                 className='inner-card__field-value'
                                 type="text"
                                 name="BDI"
-                                
+                                id="medicalHistory"
                                 value={this.props.medicalHistory.BDI}
                                 onChange={this.props.handleChange}
                             />
@@ -37,7 +50,7 @@ class MedicalHistoryForm extends React.Component {
                                 className='inner-card__field-value'
                                 type="text"
                                 name="BAI"
-                                
+                                id="medicalHistory"
                                 value={this.props.medicalHistory.BAI}
                                 onChange={this.props.handleChange}
                             />
@@ -49,7 +62,7 @@ class MedicalHistoryForm extends React.Component {
                                 className='inner-card__field-value'
                                 type="text"
                                 name="epilepsyDiagnosis"
-                                
+                                id="medicalHistory"
                                 value={this.props.medicalHistory.epilepsyDiagnosis}
                                 onChange={this.props.handleChange}
                             />
@@ -60,50 +73,53 @@ class MedicalHistoryForm extends React.Component {
 
                     <section className='inner-card__section-grouping'>
                         <label className="inner-card__field-label-checkbox" >Previous Resection
-
-                        <div>
-                                <div className="checkbox-container">
-                                    Yes
-                                <label className="checkbox-label">
-                                        <input
-                                            name="consent"
-                                            value={true}
-                                            onChange={this.props.handleChange}
-                                            type="checkbox" />
-                                        <span
-
-                                            className="checkbox-custom rectangular"></span>
-                                    </label>
+                        <div className='radio-grouping'>
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleResectionToggle}
+                                        checked={(this.props.medicalHistory.previousResection) ? 'checked' : ''}
+                                        type="radio"
+                                        name="previousResection"
+                                        value='true' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>Yes</span>
                                 </div>
-                                <div className="checkbox-container">
-                                    No
-                                <label className="checkbox-label">
-                                        <input
-                                            name="consent"
-                                            value={false}
-                                            onChange={this.props.handleChange}
-                                            type="checkbox" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleResectionToggle}
+                                        checked={(this.props.medicalHistory.previousResection) ? '' : 'checked'}
+                                        type="radio"
+                                        name="previousResection"
+                                        value='false' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>No</span>
                                 </div>
                             </div>
                         </label>
 
                         <label className="inner-card__field-label-checkbox" >NeuroPace
-                            <div>
-                                <div className="checkbox-container">
-                                    Yes
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+                            <div className='radio-grouping'>
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleNeuroPace}
+                                        checked={(this.props.medicalHistory.neuroPace) ? 'checked' : ''}
+                                        type="radio"
+                                        name="neuroPace"
+                                        value='true' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>Yes</span>
                                 </div>
-                                <div className="checkbox-container">
-                                    No
-                                <label className="checkbox-label">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className="checkbox-custom rectangular"></span>
-                                    </label>
+
+                                <div className='radio-btn-container'>
+                                    <input
+                                        onChange={this.handleNeuroPace}
+                                        checked={(this.props.medicalHistory.neuroPace) ? '' : 'checked'}
+                                        type="radio"
+                                        name="neuroPace"
+                                        value='false' />
+                                    <label htmlFor="option"><span><span>✓</span></span></label>
+                                    <span className='radio-label'>No</span>
                                 </div>
                             </div>
                         </label>

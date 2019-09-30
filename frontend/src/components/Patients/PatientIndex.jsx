@@ -1,133 +1,92 @@
 import React from 'react';
-import '../../css/patient_index.scss';
+import '../../css/patient_table.scss'
 // import PatientIndexItem from './PatientIndexItem';
-import PatientIndexSideBar from './PatientIndexSideBar';
-import PatientIndexQuickView from './PatientIndexQuickView';
-import PatientTable from './PatientTable';
+import PatientIndexSideBar from './PatientIndexSubcomp/PatientIndexSideBar';
+import PatientIndexQuickView from './PatientIndexSubcomp/PatientIndexQuickView';
+import PatientTable from './PatientIndexSubcomp/PatientTable';
+
 import navBar from '../nav_bar';
+import { Agent } from 'https';
 
 class PatientIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            component: '',
-            quickView: '',
             patients: [],
-            sortStatus: 'unsorted'
-        };
-        this.handleClick = this.handleClick.bind(this);
-        this.handleQuickView = this.handleQuickView.bind(this);
-        this.sortBy = this.sortBy.bind(this);
-        this.sortByDemographics = this.sortByDemographics.bind(this);
+            slide: "false",
+            notFound: false
+        }
+
+        this.toggleSlide = this.toggleSlide.bind(this)
+        this.updatePatientsWithFilter = this.updatePatientsWithFilter.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchPatients();
     }
 
-    handleClick() {
-        if (this.state.component === '') {
-            this.setState({component: <PatientIndexSideBar sortBy={this.sortBy} sortByDemographics={this.sortByDemographics}/>})
-        } else {
-            this.setState({component: ''})
+    updatePatientsWithFilter(filteredPatients){
+        if (filteredPatients.length == 0){
+            this.setState({notFound: true})
+        }else{
+            this.setState({
+            patients: filteredPatients,
+            notFound: false
+        })
         }
     }
 
-    handleQuickView(index) {
-        this.setState({quickView: <PatientIndexQuickView patient={this.props.patients[index]}/>})
+    toggleSlide(){
+        if (this.state.slide){
+            this.openNav();
+        }else{
+            this.closeNav();
+        }
+
+        this.setState({
+            slide: !this.state.slide
+        })
     }
 
-    sortBy(key) {
-        let patients = this.props.patients;
-        if (this.state.sortStatus === 'unsorted' || this.state.sortStatus === 'desc') {
-            this.setState({
-                patients: patients.sort(function(a, b) { 
-                    if (a[key] < b[key]) {
-                        return -1
-                    } if (a[key] > b[key]) {
-                        return 1
-                    } else {
-                        return 0
-                    }
-                })
-            })
-            this.setState({
-                sortStatus: 'asc'
-            })
-        } else {
-            this.setState({
-                patients: patients.sort(function(a, b) {
-                    if (b[key] < a[key]) {
-                        return -1
-                    } if (b[key] > a[key]) {
-                        return 1
-                    } else {
-                        return 0
-                    }
-                })
-            })
-            this.setState({
-                sortStatus: 'desc'
-            })
-        }
+    openNav() {
+        document.querySelector(".side-nav-container-index").style.width = "300px";
+        // document.querySelector(".hold-advanced-search").style.marginLeft = "250px";
     }
-
-    sortByDemographics(key) {
-        let patients = this.props.patients;
-        if (this.state.sortStatus === 'unsorted' || this.state.sortStatus === 'desc') {
-            this.setState({
-                patients: patients.sort(function(a, b) { 
-                    if (a.demographics[key] < b.demographics[key]) {
-                        return -1
-                    } if (a.demographics[key] > b.demographics[key]) {
-                        return 1
-                    } else {
-                        return 0
-                    }
-                })
-            })
-            this.setState({
-                sortStatus: 'asc'
-            })
-        } else {
-            this.setState({
-                patients: patients.sort(function(a, b) {
-                    if (b.demographics[key] < a.demographics[key]) {
-                        return -1
-                    } if (b.demographics[key] > a.demographics[key]) {
-                        return 1
-                    } else {
-                        return 0
-                    }
-                })
-            })
-            this.setState({
-                sortStatus: 'desc'
-            })
-        }
+    closeNav() {
+        document.querySelector(".side-nav-container-index").style.width = "0";
+        document.querySelector(".hold-advanced-search").style.marginLeft = "0";
     }
 
     render() {
+        const patients = this.state.patients.length === 0 ? this.props.patients : this.state.patients
+        // console.log(this.props.patients)
+
         return (
-            <div className='patient-index-main'>
+            <div className="hold-advanced-search">
+                {/* {this.state.component} */}
 
-               {this.state.component}
-
-                <button className='sidebar-trigger' onClick={this.handleClick}>
-                    >
-                </button>
-
-                <div className='patient-index-main-body'>
-                    <div className='patients-title'>
-                        Patients
+                <PatientIndexSideBar 
+                    patients={this.props.patients}
+                    updatePatientsWithFilter={this.updatePatientsWithFilter}
+                    />
+                
+                <div className="patient-index-page">
+                    <div className="patient-index-page__headers">
+                        <h2>NeuroDB Database</h2>
+                        <h3>All Patients</h3>
                     </div>
-                    <div className='patient-index-item-container'>
-                        <PatientTable patients={this.props.patients} handleQuickView={this.handleQuickView}/>
-                    </div> 
+
+                    
+                    <PatientTable 
+                        patients={patients} 
+                        handleQuickView={this.handleQuickView}
+                        toggleSlide={this.toggleSlide}
+                        notFound={this.state.notFound}
+                        />
+                    
+                    {/* {this.state.quickView} */}
                 </div>
                 
-                {this.state.quickView}
-
             </div>
         )
     }

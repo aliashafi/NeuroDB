@@ -39,6 +39,10 @@
     margin-left: 0;
 }
 
+#margin-left-none{
+    margin-left: 0;
+}
+
 .height-none{
     height: 41px;
     font-size: 14px;
@@ -49,4 +53,22 @@
 
 .smaller-font{
     font-size: 11px;
+}
+
+#no-padding{
+    padding: 0px 0px 0px;
+    overflow: visible;
+}
+
+.slide{
+    transition: 1s;
+}
+
+.sticky{
+    position: sticky;
+    top: 0;
+}
+
+.left-margin{
+    margin-left: 7px;
 }
