@@ -25,7 +25,8 @@
 .side-nav-content {
     
     &__wrap {
-        padding: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
@@ -41,6 +42,10 @@
         padding: 30px;
         background-color: transparent;
         color: #9ba4b3;
+    }
+
+    &__cluster:hover {
+        cursor: pointer;
     }
 
     &__icon {
@@ -109,12 +114,24 @@
         font-size: 2rem;
         text-transform: uppercase;
     }
+    &__header-imaging {
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: row;
+    }
     &__body {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: center;
+    }
+
+    &__body-imaging-data {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     &__medication-body {
@@ -124,13 +141,13 @@
         justify-content: center;
         align-items: center;
     }
+
     &__profile-img {
         // height: 400px;
         // height: 80%;
         flex: 0 0 300px;
         border-radius: 12px;
         width: 40%;
-        border: 1px solid $lightgray-three;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -146,7 +163,7 @@
         display: flex;
         flex-flow: row nowrap;
         box-sizing: border-box;
-        width: 80%;
+        width: 70%;
     } 
     &__info3 {
         display: flex;
@@ -154,6 +171,35 @@
         box-sizing: border-box;
         margin-left: 20px;
     } 
+    &__info-imaging-data {
+        margin-left: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } 
+    &__chart-headers {
+        display: flex;
+        flex-direction: row;
+        color: $core-teal;
+    }
+}
+
+.imaging-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.electrodes-title {
+    margin-left: 50px;
+    color: $core-teal;
+    font-size: 25px;
+}
+
+.brain-gif {
+    height: 70px;
+    width: 70px;
+    margin-left: 15px;
 }
 
 .patient-show-inner-card-show {
@@ -178,15 +224,8 @@
         align-items: center;
     }
     &__profile-img {
-        // height: 400px;
-        // height: 80%;
-        flex: 0 0 300px;
-        border-radius: 12px;
-        width: 40%;
-        border: 1px solid $lightgray-three;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+       height: 50px;
+       width: 50px;
     }
     &__info {
         display: flex;
@@ -194,35 +233,17 @@
         padding: 0 10px;
         box-sizing: border-box;
         flex-grow: 1;
-        &--medication {
-           width:50%;
-        }
-        &--medication-history {
-            
-        }
     } 
     &__info2 {
         display: flex;
         flex-flow: row nowrap;
         box-sizing: border-box;
-        &--medication {
-
-        }
-        &--medication-history {
-            
-        }
     } 
     &__info3 {
         display: flex;
         flex-flow: row nowrap;
         box-sizing: border-box;
         margin-left: 90px;
-        &--medication {
-
-        }
-        &--medication-history {
-            
-        }
     } 
 }
 .patient-show-inner-card__profile-img img {
@@ -246,6 +267,22 @@
         box-sizing: border-box;
         margin: 10px auto;
         height: 70px;
+    }
+    &__field-grouping-imaging {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        box-sizing: border-box;
+        height: 70px;
+        
+    }
+    &__field-grouping-imaging-en {
+       width: 125px;
+    }
+    &__field-grouping-imaging-eregion {
+       width: 250px;
     }
 
     &__field-grouping2 {
@@ -297,6 +334,15 @@
         min-width: 200px;
         box-sizing: border-box;
     }
+    &__field-value-medication {
+        font-size: 1.1rem;
+        padding: 20px 7px 5px 20px;
+        border: 1px solid #eff0f1;
+        border-radius: 8px;
+        width: 50%;
+        min-width: 200px;
+        box-sizing: border-box;
+    }
     &__checkbox-label {
         color: $core-teal;
         font-size: 0.8rem;
@@ -318,6 +364,41 @@
         width: 50%;
     }
 }
+
+.electrode-item-container {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+
+.electrode-item-container:hover {
+    color: $core-teal;
+}
+
+.electrode-table-main-container {
+    margin-top: 20px;
+    border: 1px solid #eff0f1;
+    border-radius: 8px;
+    padding: 20px;
+    width: 350px
+}
+
+.electrode-table-body-container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: $text-gray;
+}
+
+.electrode-header-number {
+    margin-left: 32px;
+}
+.electrode-header-id {
+    margin-left: 125px;
+}
+.electrode-header-region {
+    margin-left: 115px;
+}
+
 .editable {
     background-color: #ebf6ff;
     transition: background-color 0.4s ease-in-out;
@@ -368,4 +449,26 @@
     font-size: 13px;
 }
 
+.btn-group {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+.medication-item {
+    font-family: $font;
+    color: $text-gray;
+    font-size: 16px;
+    padding: 5px;
+    display: flex;
+    flex-direction: flex-start;
+}
+
+.medication-body-container {
+    margin-top: 20px;
+}
 
