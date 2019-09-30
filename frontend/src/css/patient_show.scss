@@ -102,7 +102,9 @@
 //========== patient info subcomp
 .patient-show-inner-card {
     display: flex; 
+
     flex-direction: row;
+
     // flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;

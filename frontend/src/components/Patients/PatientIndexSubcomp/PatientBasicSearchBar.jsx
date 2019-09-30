@@ -34,7 +34,6 @@ class PatientBasicSearchBar extends React.Component{
 
     ///SEARCH
     searchBy() {
-        //filters will be an object with Name, Age
         let filteredPatients = []
         let researchCount = []
         let hasGenderCount = []
@@ -172,6 +171,7 @@ class PatientBasicSearchBar extends React.Component{
                 <div onClick={this.props.toggleSlide} className="btn_advanced-search">
                     Advanced Search
                 </div>
+
                 {/* <input type="text" 
                         placeholder='Search by Gender (M/F)'
                         id="gender"
@@ -189,6 +189,7 @@ class PatientBasicSearchBar extends React.Component{
                         id="nativeLanguage"
                         value={this.state.filters.nativeLanguage}
                         onChange={(e) => this.handleSearchInput(e)} /> */}
+
             </div>
         )
     }

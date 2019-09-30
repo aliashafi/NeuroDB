@@ -21,6 +21,9 @@ const PatientSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    studies: {
+        type: Array,
+    },
     demographics: demographicSchema,
     medication: [medicationSchema],
     medicalHistory: medicalHistorySchema,

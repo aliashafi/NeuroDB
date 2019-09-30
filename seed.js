@@ -3,6 +3,12 @@ const mongoose = require("mongoose");
 var seeder = require('mongoose-seed');
 const db = require("./config/keys").mongoURI;
 
+const studyOptions = [
+    "pain",
+    "depression",
+    "speech-language"
+]
+
 const EpilepsyOptions = [
     "temporal",
     "benign rolandic",
@@ -14,13 +20,13 @@ const EpilepsyOptions = [
 ]
 
 const medicaionOptions = [
-    {medicationName: "tegretol", purpose: "epilepsy"},
-    {medicationName: "diamox", purpose: "epilepsy"},
-    {medicationName: "keppra", purpose: "epilepsy"},
-    {medicationName: "trileptal", purpose: "epilepsy"},
-    { medicationName: "banzel", purpose: "depression"},
-    { medicationName: "banzel", purpose: "depression"},
-    { medicationName: "bupropion", purpose: "depression"},
+    {medicationName: "tegretol", medicationPurpose: "epilepsy"},
+    {medicationName: "diamox", medicationPurpose: "epilepsy"},
+    {medicationName: "keppra", medicationPurpose: "epilepsy"},
+    {medicationName: "trileptal", medicationPurpose: "epilepsy"},
+    { medicationName: "banzel", medicationPurpose: "depression"},
+    { medicationName: "banzel", medicationPurpose: "depression"},
+    { medicationName: "bupropion", medicationPurpose: "depression"},
 ]
 
 const brainRegions =
@@ -108,6 +114,12 @@ const generateMontage = (regions,len = [10,4,10,64,8,6,4]) => {
     return montage;
 }
 
+const getRandomStudies = () => {
+    let amt = getRandomInt(3)
+    return studyOptions.slice(amt);
+}
+
+
 const getRandomLanguage = ()=>{
     let languages = ["English", "Spanish", "Mandarin"]
     let idx = getRandomInt(3)
@@ -154,8 +166,10 @@ const generateData = () => {
         let nativeLanguage = getRandomLanguage();
         let BDI = getRandomInt(40);
         let BAI = getRandomInt(40);
-        let epilepsyDiagnosis = getRandomEpilepsyDiagnosis()
-        let medications = [getRandomMedications(), getRandomMedications(), getRandomMedications()]
+        let epilepsyDiagnosis = getRandomEpilepsyDiagnosis();
+        let medications = [getRandomMedications(), getRandomMedications(), getRandomMedications()];
+        let studies = getRandomStudies();
+
         let researchId = "EC"
         if (i < 10){
             researchId += `0${i}`
@@ -166,6 +180,8 @@ const generateData = () => {
         let patient = { researchId: researchId,
                 dateOfSurgery: dateOfSurgery,
                 consent: getRandomOption([true, false]),
+                studies: studies,
+
                 demographics:
                 { birthDate: birthDate,
                     age: age,
