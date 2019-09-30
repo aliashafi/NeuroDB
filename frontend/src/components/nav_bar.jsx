@@ -7,7 +7,7 @@ const App = (props) => {
     // function App() {
 
     const {logout, currentUserId} = props;
-
+    console.log(props.currentUserId)
     const handleLogout = (event) => {
         event.preventDefault();
         logout();
@@ -42,6 +42,9 @@ const App = (props) => {
                     </div>
                     <div className="nav-dropdown-item custom-link" onClick={handleLogout}>
                         Logout
+                    </div>
+                    <div className="nav-dropdown-item custom-link">
+                        <Link to={`/dashboard`}>Stats</Link>
                     </div>
                 </div>
             </div>
