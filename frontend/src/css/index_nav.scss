@@ -58,13 +58,6 @@
 
     &__coverage{
         // min-height: 100px;
-
-
-
-
-.filters{
-    &__coverage{
-
         &__icon{
             position: relative;
             width: 40px;
@@ -82,8 +75,6 @@
             background-color: $dark-purple;
             cursor: pointer;
         }
-
-
 
         &__list{
                 list-style: none;
@@ -107,7 +98,6 @@
 
         }
 
-       
 
         }
 
@@ -144,6 +134,7 @@
             height: 60px;
             margin-top: 23px;
         }
+
     }
 
 }
@@ -211,6 +202,7 @@
     padding: 3%;
     justify-content: center;
 }
+
 
 
 

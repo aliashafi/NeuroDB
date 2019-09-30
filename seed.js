@@ -119,7 +119,6 @@ const getRandomStudies = () => {
     return studyOptions.slice(amt);
 }
 
-
 const getRandomLanguage = ()=>{
     let languages = ["English", "Spanish", "Mandarin"]
     let idx = getRandomInt(3)
