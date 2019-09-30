@@ -35,7 +35,7 @@ const App = (props) => {
                         <Link to={`/patients`}>Patients Database</Link>
                     </div>
                     <div className="nav-dropdown-item custom-link">
-                        <Link to={`/patients/create`}>Enter Patient Data</Link>
+                        <Link to={`/patient/create`}>Enter Patient Data</Link>
                     </div>
                     <div className="nav-dropdown-item custom-link">
                         <Link to={`/users/${currentUserId}`}>My Account</Link>
