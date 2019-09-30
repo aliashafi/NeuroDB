@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
+require("dotenv").config();
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
@@ -20,8 +21,8 @@ const Token = require("../../models/Token");
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "neurodb.io@gmail.com",
-        pass: "go_neuro_go"
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
     }
     // .env package for storing info later
 })
@@ -64,13 +65,14 @@ router.get("/confirmation/:token", (request, response) => {
                             from: "neurodb.io@gmail.com",
                             to: user.email,
                             subject: "Thank you for joining NeuroDB!",
-                            text: `${user.email}, your account has been verified`
+                            text: `Thank you, ${user.email}. Your account has been verified.`
                         }
                         transporter.sendMail(mailOptions, function (error, data) {
                             if (error) {
                                 console.log("Unable to send email" + error)
                             } else {
                                 console.log("Email successfully sent")
+                                response.json(user)
                             }
                         })
                     }
@@ -196,14 +198,15 @@ router.post("/login", (request, response) => {
                 errors.email = "User not found";
                 return response.status(404).json(errors);
             } else if (!user.isVerified) {
-                return response.status(400).json({msg: "Your account has not been verified"})
+                return response.status(400).json({notVerified: "Your account has not been verified"})
             }
 
             bcrypt.compare(password, user.password)
                 .then( isMatch => {
                     if (isMatch) {
+                        // console.log(user)
                         const payload = {
-                            id: user.id,
+                            _id: user._id,
                             firstName: user.firstName,
                             lastName: user.lastName,
                             email: user.email,
@@ -222,7 +225,8 @@ router.post("/login", (request, response) => {
                                     success: true,
                                     token: "Bearer " + token
                                 });
-                            });
+                            }
+                        );
                     } else {
                         return response.status(400).json({ password: "Incorrect Password"});
                     }
