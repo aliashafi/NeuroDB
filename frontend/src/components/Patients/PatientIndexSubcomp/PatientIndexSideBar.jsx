@@ -33,6 +33,7 @@ class PatientIndexSideBar extends React.Component {
         this.getFilteredPatients = this.getFilteredPatients.bind(this);
         this.handleDateInput = this.handleDateInput.bind(this);
         this.clearFilters = this.clearFilters.bind(this);
+
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -63,6 +64,7 @@ class PatientIndexSideBar extends React.Component {
             patients: this.props.patients
             })
     }
+
 
     //filtering logic
     getFilteredPatients(){

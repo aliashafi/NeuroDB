@@ -9,7 +9,7 @@ class PatientShowTasks extends React.Component {
     render() {
 
         return (
-            <div className='patient-show-inner-card'>
+            <div className='patient-show-inner-card-show'>
                 <div className='patient-show-inner-card__header'>Tasks</div>
                 <div className='header-divider'></div>
                 <div className='patient-show-inner-card__body'>
