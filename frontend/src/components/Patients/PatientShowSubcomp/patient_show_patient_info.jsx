@@ -315,13 +315,13 @@ function PatientShowPatientInfo(props) {
     function renderButton() {
         if (!renderEdit) {
             return (
-            <div className='btn__wrap'>
+            <div className='btn-group'>
                 <div onClick={handleEditClick} className='btn btn--card'>Edit</div>
             </div>
             )
         } else {
             return ( 
-                <div className='btn__wrap'>
+                <div className='btn-group'>
                 <div onClick={handleUpdateClick} className='btn btn--card'>Update</div>
                 <div onClick={handleCancelClick} className='btn btn--card'>Cancel</div>
                 </div>

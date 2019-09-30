@@ -23,16 +23,38 @@ function PatientShowMedication(props){
         setMedicationPurpose(e.target.value);
     }
 
+    function renderMedicationNames() {
+        return props.patient.medication.map((medication) => (
+            <div className='medication-item'>{medication.medicationName}</div>
+        ));
+    }
+
+    function renderMedicationPurposes() {
+        return props.patient.medication.map((medication) => (
+            <div className='medication-item'>{medication.medicationPurpose || ''}</div>
+        ));
+    }
+
     function renderComp() {
         return (
             <>
             <div className='inner-card__field-grouping'>
                 <div className='inner-card__field-label'>Medication</div>
-                <input onChange={handleMedicationNameChange} className='inner-card__field-value' value={medicationName} disabled={!renderEdit} />
+                {/* <input onChange={handleMedicationNameChange} className='inner-card__field-value' value={medicationName} disabled={!renderEdit} /> */}
+                <div className='inner-card__field-value-medication'>
+                    <div className='medication-body-container'>
+                        {renderMedicationNames()}
+                    </div>
+                </div>
             </div>
             <div className='inner-card__field-grouping'>
                 <div className='inner-card__field-label'>Purpose</div>
-                <input onChange={handleMedicationPurposeChange} className='inner-card__field-value' value={medicationPurpose} disabled={!renderEdit} />
+                {/* <input onChange={handleMedicationPurposeChange} className='inner-card__field-value' value={medicationPurpose} disabled={!renderEdit} /> */}
+                <div className='inner-card__field-value-medication'>
+                    <div className='medication-body-container'>
+                        {renderMedicationPurposes()}
+                    </div>
+                </div>
             </div>
             </>
         );
@@ -101,7 +123,6 @@ function PatientShowMedication(props){
             <div className='header-divider'></div>
             <div className='patient-show-inner-card__medication-body'>
                 <div className='patient-show-inner-card__info2'>
-
                     {renderComp()}
                 </div>
             </div>           
