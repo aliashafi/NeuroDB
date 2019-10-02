@@ -10,7 +10,8 @@ class LoginForm extends React.Component {
             email: "",
             password: ""
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginDemoUser = this.loginDemoUser.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +23,17 @@ class LoginForm extends React.Component {
         return (event) => {
             this.setState({[inputType]: event.target.value})
         }
+    }
+
+    loginDemoUser(){
+        let user = {
+            email: 'ernest.man10@gmail.com',
+            password: 'password'
+        }
+        this.props.loginUser(user)
+            .then(() =>
+                this.props.history.push(`/patients`)
+            )        
     }
 
     handleSubmit(event) {
@@ -64,8 +76,10 @@ class LoginForm extends React.Component {
                             />
                         </div>
                         <div className="errors-container">{passwordErrors}</div>
-
-                        <button id="session-btn" className="btn btn--card" onClick={this.handleSubmit}>Login</button>
+                        <div className="demo-user-login">
+                            <button id="session-btn" className="btn btn--card" onClick={this.loginDemoUser}>Login as Demo User</button>
+                            <button id="session-btn" className="btn btn--card" onClick={this.handleSubmit}>Login</button>
+                        </div>
                     </form>
                 </div>
             </div>

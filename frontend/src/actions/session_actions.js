@@ -10,7 +10,7 @@ export const RECEIVE_CREATED_USER = "RECEIVE_CREATED_USER";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const receiveCurrentUser = (currentUser) => {
-    // debugger
+    debugger
     return {
         type: RECEIVE_CURRENT_USER,
         currentUser

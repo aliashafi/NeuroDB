@@ -40,12 +40,13 @@ const App = (props) => {
                     <div className="nav-dropdown-item custom-link">
                         <Link to={`/users/${currentUserId}`}>My Account</Link>
                     </div>
-                    <div className="nav-dropdown-item custom-link" onClick={handleLogout}>
-                        Logout
-                    </div>
                     <div className="nav-dropdown-item custom-link">
                         <Link to={`/dashboard`}>Stats</Link>
                     </div>
+                    <div className="nav-dropdown-item custom-link" onClick={handleLogout}>
+                        Logout
+                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -53,7 +53,7 @@ class PatientBasicSearchBar extends React.Component{
             if (hasGenderLetters) hasGenderCount.push(index);
             if (hasNativeLanguageLetters) nativeLanguageCount.push(index);
             if (hasDominantHandLetters) dominantHandCount.push(index);
-            console.log(hasDominantHandLetters)
+            // console.log(hasDominantHandLetters)
         })
 
         let order = this.sortByMostRelevant([researchCount, hasGenderCount, nativeLanguageCount, dominantHandCount])
@@ -94,7 +94,11 @@ class PatientBasicSearchBar extends React.Component{
         if (letters === "") return false;
         if (value === undefined) return false;
         value = value.split("").map(v => v.toLowerCase())
-        return letters.split("").every(char => value.includes(char.toLowerCase()))
+        
+        let matchLetters =  letters.split("").every(char => value.includes(char.toLowerCase()))
+        let matchLength = value.slice(0,letters.length).join("") === letters.split("").map(v => v.toLowerCase()).join("")
+        if (matchLetters && matchLength) return true;
+        return false;
     }
 
     //handleInput for search methods
@@ -102,7 +106,7 @@ class PatientBasicSearchBar extends React.Component{
         let id = e.target.id
         let value = e.target.value
         let newState = { ...this.state.filters };
-        newState[id] = value
+        newState[id] = value 
         this.setState({
             filters: newState
         })
