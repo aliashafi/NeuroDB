@@ -28,9 +28,9 @@ class LoginForm extends React.Component {
         event.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.loginUser(user)
-            // .then( () => {
-            //     this.props.history.push(`/users/${user._id}`)
-            // })
+            .then( () =>
+                this.props.history.push(`/patients`)
+            )
     }
 
     render() {

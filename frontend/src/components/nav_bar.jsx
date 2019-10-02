@@ -7,7 +7,7 @@ const App = (props) => {
     // function App() {
 
     const {logout, currentUserId} = props;
-    console.log(props.currentUserId)
+    // console.log(props.currentUserId)
     const handleLogout = (event) => {
         event.preventDefault();
         logout();
