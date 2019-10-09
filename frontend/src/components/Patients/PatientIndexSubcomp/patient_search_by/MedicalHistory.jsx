@@ -3,11 +3,30 @@ import React from 'react'
 
 class MedicalHistorySearch extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            clicked: false
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+
+    handleClick() {
+        if (this.state.clicked) {
+            this.props.openSearch(".filters__squish__medical-history", "0px")
+        } else {
+            this.props.openSearch(".filters__squish__medical-history", "200px")
+        }
+        this.setState({ clicked: !this.state.clicked })
+
+    }
+
     render(){
         return(
-            <div onClick={() => this.props.openSearch(".filters__squish__medical-history", "200px")} className="filters__demographics">
+            <div className="filters__demographics">
                 <div className="filters__header-container">
-                    <div className='filters__coverage__icon'>
+                    <div onClick={() => this.handleClick()} className='filters__coverage__icon'>
                         <i className="fas fa-file-medical" />
                     </div>
                     <h2>Filter By Medical History</h2>

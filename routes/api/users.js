@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
-require("dotenv").config();
+// require("dotenv").config();
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
@@ -21,8 +21,8 @@ const Token = require("../../models/Token");
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD
+        user: "neurodb.io.gmail.com",
+        pass: "go_neuro_go"
     }
     // .env package for storing info later
 })

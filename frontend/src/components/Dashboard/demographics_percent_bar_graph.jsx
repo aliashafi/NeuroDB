@@ -52,7 +52,7 @@ function DemographicsPercentBarGraph(props) {
                 .domain(data.map(d => d.category))
                 .range([0, innerHeight])
                 .padding(0.4);
-                console.log(yScale.bandwidth())
+                // console.log(yScale.bandwidth())
 
             const categoryG = svg.selectAll('.category-group')
                 .data(data)
