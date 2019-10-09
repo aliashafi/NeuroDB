@@ -3,11 +3,30 @@ import React from 'react'
 
 class DemographicsSearch extends React.Component{
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            clicked: false
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+
+    handleClick() {
+        if (this.state.clicked) {
+            this.props.openSearch(".filters__squish__demographics", "0px")
+        } else {
+            this.props.openSearch(".filters__squish__demographics", "100px")
+        }
+        this.setState({ clicked: !this.state.clicked })
+
+    }
+
     render(){
         return(
-            <div onClick={() => this.props.openSearch(".filters__squish__demographics", "100px")} className="filters__demographics">
+            <div  className="filters__demographics">
                 <div className="filters__header-container">
-                    <div className='filters__coverage__icon'>
+                    <div onClick={() => this.handleClick()} className='filters__coverage__icon'>
                         <i className='far fa-user' />
                     </div>
                     <h2>Filter By Demographics</h2>

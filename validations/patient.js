@@ -7,7 +7,6 @@ const validateImagingData = require('./imaging');
 
 module.exports = function validatePatientInput(data) {
     let errors = {};
-    console.log(data);
     data.researchId = validText(data.researchId) ? data.researchId : "";
 
 

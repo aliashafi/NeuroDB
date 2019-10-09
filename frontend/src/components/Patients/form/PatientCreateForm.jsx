@@ -69,7 +69,6 @@ class PatientCreateForm extends React.Component {
         //     demographics, medication, medicalHistory,
         //     imaging, relatedRecords
         //      } = this.state
-        console.log(patient)
         this.props.processForm(patient)
         
     }
