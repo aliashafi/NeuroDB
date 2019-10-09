@@ -31,6 +31,7 @@ class PatientPopUp extends React.Component{
         if (this.props.patient){
            elecs = this.getSimpleMontage()
         }
+
         return(
             <div className="patient-popup">
                 <div onClick={this.props.closeQuickView} className="patient-popup__close">X</div>
