@@ -20,12 +20,3 @@ Filtering the patient feed off of advanced search is going to be challenging. Es
 
 *4. Stats* 
 To render basic stats, we are planning to user d3 because of its data manipulation abilities. We would also like to have real-time rendering of stats with filter of what patients we would like to see.
-
-
-### Weekly Plan
-| TeamMember | Monday                                                                                    | Tuesday                                               | Wednesday | Thursday                        | Friday                  | Saturday   | Sunday                                  |
-|------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|-----------|---------------------------------|-------------------------|------------|-----------------------------------------|
-| Dolly      | build out patient schema, routes,  test routes/actions/everyones routes                   | patient show page, with tabs                          | cont'd    | work on side bar search         | work on advanced search | stats page | clean up and finish assigned components |
-| Jeffrey    | build out tasks schema, routes, components, actions                                       | render patient index page with style,  components     | cont'd    | cont'd                          | advanced search         | stats page | clean up and finish assigned components |
-| Alia       | Build out app-startup, patient actions,  patient reducer, entities reducer, root reducer  | create patient create form                            | cont'd    | cont'd                          | advanced search         | stats page | clean up and finish assigned components |
-| Ernie      | User-Auth basic signup/login                                                              | finish up user auth and create sign-in/ sign-up form  | cont'd    | cont'd email to approve pending | advanced search         | stats page | clean up and finish assigned components |
