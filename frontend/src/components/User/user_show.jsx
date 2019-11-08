@@ -68,17 +68,17 @@ class UserShow extends React.Component {
                     </div>
                     <div className="pend-list">{myPendingUsers}</div>
                 </div>
-            ) : (
-               ""
-                    <h3>Pending approvals</h3>
-                    <div className="pend-list">{myPendingUsers}</div>
-                </div>
-            ) : (
-                <div className="non-admin-container">
-                    <h1>Approval Status</h1>
-                        <h2>Approved</h2>
-                </div>
-            )
+            ) : ""
+            //    "") (
+            //         <h3>Pending approvals</h3>
+            //         <div className="pend-list">{myPendingUsers}</div>
+            //     </div>
+            // ) : (
+            //     <div className="non-admin-container">
+            //         <h1>Approval Status</h1>
+            //             <h2>Approved</h2>
+            //     </div>
+            // )
 
             return (
                 <div className="user-show-container">
