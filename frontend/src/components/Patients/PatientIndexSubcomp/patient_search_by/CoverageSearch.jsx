@@ -16,7 +16,7 @@ class CoverageSearch extends React.Component{
         if (this.state.clicked){
             this.props.openSearch(".filters__squish__coverage", "0px")
         }else{
-            this.props.openSearch(".filters__squish__coverage", "300px")
+            this.props.openSearch(".filters__squish__coverage", "200px")
         }
         this.setState({clicked: !this.state.clicked})
 
@@ -45,7 +45,7 @@ class CoverageSearch extends React.Component{
                             {this.props.filters.coverage.map((region, index) => 
                             
                                     <li key={index} className="filters__coverage__list-item">
-                                        <i class="fas fa-circle bullet"></i>
+                                        <i className="fas fa-circle bullet"></i>
                                         {region} 
                                     </li>
                                     )}

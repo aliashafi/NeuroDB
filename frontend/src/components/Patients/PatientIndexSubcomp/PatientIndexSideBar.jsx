@@ -188,7 +188,7 @@ class PatientIndexSideBar extends React.Component {
             <div className="sticky">
             <div className="side-nav-container-index slide">
                 <div className="side-nav-headers">
-                    <h1>Advance Search</h1>
+                    <h1>Advanced Search</h1>
                     <h2>Click icons to open form</h2>
                 </div>
                 <div className="side-nav__filters">
