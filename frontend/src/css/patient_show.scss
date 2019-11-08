@@ -67,13 +67,13 @@
         
     }
 }
-
-.side-nav-stem{
-    width: 10px;
-    height: 50px;
-    border-radius: 2px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
+// SEEMS UNUSED --- DELETE
+// .side-nav-stem{
+//     width: 10px;
+//     height: 50px;
+//     border-radius: 2px;
+//     background-color: rgba(255, 255, 255, 0.2);
+// }
 
 .side-nav-content__cluster:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -113,7 +113,7 @@
         font-size: 1.8rem;
         text-transform: uppercase;
     }
-    &__header-imaging {
+    &__header-imaging { //Only for imaging card header
         font-size: 2rem;
         text-transform: uppercase;
         display: flex;
