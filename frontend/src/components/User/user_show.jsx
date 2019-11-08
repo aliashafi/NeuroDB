@@ -52,7 +52,8 @@ class UserShow extends React.Component {
                         <span><div id="verify-user">{user.firstName} {user.lastName}</div></span>
                         <span><div id="verify-user">{user.affiliation}</div></span>
                         <span><button id="verify-btn">Verify</button></span>
-
+                        <span><div id="verify-user">{user}</div></span>
+                        <span><button id="verify-btn" onClick={this.handleVerify(token, user)}>Verify</button></span>
                     </div>
                 )
             })
@@ -69,7 +70,14 @@ class UserShow extends React.Component {
                 </div>
             ) : (
                ""
-
+                    <h3>Pending approvals</h3>
+                    <div className="pend-list">{myPendingUsers}</div>
+                </div>
+            ) : (
+                <div className="non-admin-container">
+                    <h1>Approval Status</h1>
+                        <h2>Approved</h2>
+                </div>
             )
 
             return (
