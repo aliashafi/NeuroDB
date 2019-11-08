@@ -38,7 +38,7 @@
     &--card {
        background-color: $core-teal;
        color: white;
-       
+        margin-right: 0;
     }
 }
 
@@ -49,8 +49,8 @@
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    top: 10px;
-    right: 30px;
+    top: 0px;
+    right: 0px;
 }
 
 
@@ -76,9 +76,7 @@ div[class*="btn_"]{
 .radio-grouping {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
-    margin-top: 10px;
-    
+    justify-content: flex-start;    
 }
 .radio-btn-container {
     display: flex;
@@ -109,11 +107,11 @@ input[type=radio   ]:not(old){
   }
   input[type=radio   ]:not(old) + label > span{
     display          : inline-block;
-    width            : 30px;
-    height           : 30px;
+    width            : 20px;
+    height           : 20px;
     margin           : 0.25em 0.5em 0.25em 0.25em;
     border           : 0.0625em solid #c3e7fa;
-    border-radius    : 5px;;
+    border-radius    : 5px;
     background       : white;
     vertical-align   : bottom;
   }
@@ -123,11 +121,11 @@ input[type=radio   ]:not(old){
   }
   input[type=radio]:not(old):checked + label > span > span{
       
-    display          : block;
-    font-size: 2rem;
-    line-height: 30px;
+    display: block;
+    font-size: 1.5rem;
+    line-height: 18px;
     color: $core-teal;
-    background-color       : transparent;
+    background-color: transparent;
   }
 
 input[type=radio]:not(old):disabled + label > span > span{

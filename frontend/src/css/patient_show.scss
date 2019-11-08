@@ -102,16 +102,15 @@
 //========== patient info subcomp
 .patient-show-inner-card {
     display: flex; 
-    flex-direction: row;
-    // flex-flow: column nowrap;
-    justify-content: flex-start;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     align-items: flex-start;
-    
     position: relative;
     
 
     &__header {
-        font-size: 2rem;
+        //keep
+        font-size: 1.8rem;
         text-transform: uppercase;
     }
     &__header-imaging {
@@ -121,12 +120,22 @@
         flex-direction: row;
     }
     &__body {
+        //keep
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: center;
     }
+    &__info {
+        //keep
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        padding: 0px;
+        box-sizing: border-box;
+        flex-grow: 1;
+    } 
 
     &__body-imaging-data {
         display: flex;
@@ -152,13 +161,6 @@
         justify-content: center;
         align-items: center;
     }
-    &__info {
-        display: flex;
-        flex-flow: row nowrap;
-        padding: 0 10px;
-        box-sizing: border-box;
-        flex-grow: 1;
-    } 
     &__info2 {
         display: flex;
         flex-flow: row nowrap;
@@ -215,6 +217,7 @@
     &__header {
         font-size: 2rem;
         text-transform: uppercase;
+       
     }
     &__body {
         width: 100%;
@@ -230,7 +233,7 @@
     &__info {
         display: flex;
         flex-flow: row nowrap;
-        padding: 0 10px;
+        padding: 0px;
         box-sizing: border-box;
         flex-grow: 1;
     } 
@@ -249,24 +252,53 @@
 .patient-show-inner-card__profile-img img {
     width: 100%;
 }
-.radio-column, .input-column {
-    min-width: 250px;
-    margin-left: 100px;
+
+.input-column {
+    min-width: 500px;
+    width: 90%;
+    flex-grow: 1;
+}
+.radio-column {
+    min-width: 500px;
+    min-width: 90%;
     flex-grow: 1;
 }
 .inner-card {
     
     &__field-grouping {
-        // flex: 1 1 200px;
+        //keep
         display: flex;
-        flex-flow: column nowrap;
+        flex-flow: row nowrap;
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         position: relative;
-        // width: 90%;
         box-sizing: border-box;
-        margin: 10px auto;
-        height: 70px;
+        margin: 10px 0px 10px 0px;
+        height: 35px;
+        border-bottom: 1px solid $lightgray-three;
+        width: 100%;
+    }
+    &__field-label {
+        //keep
+        font-size: 0.9rem;
+        color: $core-teal;
+        width: 180px;
+        text-align: left;
+        text-transform: uppercase;
+        margin-right: 250px;
+
+    }
+    &__field-value {
+        //keep
+        font-size: 1rem;
+        padding: 5px;
+        border: none;
+        border-radius: 8px;
+        height: 35px;
+        // width: 50%;
+        min-width: 200px;
+        box-sizing: border-box;
+        background-color: transparent;
     }
     &__field-grouping-imaging {
         display: flex;
@@ -313,27 +345,6 @@
         margin-bottom: 35px;
     }
 
-    &__field-label {
-        position: absolute;
-        top: 10px;
-        left: 20px;
-        font-size: 0.8rem;
-        color: $core-teal;
-        margin-right: 8px;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-        z-index: 1;
-    }
-    &__field-value {
-        font-size: 1.1rem;
-        padding: 20px 7px 5px 20px;
-        border: 1px solid #eff0f1;
-        border-radius: 8px;
-        height: 70px;
-        width: 50%;
-        min-width: 200px;
-        box-sizing: border-box;
-    }
     &__field-value-medication {
         font-size: 1.1rem;
         padding: 20px 7px 5px 20px;
@@ -400,16 +411,18 @@
 }
 
 .editable {
+    //keep
     background-color: #ebf6ff;
+    border: 1px solid #eff0f1;
     transition: background-color 0.4s ease-in-out;
 }
 
 .header-divider {
-    height: 5px;
+    height: 4px;
     width: 120px;
     background-color: $lightgray-two;
     border-radius: 3px;
-    margin: 30px 0;
+    margin: 30px 0px 10px 0px;
 }
 
 
@@ -445,8 +458,8 @@
 }
 
 .radio-label {
-    color: $core-teal;
-    font-size: 13px;
+    font-size: 0.9rem;
+    color: rgb(84, 84, 84);
 }
 
 .btn-group {
