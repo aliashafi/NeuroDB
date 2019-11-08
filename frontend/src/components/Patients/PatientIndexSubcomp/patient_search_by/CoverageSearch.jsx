@@ -16,7 +16,11 @@ class CoverageSearch extends React.Component{
         if (this.state.clicked){
             this.props.openSearch(".filters__squish__coverage", "0px")
         }else{
+<<<<<<< HEAD
             this.props.openSearch(".filters__squish__coverage", "200px")
+=======
+            this.props.openSearch(".filters__squish__coverage", "300px")
+>>>>>>> c5f3e16150864dab38de4c12e7bf333accd5be31
         }
         this.setState({clicked: !this.state.clicked})
 

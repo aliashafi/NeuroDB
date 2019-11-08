@@ -10,6 +10,10 @@ export const RECEIVE_CREATED_USER = "RECEIVE_CREATED_USER";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const receiveCurrentUser = (currentUser) => {
+<<<<<<< HEAD
+=======
+    debugger
+>>>>>>> c5f3e16150864dab38de4c12e7bf333accd5be31
     return {
         type: RECEIVE_CURRENT_USER,
         currentUser
