@@ -46,7 +46,7 @@ class UserShow extends React.Component {
             const year = joinDate.getFullYear().toString();
         
             const myPendingUsers = unVerified.map( (user, i) => {
-                // const token = this.props.currentUser.pendingUsers[user]
+                const token = this.props.currentUser.pendingUsers[user]
                 return (   
                     <div className="pend-item" key={i}>
                         <span><div id="verify-user">{user.firstName} {user.lastName}</div></span>
