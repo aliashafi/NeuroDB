@@ -168,7 +168,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="gender" 
                                 value='M' />
-                            <label for="option"><span><span>✓</span></span></label>
+                            <label htmlFor="option"><span><span>✓</span></span></label>
                             <span className='radio-label'>Male</span>
                         </div>
                         <div className='radio-btn-container'>
@@ -179,7 +179,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="gender" 
                                 value='F' />
-                            <label for="option"><span><span>✓</span></span></label>    
+                            <label htmlFor="option"><span><span>✓</span></span></label>    
                             <span className='radio-label'>Female</span>
                         </div>
                     </div>
@@ -197,7 +197,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="dominantHand" 
                                 value='L' />
-                            <label for="option"><span><span>✓</span></span></label>
+                            <label htmlFor="option"><span><span>✓</span></span></label>
                             <span className='radio-label'>Left</span>
                         </div>
                         <div className='radio-btn-container'>
@@ -208,7 +208,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="dominantHand" 
                                 value='R' />
-                            <label for="option"><span><span>✓</span></span></label>    
+                            <label htmlFor="option"><span><span>✓</span></span></label>    
                             <span className='radio-label'>Right</span>
                         </div>
                     </div>
@@ -227,7 +227,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="languageDominance" 
                                 value='L' />
-                            <label for="option"><span><span>✓</span></span></label>
+                            <label htmlFor="option"><span><span>✓</span></span></label>
                             <span className='radio-label'>Left</span>
                         </div>
                         <div className='radio-btn-container'>
@@ -238,7 +238,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="languageDominance" 
                                 value='R' />
-                            <label for="option"><span><span>✓</span></span></label>    
+                            <label htmlFor="option"><span><span>✓</span></span></label>    
                             <span className='radio-label'>Right</span>
                         </div>
                     </div>
@@ -255,7 +255,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="consent" 
                                 value='true' />
-                            <label className="option"><span><span>✓</span></span></label>
+                            <label htmlFor="option"><span><span>✓</span></span></label>
                             <span className='radio-label'>Signed</span>
                         </div>
                         <div className='radio-btn-container'>
@@ -266,7 +266,7 @@ function PatientShowPatientInfo(props) {
                                 type="radio" 
                                 name="consent" 
                                 value='false' />
-                            <label for="option"><span><span>✓</span></span></label>
+                            <label htmlFor="option"><span><span>✓</span></span></label>
                             <span className='radio-label'>Unsigned</span>
                         </div>
                     </div>

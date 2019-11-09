@@ -35,7 +35,7 @@ function PatientShowMedication(props){
             Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
         });
     }
-    
+
     function handleCancelClick(e) {
         setRenderEdit(!renderEdit);
         setMedication(initMedication);
@@ -53,6 +53,7 @@ function PatientShowMedication(props){
                     {medication.map((med, i) => (
                         <div>
                             <input 
+                                key={i}
                                 onChange={handleMedicationChange} 
                                 dataset-idx={i}
                                 dataset-field="medicationName"
@@ -61,6 +62,7 @@ function PatientShowMedication(props){
                                 disabled={!renderEdit}
                             />
                             <input 
+                                key={i}
                                 onChange={handleMedicationChange} 
                                 dataset-idx={i}
                                 dataset-field="medicationPurpose"
