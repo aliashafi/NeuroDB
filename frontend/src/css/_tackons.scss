@@ -34,6 +34,10 @@
     display: flex;
     flex-flow: row wrap;
 }
+.row-align-topleft {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 
 .margin-left-none{
     margin-left: 0;
@@ -76,3 +80,8 @@
 .margin-top-30 {
     margin-top: 30px;
 }
+
+.scrolly {
+    overflow-y: scroll;
+}
+

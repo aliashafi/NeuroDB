@@ -69,25 +69,31 @@ function PatientShowImagingData(props) {
     }
 
     return (
-        <div className='patient-show-inner-card-show'>
-            {renderButton()}
-            <div><div className='patient-show-inner-card__header-imaging'>Imaging Data</div></div>
-            <div className='header-divider'></div>
-            <div className='patient-show-inner-card__body-imaging-data'>
-                <div className='patient-show-inner-card__info-imaging-data'>
-                    <div className='imaging-header-container'>
-                        <div className='electrodes-title'>Electrodes</div>
+        <div className='patient-show-inner-card'>
+            {/* NOTE: uncomment button after implementing electrodes update functionality */}
+            {/* {renderButton()} */}
+            <div className='patient-show-inner-card__header'>
+                <div>Imaging Data</div>
+                <div className='header-divider'></div>
+            </div>
+            <div className='patient-show-inner-card__body'>
+                <div className='patient-show-inner-card__info'>
+                    <div className='flex-row-wrap'>
+                        <div className='flex-col-nowrap row-align-topleft'>
+                        <div className='patient-show-inner-card__subheader'>
+                            <div>Electrodes</div>
+                        </div>
+                        <div className='electrode__table'>
+                            <div className='electrode__col-header-group'>
+                                <div className='electrode__col-header'>Number</div>
+                                <div className='electrode__col-header'>Region</div>
+                            </div>
+                            <div className='electrode__list'>
+                                {renderComp()}
+                            </div>
+                        </div>
+                        </div>
                         <img className='brain-gif' src={PlaceholderBrainProfile} />
-                    </div>
-                    <div className='electrode-table-main-container'>
-                        <div className='patient-show-inner-card__chart-headers'>
-                            <div className='electrode-header-number'>Number</div>
-                            {/* <div className='electrode-header-id'>ID</div> */}
-                            <div className='electrode-header-region'>Region</div>
-                        </div>
-                        <div className='electrode-table-body-container'>
-                            {renderComp()}
-                        </div>
                     </div>
                 </div>
             </div>           

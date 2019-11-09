@@ -14,8 +14,13 @@ class PatientShowTasks extends React.Component {
                 <div className='header-divider'></div>
                 <div className='patient-show-inner-card__body'>
                     <div className='task-item-details__header'>
-                        <div>Task Name</div>
-                        <div>Date conducted</div>
+                        <div className='development-notice'>
+                            <i class="fas fa-shipping-fast coming-soon-icon"></i>
+                            <p>Task Create/Edit functionalities are coming soon.</p>
+
+                        </div>
+                        {/* <div>Task Name</div>
+                        <div>Date conducted</div> */}
                     </div>
                     {this.props.tasks.forEach((task, i) => (
                         <PatientShowTaskItem 
