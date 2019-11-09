@@ -45,37 +45,38 @@ function PatientShowMedication(props){
 
     function renderComp() {
         return (
-            <>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>Medication</div>
-                <div className='inner-card__field-value-medication'>
-                    <div className='medication-body-container'>
-                    {medication.map((med, i) => (
-                        <div>
-                            <input 
-                                key={i}
-                                onChange={handleMedicationChange} 
-                                dataset-idx={i}
-                                dataset-field="medicationName"
-                                className='inner-card__field-value' 
-                                value={med.medicationName} 
-                                disabled={!renderEdit}
-                            />
-                            <input 
-                                key={i}
-                                onChange={handleMedicationChange} 
-                                dataset-idx={i}
-                                dataset-field="medicationPurpose"
-                                className='inner-card__field-value' 
-                                value={med.medicationPurpose} 
-                                disabled={!renderEdit} 
-                            />
-                        </div>
-                    ))}
+           
+            <div className='patient-show-inner-card__info'>
+                <div className='medication-list'>
+                    <div className='inner-card__field-grouping'>
+                        <div className='field-group-label field-right-buffer'>Medication Name</div>
+                        <div className='field-group-label'>Medication Purpose</div>
                     </div>
+                        {medication.map((med, i) => (
+                            <div key={i} className='inner-card__field-grouping'>
+                                <input 
+                                    key={`name-${i}`}
+                                    onChange={handleMedicationChange} 
+                                    dataset-idx={i}
+                                    dataset-field="medicationName"
+                                    className='inner-card__field-value field-right-buffer' 
+                                    value={med.medicationName} 
+                                    disabled={!renderEdit}
+                                />
+                                <input 
+                                    key={`purpose-${i}`}
+                                    onChange={handleMedicationChange} 
+                                    dataset-idx={i}
+                                    dataset-field="medicationPurpose"
+                                    className='inner-card__field-value long-field' 
+                                    value={med.medicationPurpose} 
+                                    disabled={!renderEdit} 
+                                />
+                            </div>
+                        ))}
                 </div>
             </div>
-            </>
+      
         );
        
     }
@@ -98,14 +99,12 @@ function PatientShowMedication(props){
     }
     
     return (
-        <div className='patient-show-inner-card-show'>
+        <div className='patient-show-inner-card'>
             {renderButton()}
             <div className='patient-show-inner-card__header'>Medication</div>
             <div className='header-divider'></div>
-            <div className='patient-show-inner-card__medication-body'>
-                <div className='patient-show-inner-card__info2'>
-                    {renderComp()}
-                </div>
+            <div className='patient-show-inner-card__body'>
+                {renderComp()}
             </div>           
 
         </div>

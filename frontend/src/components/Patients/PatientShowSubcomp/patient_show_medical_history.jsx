@@ -94,26 +94,24 @@ function PatientShowMedicalHistory(props){
 
     function renderComp() {
         return (
-        <div className='patient-show-inner-card__info3'>
-            <div className='card-two-column'>
-                <div className='inner-card__field-grouping2 no-flex'>
+        <div className='patient-show-inner-card__info'>
+            <div className='input-column'>
+                <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>BDI</div>
                     <input onChange={handleBDIChange} className='inner-card__field-value' value={BDI} disabled={!renderEdit} />
                     
                 </div>
-                <div className='inner-card__field-grouping2 no-flex'>
+                <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>BAI</div>
                     <input onChange={handleBAIChange} className='inner-card__field-value' value={BAI} disabled={!renderEdit} />
                 </div>
-                <div className='inner-card__field-grouping2 no-flex'>
+                <div className='inner-card__field-grouping'>
                     <div className='inner-card__field-label'>Epilepsy Diagnosis</div>
                     <input onChange={handleEpilepsyDiagnosisChange} className='inner-card__field-value' value={epilepsyDiagnosis} disabled={!renderEdit} />
                 </div>
-            </div>
 
-            <div className='card-two-column'>
-                <div className='inner-card__field-grouping2 no-flex'>
-                    <div className='inner-card__checkbox-label'>PREVIOUS RESECTION</div>
+                <div className='inner-card__field-grouping'>
+                    <div className='inner-card__field-label'>PREVIOUS RESECTION</div>
                     <div className='radio-grouping'>
                         <div className='radio-btn-container'>
                             <input 
@@ -124,7 +122,7 @@ function PatientShowMedicalHistory(props){
                                 name="previousResection" 
                                 value='yes' />
                             <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>YES</span>
+                            <span className='radio-label'>Yes</span>
                         </div>
                         <div className='radio-btn-container'>
                             <input 
@@ -135,13 +133,13 @@ function PatientShowMedicalHistory(props){
                                 name="previousResection" 
                                 value='no' />
                             <label for="option"><span><span>✓</span></span></label>    
-                            <span className='radio-label'>NO</span>
+                            <span className='radio-label'>No</span>
                         </div>
                     </div>
                 </div>
                 
-                <div className='inner-card__field-grouping2 no-flex'>
-                    <div className='inner-card__checkbox-label'>NEUROPACE</div>
+                <div className='inner-card__field-grouping'>
+                    <div className='inner-card__field-label'>NEUROPACE</div>
                     <div className='radio-grouping'>
                         <div className='radio-btn-container'>
                             <input 
@@ -152,7 +150,7 @@ function PatientShowMedicalHistory(props){
                                 name="neuroPace" 
                                 value='yes' />
                             <label for="option"><span><span>✓</span></span></label>
-                            <span className='radio-label'>YES</span>
+                            <span className='radio-label'>Yes</span>
                         </div>
                         <div className='radio-btn-container'>
                             <input 
@@ -163,7 +161,7 @@ function PatientShowMedicalHistory(props){
                                 name="neuroPace" 
                                 value='no' />
                             <label for="option"><span><span>✓</span></span></label>    
-                            <span className='radio-label'>N0</span>
+                            <span className='radio-label'>No</span>
                         </div>
                     </div>
                 </div>
@@ -173,7 +171,7 @@ function PatientShowMedicalHistory(props){
     }
    
     return (
-        <div className='patient-show-inner-card-show'>
+        <div className='patient-show-inner-card'>
             {renderButton()}
             <div className='patient-show-inner-card__header'>Medical History</div>
             <div className='header-divider'></div>

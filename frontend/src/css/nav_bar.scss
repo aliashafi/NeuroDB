@@ -42,6 +42,8 @@
     font-family: $font;
     color: $core-teal;
     font-weight: 300;
+    z-index: 3;
+    min-width: 120px;
 }
 .nav-dropdown-item {
     cursor: pointer;

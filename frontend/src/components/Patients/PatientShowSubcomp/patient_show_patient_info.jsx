@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-
+import { formatDateShort } from '../../../util/date_api_uil';
 
 function PatientShowPatientInfo(props) {
     const [renderEdit, setRenderEdit] = useState(false);
     const [researchId, setResearchId] = useState(props.patient.researchId);
     const [consent, setConsent] = useState(props.patient.consent);
-    const [dateOfSurgery, setDateOfSurgery] = useState(props.patient.dateOfSurgery);
+    const initSurgeryDate = 
+        (props.patient.dateOfSurgery) ? formatDateShort(props.patient.dateOfSurgery) : '';
+
+    const [dateOfSurgery, setDateOfSurgery] = useState(initSurgeryDate);
     
     const initBirthDate = 
-        (props.patient.demographics) ? props.patient.demographics.birthDate : '';
+        (props.patient.demographics) ? formatDateShort(props.patient.demographics.birthDate) : '';
 
     const initAge = (props.patient.demographics) ? props.patient.demographics.age : '';
     const initGender = (props.patient.demographics) ? props.patient.demographics.gender : '';
@@ -27,8 +30,8 @@ function PatientShowPatientInfo(props) {
         if (props.patient.demographics) {
             setResearchId(props.patient.researchId);
             setConsent(props.patient.consent);
-            setDateOfSurgery(props.patient.dateOfSurgery);
-            setBirthDate(props.patient.demographics.birthDate);
+            setDateOfSurgery(formatDateShort(props.patient.dateOfSurgery));
+            setBirthDate(formatDateShort(props.patient.demographics.birthDate));
             setAge(props.patient.demographics.age);
             setGender(props.patient.demographics.gender);
             setLanguageDominance(props.patient.demographics.languageDominance);
@@ -74,7 +77,7 @@ function PatientShowPatientInfo(props) {
         setRenderEdit(!renderEdit);
         setResearchId(props.patient.researchId);
         setConsent(props.patient.consent);
-        setDateOfSurgery(props.patient.dateOfSurgery);
+        setDateOfSurgery(initSurgeryDate);
         setBirthDate(initBirthDate);
         setAge(initAge);
         setGender(initGender);
@@ -310,8 +313,10 @@ function PatientShowPatientInfo(props) {
     return (
         <div className='patient-show-inner-card'>
             {renderButton()}
-            <div className='patient-show-inner-card__header'>Patient info</div>
-            <div className='header-divider'></div>
+            <div className='patient-show-inner-card__header'>
+                <div>Patient info</div>
+                <div className='header-divider'></div>
+            </div>
             <div className='patient-show-inner-card__body'>
                 
                 <div className='patient-show-inner-card__info'>

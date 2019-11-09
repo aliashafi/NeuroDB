@@ -2,14 +2,11 @@ import React from 'react';
 
 function ElectrodeItem(props) {
     return (
-        <div className='electrode-item-container'>
-            <div className='inner-card__field-grouping-imaging-en'>
+        <div className='electrode__row'>
+            <div className='electrode__item'>
                 {props.electrode.electrodeNum}
             </div>
-            {/* <div className='inner-card__field-grouping-imaging-eid'>
-                {props.electrode._id}
-            </div> */}
-            <div className='inner-card__field-grouping-imaging-eregion'>
+            <div className='electrode__item'>
                 {props.electrode.electrodeRegion}
             </div>
         </div>

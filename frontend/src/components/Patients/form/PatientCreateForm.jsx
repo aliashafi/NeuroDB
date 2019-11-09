@@ -120,7 +120,7 @@ class PatientCreateForm extends React.Component {
                         updateForm={this.updateForm}
                     />
                     
-                    <div onClick={this.handleSubmit} id="button-submit">Add Patient
+                    <div onClick={this.handleSubmit} id="button-submit">Add patient with current entry
                         {/* <input type="submit" value="Add Patient"/> */}
                     </div>
                 </form>
