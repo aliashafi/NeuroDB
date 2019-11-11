@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/features.scss";
+// import "../css/features.scss";
 
 function Features() {
 

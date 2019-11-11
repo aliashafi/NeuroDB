@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/collaborators.scss";
+// import "../css/collaborators.scss";
 import Alia from "../images/alia-img.jpeg";
 import Dolly from "../images/dolly-img.jpeg";
 import Ernie from "../images/ernie-img.jpg";
