@@ -173,8 +173,10 @@ function PatientShowMedicalHistory(props){
     return (
         <div className='patient-show-inner-card'>
             {renderButton()}
-            <div className='patient-show-inner-card__header'>Medical History</div>
-            <div className='header-divider'></div>
+            <div className='patient-show-inner-card__header'>
+                <div>Medical History</div>
+                <div className='header-divider'></div>
+            </div>
             <div className='patient-show-inner-card__body'>
                 {renderComp()}
             </div>           

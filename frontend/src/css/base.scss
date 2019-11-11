@@ -58,14 +58,32 @@
         background-color: $lightgray-three;
         color: $text-gray;
         margin-right: 0;
+        margin-left: 0;
         transition: all 0.3s ease-in;
         &:hover {
             background-color: $core-teal;
             color: white;
         }
+        
+    }
+    &--form2 {
+        background-color: $core-teal;
+        color: white;
+        margin-right: 0;
+        margin-left: 0;
+        transition: all 0.3s ease-in;
+        &:hover {
+            
+        }  
     }
 }
-
+.form-btn-group {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
 .btn-group {
     display: flex;
@@ -158,3 +176,5 @@ input[type=radio]:not(old):disabled + label > span > span{
 input[type=radio]:not(old):disabled + label > span {
     border-color: $lightgray-three;
 }
+
+

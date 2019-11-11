@@ -9,7 +9,6 @@ import UserShowContainer from "./components/User/user_show_container";
 import LoginFormContainer from "./components/Session/login_form_container";
 import RegisterFormContainer from "./components/Session/register_form_container";
 import DashboardContainer from './components/Dashboard/dashboard_container';
-// import logo from './logo.svg';
 import './App.css';
 
 function App() {

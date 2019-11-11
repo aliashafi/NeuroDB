@@ -3,9 +3,9 @@ import DemographicsForm from './DemographicsForm';
 import MedicalHistoryForm from './MedicalHistoryForm'
 import ImagingForm from './ImagingForm'
 import MedicationForm from './MedicationForm'
+import TaskForm from './TaskForm';
 
-// import '../../../css/form.scss'
-// import '../../../css/button.scss'
+
 class PatientCreateForm extends React.Component {
     constructor(props) {
         super(props)
@@ -42,6 +42,7 @@ class PatientCreateForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.updateForm = this.updateForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleContinueNext = this.handleContinueNext.bind(this);
     }
 
     handleChange(event) {
@@ -84,6 +85,20 @@ class PatientCreateForm extends React.Component {
         }
     }
 
+    //ENHANCEMENT: ADD CONTINUE BTN TO NAVIGATE
+    // handleContinueNext(e, card) {
+    //     let next;
+    //     if (this.currentStep === 'patient info') {
+    //         next = 'medication';
+    //     } else if (this.currentStep === 'medication') {
+    //         next = 'medical history';
+    //     } else if (this.currentStep === 'medical history') {
+    //         next = 'imaging';
+    //     } else if (this.currentStep === 'imaging') {
+    //         next = 'tasks';
+    //     }
+    //     this.props.handleVisibleCardChange(e, next);
+    // }
 
     render() {
     //    console.log(this.state.imaging)
@@ -120,14 +135,20 @@ class PatientCreateForm extends React.Component {
                         updateForm={this.updateForm}
                     />
                     
-                    <div 
-                        onClick={this.handleSubmit} 
-                        
-                        class='btn btn--form margin-top-30'>Add patient with current entry
-                        {/* <input type="submit" value="Add Patient"/> */}
-                    </div>
-                </form>
+                    <TaskForm 
+                        currentStep={this.props.visibleCard}/>
 
+                    <div class='flex flex-row'>
+                        <div 
+                            onClick={this.handleSubmit} 
+                            class='btn btn--form margin-top-30'>Add patient with current entry
+                        </div>
+                            <div class='form-text-blue' >or continue to the next card
+                        </div>
+                    </div>
+                     
+                </form>
+                
             </React.Fragment>
         </div>
         )

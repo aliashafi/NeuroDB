@@ -1,7 +1,7 @@
 
 .inner-card{
     font-size: 1.1rem;
-    padding: 7px 7px 5px 20px;
+    padding: 7px 7px 5px 7px;
     border: 1px solid #eff0f1;
     border-radius: 8px;
     // height: 70px;
@@ -10,8 +10,8 @@
     
 }
 .inner-card__elecID{
-    width: 100%;
-    text-align: center;
+    // width: 100%;
+    width: 180px;
     border: none;
     font-size: 14px;
 
@@ -19,8 +19,9 @@
 }
 
 .inner-card__region{
-    width: 100%;
-    text-align: center;
+    // width: 100%;
+    // text-align: center;
+    width: 180px;
     border: none;
     font-size: 14px;
 

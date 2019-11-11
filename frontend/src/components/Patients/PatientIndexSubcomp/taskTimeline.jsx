@@ -1,6 +1,5 @@
 import React from 'react';
 import {formatDate} from '../../../util/date_api_uil'
-// import '../../../css/task_timeline.scss'
 
 class TaskTimeLine extends React.Component {
 

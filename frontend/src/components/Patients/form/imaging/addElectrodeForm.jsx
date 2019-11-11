@@ -83,59 +83,24 @@ class ElectrodeForm extends React.Component {
     render() {
         
     return(
+        <>
+            <section className='electrode__row--imaging deletable-field'>  
+                <AutoComplete
+                    className={"inner-card__field-value min-w-150 editable margin-right-10"}
+                    updateState={this.updateState}
+                    suggestionClassName={"suggestions"}
+                    filter={null}
+                    suggestions={brainRegions} />
+                <input
+                    className='inner-card__field-value min-w-150 editable'
+                    type="text"
+                    onChange={this.handleChange("numElecs")}
+                    value={this.state.numElecs}
+                />
+                <i onClick={() => this.props.deleteElec(this.props.num)} className="fas fa-trash-alt trash-icon clickable"></i>
 
-        <div className="patient-dem-container">
-            
-            <div className="patient-show-inner-card bigger flex-row">
-
-
-                <section className='inner-card__section-grouping__electrodes'>
-                    <div className='inner-card__field-grouping ' onChange={this.handleChange}>
-                        <div className='inner-card__field-label smaller-font'>Region</div>
-                        <AutoComplete
-                            className={"inner-card__field-value height-none"}
-                            updateState={this.updateState}
-                            suggestionClassName={"suggestions"}
-                            filter={null}
-                            suggestions={brainRegions} />
-                        {/* <input
-                            className='inner-card__field-value height-none'
-                            type="text"
-                            onChange={this.handleChange("region")}
-                            value={this.state.region}
-                        /> */}
-                    </div>
-
-                    <div className='inner-card__field-grouping'>
-                        <div className='inner-card__field-label smaller-font'>Number of Electrodes</div>
-                        <input
-                            className='inner-card__field-value height-none'
-                            type="text"
-                            onChange={this.handleChange("numElecs")}
-                            value={this.state.numElecs}
-                        />
-                    </div>
-                    <i onClick={() => this.props.deleteElec(this.props.num)} className="fas fa-trash-alt trash-icon clickable"></i>
-
-                    </section>
-
-                    
-            </div>
-
-            {/* <AutoComplete
-                suggestions={[
-                    "Alligator",
-                    "Bask",
-                    "Crocodilian",
-                    "Death Roll",
-                    "Eggs",
-                    "Jaws",
-                    "Reptile",
-                    "Solitary",
-                    "Tail",
-                    "Wetlands"
-                ]} /> */}
-        </div>
+            </section>
+        </>
     )
     }
 

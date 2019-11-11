@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link, withRouter, Redirect} from "react-router-dom";
-// import '../css/nav_bar.scss'
 import Logo from '../images/NeuroDBLogo.png'
 
 const App = (props) => {
