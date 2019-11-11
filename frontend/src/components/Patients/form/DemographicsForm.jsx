@@ -1,6 +1,5 @@
 import React from 'react';
 import Select from 'react-select'
-// import '../../../css/form.scss'
 
 class DemographicsForm extends React.Component {
 

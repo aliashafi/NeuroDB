@@ -3,9 +3,9 @@ import DemographicsForm from './DemographicsForm';
 import MedicalHistoryForm from './MedicalHistoryForm'
 import ImagingForm from './ImagingForm'
 import MedicationForm from './MedicationForm'
+import TaskForm from './TaskForm';
 
-// import '../../../css/form.scss'
-// import '../../../css/button.scss'
+
 class PatientCreateForm extends React.Component {
     constructor(props) {
         super(props)
@@ -134,6 +134,9 @@ class PatientCreateForm extends React.Component {
                         imaging={this.state.imaging}
                         updateForm={this.updateForm}
                     />
+                    
+                    <TaskForm 
+                        currentStep={this.props.visibleCard}/>
 
                     <div class='flex flex-row'>
                         <div 

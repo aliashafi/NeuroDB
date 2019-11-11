@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import * as d3 from 'd3';
-// import '../../css/deethree.scss';
 import DemographicsPercentBarGraph from './demographics_percent_bar_graph';
 import PieChart from './pie_chart';
 import RadarChart from './radar_chart';

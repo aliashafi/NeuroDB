@@ -417,6 +417,19 @@
 
 
 .electrode {
+    &__form {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-right: 20px;
+        width: 50%;
+        flex: 0 0;
+    }
+    &__montage {
+        width: 100%;
+        flex: 0 0;
+    }
     &__table {
         margin-top: 20px;
         border: 1px solid #eff0f1;
@@ -434,6 +447,12 @@
         margin-right: 32px;        
         width: 150px;
         color: $core-teal;
+        &--imaging {
+            margin-right: 32px;        
+            width: 150px;
+            color: $core-teal;
+            text-align: left;
+        }
     }
     &__col-header-group {
         display: flex;
@@ -453,10 +472,89 @@
         height: 35px;
         border-bottom: 1px solid $lightgray-three;
         width: 100%;
+        &--imaging {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            box-sizing: border-box;
+            margin: 10px 0px 10px 0px;
+            height: 35px;
+            
+            width: 100%;
+        }
     }
 }
+.row-header-border {
+    border-bottom: 1px solid $lightgray-three;
+}
+.montage {
+    &__form {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-right: 20px;
+        width: 50%;
+        flex-grow: 0;
 
-
+    }
+    &__montage {
+        width: 100%;
+        flex: 1;
+    }
+    &__table {
+        margin-top: 20px;
+        border: 1px solid #eff0f1;
+        border-radius: 8px;
+        padding: 50px;
+        width: 400px;
+        box-sizing: border-box
+    }
+    &__list {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        color: $text-gray;
+    }
+    &__col-header {
+        &--short {
+            width: 50px;
+            color: $core-teal;
+            text-align: left; 
+        }
+        &--long {
+            width: 180px;
+            color: $core-teal;
+            text-align: left; 
+        }
+        
+    }
+    &__col-header-group {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        margin-right: 32px;
+        width: 150px;
+    }
+    &__row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        box-sizing: border-box;
+        margin: 0px 0px 10px 0px;
+        height: 35px;
+        border-bottom: 1px solid $lightgray-three;
+        width: 100%;
+    }
+}
+#montage-btn {
+    transition: background-color 0.2s ease-in;
+}
+#montage-btn:hover {
+    background-color: $bright-teal;
+}
 .editable {
     //keep
     background-color: #ebf6ff;

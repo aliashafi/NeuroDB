@@ -1,6 +1,4 @@
 import React from 'react';
-// import '../../css/patient_table.scss'
-// import PatientIndexItem from './PatientIndexItem';
 import PatientIndexSideBar from './PatientIndexSubcomp/PatientIndexSideBar';
 import PatientTable from './PatientIndexSubcomp/PatientTable';
 import PatientPopUp from './PatientIndexSubcomp/PatientPopUp'
