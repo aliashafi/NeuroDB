@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import '../../../css/autocomplete.scss'
+// import '../../../css/autocomplete.scss'
 
 // Autocomplete function created with help from this tutorial https://alligator.io/react/react-autocomplete/
 

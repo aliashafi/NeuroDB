@@ -2,8 +2,8 @@ import React from 'react';
 import CoverageSearch from './patient_search_by/CoverageSearch'
 import DemographicSearch from './patient_search_by/DemographicSearch'
 import MedicalHistorySearch from './patient_search_by/MedicalHistory'
-import '../../../css/index_nav.scss'
-import '../../../css/_tackons.scss'
+// import '../../../css/index_nav.scss'
+// import '../../../css/_tackons.scss'
 
 class PatientIndexSideBar extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import BrainIcon from "../../images/brain-icon.png";
-import "../../css/user_show.scss";
+// import "../../css/user_show.scss";
 // import {Redirect} from "react-router-dom";
 
 class UserShow extends React.Component {

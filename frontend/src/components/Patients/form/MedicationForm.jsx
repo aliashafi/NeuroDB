@@ -1,6 +1,6 @@
 import React from 'react';
 import AddMedicationForm from './AddMedicationForm'
-import '../../../css/form.scss'
+// import '../../../css/form.scss'
 
 class MedicationForm extends React.Component {
 

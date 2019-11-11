@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../../css/elec_montage.scss'
+// import '../../../../css/elec_montage.scss'
 
 class MontageItem extends React.Component {
 

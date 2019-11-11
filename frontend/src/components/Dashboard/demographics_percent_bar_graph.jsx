@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import * as d3 from 'd3';
-import '../../css/deethree.scss';
+// import '../../css/deethree.scss';
 
 function DemographicsPercentBarGraph(props) {
     const dominantHandArr = props.patients.map(patient => patient.demographics.dominantHand);

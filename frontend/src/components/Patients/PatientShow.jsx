@@ -1,8 +1,8 @@
 import React from 'react';
 import PatientShowCard from './PatientShowSubcomp/patient_show_card';
 import PatientShowSideNav from './PatientShowSubcomp/patient_show_side_nav';
-import '../../css/patient_show.scss';
-import '../../css/_tackons.scss';
+// import '../../css/patient_show.scss';
+// import '../../css/_tackons.scss';
 
 class PatientShow extends React.Component {
     constructor(props) {

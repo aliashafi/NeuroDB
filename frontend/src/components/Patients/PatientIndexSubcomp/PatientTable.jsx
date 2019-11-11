@@ -1,8 +1,8 @@
 import React from 'react';
 import { sortByDate, sortByAge, sortByResearchID} from '../../../util/sort_api_util';
 import { formatDate } from '../../../util/date_api_uil';
-import '../../../css/patient_table.scss'
-import '../../../css/_tackons.scss'
+// import '../../../css/patient_table.scss'
+// import '../../../css/_tackons.scss'
 import PatientBasicSearchBar from './PatientBasicSearchBar';
 
 class PatientTable extends React.Component {
