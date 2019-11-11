@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, withRouter, Redirect} from "react-router-dom";
 import '../css/nav_bar.scss'
-import Logo from '../images/NeuroDBLogo.png'
+import Logo from '../images/brain_grid.png'
 
 const App = (props) => {
     // function App() {
@@ -25,7 +25,7 @@ const App = (props) => {
         <div className="btn-container">
             <div onClick={toggleMenuDropdown} className='nav-bar-menu'>
                 <div className='nav-bar-menu-btn btn btn--nav custom-link'>
-                    <i class="fas fa-bars"></i>
+                    <i className="fas fa-bars"></i>
                     <div>Menu</div>
                 </div>
 
@@ -66,6 +66,7 @@ const App = (props) => {
             <div id="left-nav">
                 <div onClick={handleRedirectHome} id="logo" className='clickable'>
                     <img src={Logo} alt=""/>
+                    <div id="logo-text">NeuroDB</div>
                 </div>
             </div>
 
