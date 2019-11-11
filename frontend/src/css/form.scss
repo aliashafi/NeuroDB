@@ -1,6 +1,3 @@
-@import './config.scss';
-
-@import './custom_borders.scss';
 
 .card{
     width: 50%;
@@ -16,7 +13,8 @@
         display: flex;
         flex-direction: column; 
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        height: 100%;
         
         
     }
@@ -245,9 +243,23 @@
 }
 
 .patient-add-imaging{
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    color: $dark-purple;
+    &:hover {
+        color: $bright-purple;
+    }
+    &--label {
+        padding-right: 12px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    span {
+        font-size: 16px; 
+    }
     .left-side{
         width: 50%;
         // display: flex;
@@ -295,12 +307,22 @@
     align-items: center;
     margin-left: 7px;
     display: flex;
+    color: $core-teal
 }
 
 .inner-card__section-grouping__electrodes:hover .trash-icon{
     visibility: visible;
 }
-    
+
+.deletable-field:hover .trash-icon{
+    visibility: visible;
+}
+
+.imaging-form-two-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
 
 
 

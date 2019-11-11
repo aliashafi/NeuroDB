@@ -6,7 +6,7 @@ import Features from "./features";
 import Collaborators from "./collaborators";
 import Brain from '../images/brain.png';
 import BrainGrid from '../images/brain_grid.png';
-import '../css/splash-page.scss';
+
 
 const mapStateToProps = (state) => {
     return {

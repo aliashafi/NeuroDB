@@ -1,8 +1,7 @@
 import React from 'react';
 import PatientShowSideNav from './PatientShowSubcomp/patient_show_side_nav';
 import PatientCreateForm from './form/PatientCreateForm';
-import '../../css/patient_show.scss';
-import '../../css/_tackons.scss';
+
 
 class PatientCreate extends React.Component {
 
@@ -47,6 +46,7 @@ class PatientCreate extends React.Component {
                 <PatientCreateForm 
                     visibleCard={this.state.visibleCard}
                     processForm={this.props.processForm}
+                    handleVisibleCardChange={this.handleVisibleCardChange}
                     />
                 
             </div>

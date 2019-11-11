@@ -3,62 +3,17 @@ import React, { useState, useEffect } from 'react';
 function PatientShowMedication(props){
     const [renderEdit, setRenderEdit] = useState(false);
 
-    const initMedicaitonName = (props.patient.medication) ? props.patient.medication.medicationName : '';
-    const initMedicationPurpose = (props.patient.medication) ? props.patient.medication.medicationPurpose : '';
-
-    const [medicationName, setMedicationName] = useState(initMedicaitonName);
-    const [medicationPurpose, setMedicationPurpose] = useState(initMedicationPurpose);
+    const initMedication = (props.patient.medication) ? props.patient.medication : [];
+    const [medication, setMedication] = useState(initMedication);
 
     useEffect(() => {
-        if (props.patient.medication) {
-            setMedicationName(props.patient.medication.medicationName);
-            setMedicationPurpose(props.patient.medication.medicationPurpose);
-        }
+
     }, [props.patient]);
 
-    function handleMedicationNameChange(e) {
-        setMedicationName(e.target.value);
-    }
-    function handleMedicationPurposeChange(e) {
-        setMedicationPurpose(e.target.value);
-    }
-
-    function renderMedicationNames() {
-        return props.patient.medication.map((medication) => (
-            <div className='medication-item'>{medication.medicationName}</div>
-        ));
-    }
-
-    function renderMedicationPurposes() {
-        return props.patient.medication.map((medication) => (
-            <div className='medication-item'>{medication.medicationPurpose || ''}</div>
-        ));
-    }
-
-    function renderComp() {
-        return (
-            <>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>Medication</div>
-                {/* <input onChange={handleMedicationNameChange} className='inner-card__field-value' value={medicationName} disabled={!renderEdit} /> */}
-                <div className='inner-card__field-value-medication'>
-                    <div className='medication-body-container'>
-                        {renderMedicationNames()}
-                    </div>
-                </div>
-            </div>
-            <div className='inner-card__field-grouping'>
-                <div className='inner-card__field-label'>Purpose</div>
-                {/* <input onChange={handleMedicationPurposeChange} className='inner-card__field-value' value={medicationPurpose} disabled={!renderEdit} /> */}
-                <div className='inner-card__field-value-medication'>
-                    <div className='medication-body-container'>
-                        {renderMedicationPurposes()}
-                    </div>
-                </div>
-            </div>
-            </>
-        );
-       
+    function handleMedicationChange(e) {
+        let updatedMed = [...medication];
+        updatedMed[e.target.dataset.idx][e.target.dataset.field] = e.target.value;
+        setMedication(updatedMed);
     }
 
     function handleEditClick(e) {
@@ -72,10 +27,7 @@ function PatientShowMedication(props){
         setRenderEdit(!renderEdit);
         const data = {
             _id: props.patient._id,
-            medication: {
-                medicationName,
-                medicationPurpose
-            },
+            medication: medication,
         };
         props.updatePatient(data)
         .then(() => {
@@ -83,20 +35,50 @@ function PatientShowMedication(props){
             Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
         });
     }
+
     function handleCancelClick(e) {
         setRenderEdit(!renderEdit);
-        setMedicationName(initMedicaitonName);
-        setMedicationPurpose(initMedicationPurpose);
+        setMedication(initMedication);
         const allValueFields = document.querySelectorAll('.inner-card__field-value');
         Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
     }
 
-    function handleCancelClick(e) {
-        setRenderEdit(!renderEdit);
-        setMedicationName(initMedicaitonName);
-        setMedicationPurpose(initMedicationPurpose);
-        const allValueFields = document.querySelectorAll('.inner-card__field-value');
-        Array.from(allValueFields).forEach(field => field.classList.remove('editable'));
+    function renderComp() {
+        return (
+           
+            <div className='patient-show-inner-card__info'>
+                <div className='medication-list'>
+                    <div className='inner-card__field-grouping'>
+                        <div className='field-group-label field-right-buffer'>Medication Name</div>
+                        <div className='field-group-label'>Medication Purpose</div>
+                    </div>
+                        {medication.map((med, i) => (
+                            <div key={i} className='inner-card__field-grouping'>
+                                <input 
+                                    key={`name-${i}`}
+                                    onChange={handleMedicationChange} 
+                                    dataset-idx={i}
+                                    dataset-field="medicationName"
+                                    className='inner-card__field-value field-right-buffer' 
+                                    value={med.medicationName} 
+                                    disabled={!renderEdit}
+                                />
+                                <input 
+                                    key={`purpose-${i}`}
+                                    onChange={handleMedicationChange} 
+                                    dataset-idx={i}
+                                    dataset-field="medicationPurpose"
+                                    className='inner-card__field-value long-field' 
+                                    value={med.medicationPurpose} 
+                                    disabled={!renderEdit} 
+                                />
+                            </div>
+                        ))}
+                </div>
+            </div>
+      
+        );
+       
     }
 
     function renderButton() {
@@ -117,14 +99,14 @@ function PatientShowMedication(props){
     }
     
     return (
-        <div className='patient-show-inner-card-show'>
+        <div className='patient-show-inner-card'>
             {renderButton()}
-            <div className='patient-show-inner-card__header'>Medication</div>
-            <div className='header-divider'></div>
-            <div className='patient-show-inner-card__medication-body'>
-                <div className='patient-show-inner-card__info2'>
-                    {renderComp()}
-                </div>
+            <div className='patient-show-inner-card__header'>
+                <div>Medication</div>
+                <div className='header-divider'></div>
+            </div>
+            <div className='patient-show-inner-card__body'>
+                {renderComp()}
             </div>           
 
         </div>

@@ -30,41 +30,25 @@ class ElectrodeForm extends React.Component {
 
         return (
 
-            <div className="patient-dem-container">
-
-                <div className="patient-show-inner-card bigger flex-row">
-
-
-                    <section className='inner-card__section-grouping__electrodes'>
-                        <div className='inner-card__field-grouping ' onChange={this.handleChange}>
-                            <div className='inner-card__field-label smaller-font'>Name</div>
-                            {/* <AutoComplete
-                                className={"inner-card__field-value height-none"}
-                                updateState={this.updateState}
-                                suggestions={brainRegions} /> */}
-                            <input
-                            className='inner-card__field-value height-none'
-                            type="text"
-                            onChange={this.handleChange("medicationName")}
-                            value={this.state.medicationName}
-                        />
-                        </div>
-
-                        <div className='inner-card__field-grouping'>
-                            <div className='inner-card__field-label smaller-font'>Purpose</div>
-                            <input
-                                className='inner-card__field-value height-none'
-                                type="text"
-                                onChange={this.handleChange("medicationPurpose")}
-                                value={this.state.medicationPurpose}
-                            />
-                        </div>
-                        <i onClick={() => this.props.deleteMed(this.props.num)} className="fas fa-trash-alt trash-icon clickable"></i>
-
-                    </section>
-
-
+            <>
+                <div className='inner-card__field-grouping deletable-field' onChange={this.handleChange}>
+                    
+                    <input
+                        className='inner-card__field-value field-right-buffer editable'
+                        type="text"
+                        onChange={this.handleChange("medicationName")}
+                        value={this.state.medicationName}
+                    />
+                    <input
+                        className='inner-card__field-value long-field editable'
+                        type="text"
+                        onChange={this.handleChange("medicationPurpose")}
+                        value={this.state.medicationPurpose}
+                    />
+                    <i onClick={() => this.props.deleteMed(this.props.num)} className="fas fa-trash-alt trash-icon clickable"></i>
                 </div>
+
+            
 
                 {/* <AutoComplete
                 suggestions={[
@@ -79,7 +63,7 @@ class ElectrodeForm extends React.Component {
                     "Tail",
                     "Wetlands"
                 ]} /> */}
-            </div>
+            </>
         )
     }
 

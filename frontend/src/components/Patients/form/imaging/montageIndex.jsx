@@ -29,15 +29,16 @@ class MontageIndex extends React.Component {
         
         return(
             <div>
-                <div className="montage-headers">
-                    <div>
-                        <h1>Num</h1>
+                <div className='montage__row'>
+                {/* <div className="montage-headers"> */}
+                    <div className='montage__col-header--short'>
+                        Num
                     </div>
-                    <div>
-                        <h1>Elec Name</h1>
+                    <div className='montage__col-header--long'>
+                        Elec Name
                     </div>
-                    <div>
-                        <h1>Region</h1>
+                    <div className='montage__col-header--long'>
+                        Region
                     </div>
                 </div>
                 {montage}

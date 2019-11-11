@@ -1,6 +1,5 @@
 import React from 'react';
 import AddMedicationForm from './AddMedicationForm'
-import '../../../css/form.scss'
 
 class MedicationForm extends React.Component {
 
@@ -64,27 +63,28 @@ class MedicationForm extends React.Component {
 
 
         return(
-            <div className="patient-dem-container">
-                <h1 className="patient-show-inner-card__header initial-header">Medication</h1>
-                <div className='header-divider'></div>
-
-
-
-                <div className="patient-add-imaging">
-                    <div className="left-side">
-                        <div>
-                            <h1>Add Medication</h1><span><i onClick={() => this.addMed()} className="far fa-plus-square clickable"></i></span>
-                        </div>
-                    
-                    <div className="left-side__electrode-form">
-
-                        <div>
+            <>
+                <div className='patient-show-inner-card__header'>
+                    <div>Medication</div>
+                    <div className='header-divider'></div>
+                </div>
+                <div className='patient-show-inner-card__body'>
+                    <div className='patient-show-inner-card__info'>
+                        
+                        <div className='medication-list'>
+                            <div className='inner-card__field-grouping'>
+                                <div className='field-group-label field-right-buffer'>Medication Name</div>
+                                <div className='field-group-label'>Medication Purpose</div>
+                            </div>
                             {addMedication}
                         </div>
-                    </div>
+                        <div onClick={() => this.addMed()} className='patient-add-imaging clickable'>
+                            <h1 className='patient-add-imaging--label'>Add Another Medication</h1>
+                            <span><i className="far fa-plus-square"></i></span>
+                        </div>
                     </div>
                 </div>
-        </div>
+            </>
         )
     }
 }
