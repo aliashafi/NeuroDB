@@ -14,14 +14,15 @@
     margin-top: 40px;
   }
   h2 {
-    font-size: 2.4rem;
-    color: $core-teal;
+    font-size: 2rem;
+    // color: $core-teal;
+    color: #58a9d8;
     font-weight: 400;
     margin: 20px 0;
   }
   h3 {
-    font-size: 1.9rem;
-    color: $core-teal;
+    font-size: 1.5rem;
+    color: #58a9d8;
     font-weight: 400;
     margin-top: 16px;
   }
@@ -29,26 +30,24 @@
     padding-top: 40px;
     width: 100%;
     flex-grow: 12;
+    margin: 30px;
   }
   &__features{
     width: 100%;
     // height: 50%;
     background-color: rgba(238, 247, 255, 0.6);
     flex-grow: 0;
+    margin: 30px 0;
   }
   &__people {
     width: 100%;
+    margin: 30px 0;
   }
   &__footer {
     width: 100%;
     background-color: rgba(238, 247, 255, 0.6);
   }
 }
-
-// .splash-page img {
-//   width: 200px;
-//   margin-top: 20px;
-// }
 
 #main-img {
   width: 200px;
@@ -61,6 +60,7 @@
   margin: 20px auto;
   font-weight: 300;
   max-width: 730px;
+  line-height: 24px;
 
   &__card {
     font-size: 1.1rem;
@@ -68,6 +68,7 @@
     margin: 20px auto;
     font-weight: 300;
     max-width: 730px;
+    line-height: 24px;
   }
 }
 

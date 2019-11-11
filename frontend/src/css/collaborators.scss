@@ -12,9 +12,9 @@
     // border: 1px solid #eff0f1;
     border: 1px solid #ebebeb;
     border-radius: 5px;;
-    width: 34%;
-    height: 260px;
-    margin: 14px;
+    width: 30%;
+    height: 240px;
+    margin: 14px 30px;
 }
 
 .person-info {
@@ -44,11 +44,11 @@
 
 .person-links a {
     text-decoration: none;
-    font-size: 17px;
+    font-size: 16px;
     color: $nav-navy;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .person-links a:hover {
-    color: $core-teal;
+    color: #58a9d8;
 }
