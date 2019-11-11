@@ -49,7 +49,7 @@ class DemographicsForm extends React.Component {
         return(
         <>
             <div className='patient-show-inner-card__header'>
-                <div>Demographics</div>
+                <div>Patient Info</div>
                 <div className='header-divider'></div>
             </div>
                 <div className="patient-show-inner-card__body">
@@ -58,7 +58,7 @@ class DemographicsForm extends React.Component {
                             <div className='inner-card__field-grouping'>
                                 <div className='inner-card__field-label'>Research ID</div>
                                 <input
-                                    className='inner-card__field-value'
+                                    className='inner-card__field-value editable'
                                     type="text"
                                     name="researchId"
                                     placeholder="ECXX"
@@ -70,7 +70,7 @@ class DemographicsForm extends React.Component {
                             <div className='inner-card__field-grouping'>
                                 <div className='inner-card__field-label'>Date of Surgery</div>
                                 <input
-                                    className='inner-card__field-value'
+                                    className='inner-card__field-value editable'
                                     type="date"
                                     name="dateOfSurgery"
                                     value={this.props.demographics.dateOfSurgery}
@@ -82,7 +82,7 @@ class DemographicsForm extends React.Component {
                             <div className='inner-card__field-grouping'>
                                 <div className='inner-card__field-label'>Birth Date</div>
                                 <input
-                                    className='inner-card__field-value'
+                                    className='inner-card__field-value editable'
                                     type="date"
                                     name="birthDate"
                                     value={this.props.demographics.demographics.birthDate}
@@ -94,7 +94,7 @@ class DemographicsForm extends React.Component {
                             <div className='inner-card__field-grouping'>
                                 <div className='inner-card__field-label'>Native Language</div>
                                 <input
-                                    className='inner-card__field-value'
+                                    className='inner-card__field-value editable'
                                     ttype="text"
                                     name="nativeLanguage"
                                     value={this.props.demographics.demographics.nativeLanguage}

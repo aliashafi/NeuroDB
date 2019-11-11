@@ -9,9 +9,15 @@
 .flex-size{
     flex: 0 1 80px;
 }
-
+.flex {
+    display: flex;
+}
 .flex-row{
     flex-direction: row;
+    align-items: flex-end;
+}
+.space-between {
+    justify-content: space-between;
 }
 
 .initial-header{

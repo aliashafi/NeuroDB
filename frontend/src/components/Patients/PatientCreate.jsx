@@ -47,6 +47,7 @@ class PatientCreate extends React.Component {
                 <PatientCreateForm 
                     visibleCard={this.state.visibleCard}
                     processForm={this.props.processForm}
+                    handleVisibleCardChange={this.handleVisibleCardChange}
                     />
                 
             </div>
