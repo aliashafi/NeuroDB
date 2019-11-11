@@ -4,8 +4,8 @@ import MedicalHistoryForm from './MedicalHistoryForm'
 import ImagingForm from './ImagingForm'
 import MedicationForm from './MedicationForm'
 
-import '../../../css/form.scss'
-import '../../../css/button.scss'
+// import '../../../css/form.scss'
+// import '../../../css/button.scss'
 class PatientCreateForm extends React.Component {
     constructor(props) {
         super(props)
@@ -120,7 +120,10 @@ class PatientCreateForm extends React.Component {
                         updateForm={this.updateForm}
                     />
                     
-                    <div onClick={this.handleSubmit} id="button-submit">Add patient with current entry
+                    <div 
+                        onClick={this.handleSubmit} 
+                        
+                        class='btn btn--form margin-top-30'>Add patient with current entry
                         {/* <input type="submit" value="Add Patient"/> */}
                     </div>
                 </form>
