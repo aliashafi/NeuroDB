@@ -1,0 +1,57 @@
+@import './splash-page.scss';
+// @import './button.scss';
+// @import './config.scss';
+
+.collaborators-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    // border: 1px solid green;
+}
+
+.person-card {
+    // border: 1px solid #eff0f1;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;;
+    width: 34%;
+    height: 260px;
+    margin: 14px;
+}
+
+.person-info {
+    // border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    // margin-top: 10px;
+}
+
+.person-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    // border: 1px solid black;
+}
+
+.person-links {
+    // border: 1px solid pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80%;
+    width: 40%;
+}
+
+.person-links a {
+    text-decoration: none;
+    font-size: 17px;
+    color: $nav-navy;
+    transition: 0.4s;
+}
+
+.person-links a:hover {
+    color: $core-teal;
+}
