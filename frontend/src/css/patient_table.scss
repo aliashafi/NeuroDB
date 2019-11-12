@@ -1,15 +1,10 @@
-@import './reset.scss';
-@import './config.scss';
-@import './base.scss';
-@import './patient_show.scss';
-@import './sliding_scale.scss';
 
 
 //side-nav
 .side-nav-container-index{
     background-color: $nav-navy;
     color: white;
-    height: 100vh;
+    height: 95vh;
     width: 0px;
     overflow: auto;
     display: flex;

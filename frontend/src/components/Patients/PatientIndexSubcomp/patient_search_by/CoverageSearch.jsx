@@ -26,7 +26,7 @@ class CoverageSearch extends React.Component{
         return(
             <div>
                 <div onClick={() => this.handleClick()} className="filters__header-container">
-                    <div className='filters__coverage__icon'><i class="fas fa-brain"></i></div>
+                    <div className='filters__coverage__icon'><i className="fas fa-brain"></i></div>
                     <h2>Filter By Coverage</h2>
                 </div>
 

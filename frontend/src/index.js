@@ -9,7 +9,7 @@ import { createPatient, getPatient, getPatients } from './util/patient_api_util'
 import { logout, loginUser, registerUser } from './actions/session_actions';
 import {fetchUsers, fetchUser, deleteUser, updateUser} from "./actions/user_actions";
 import { createTask, getTask, updateTask } from './util/task_api_util';
-
+import './index.scss';
 import {verifyToken} from "./util/user_api_util";
 
 document.addEventListener('DOMContentLoaded', () => {

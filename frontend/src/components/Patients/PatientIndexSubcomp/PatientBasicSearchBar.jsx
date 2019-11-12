@@ -1,7 +1,6 @@
 import React from 'react';
 import { sortByDate, sortByAge, sortByResearchID } from '../../../util/sort_api_util'
-import '../../../css/patient_table.scss'
-import '../../../css/_tackons.scss'
+
 
 
 class PatientBasicSearchBar extends React.Component{

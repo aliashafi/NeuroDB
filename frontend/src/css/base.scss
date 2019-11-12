@@ -1,6 +1,20 @@
 .std-shadow {
     box-shadow: 0 5px 20px 0 rgba(21,27,38,.08);
 }
+.development-notice {
+    display: flex;
+    align-items: center;
+    p {
+        font-size: 1.3rem;
+        color: $core-coral;
+        margin: 20px 0;
+    }
+    i {
+        color: $core-gold;
+        font-size: 2rem;
+        margin-right: 20px;
+    }
+}
 
 .btn {
     padding: 12px;
@@ -26,7 +40,7 @@
         
     }
     &--nav {
-        padding: 8px 12px;
+        // padding: 8px 12px;
         background-color: transparent;
         line-height: 12px;
         margin: 10px 5px;
@@ -38,10 +52,38 @@
     &--card {
        background-color: $core-teal;
        color: white;
-       
+        margin-right: 0;
+    }
+    &--form {
+        background-color: $lightgray-three;
+        color: $text-gray;
+        margin-right: 0;
+        margin-left: 0;
+        transition: all 0.3s ease-in;
+        &:hover {
+            background-color: $core-teal;
+            color: white;
+        }
+        
+    }
+    &--form2 {
+        background-color: $core-teal;
+        color: white;
+        margin-right: 0;
+        margin-left: 0;
+        transition: all 0.3s ease-in;
+        &:hover {
+            
+        }  
     }
 }
-
+.form-btn-group {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
 .btn-group {
     display: flex;
@@ -49,8 +91,8 @@
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    top: 10px;
-    right: 30px;
+    top: 0px;
+    right: 0px;
 }
 
 
@@ -76,9 +118,7 @@ div[class*="btn_"]{
 .radio-grouping {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
-    margin-top: 10px;
-    
+    justify-content: flex-start;    
 }
 .radio-btn-container {
     display: flex;
@@ -109,11 +149,11 @@ input[type=radio   ]:not(old){
   }
   input[type=radio   ]:not(old) + label > span{
     display          : inline-block;
-    width            : 30px;
-    height           : 30px;
+    width            : 20px;
+    height           : 20px;
     margin           : 0.25em 0.5em 0.25em 0.25em;
     border           : 0.0625em solid #c3e7fa;
-    border-radius    : 5px;;
+    border-radius    : 5px;
     background       : white;
     vertical-align   : bottom;
   }
@@ -123,11 +163,11 @@ input[type=radio   ]:not(old){
   }
   input[type=radio]:not(old):checked + label > span > span{
       
-    display          : block;
-    font-size: 2rem;
-    line-height: 30px;
+    display: block;
+    font-size: 1.5rem;
+    line-height: 18px;
     color: $core-teal;
-    background-color       : transparent;
+    background-color: transparent;
   }
 
 input[type=radio]:not(old):disabled + label > span > span{
@@ -136,3 +176,5 @@ input[type=radio]:not(old):disabled + label > span > span{
 input[type=radio]:not(old):disabled + label > span {
     border-color: $lightgray-three;
 }
+
+

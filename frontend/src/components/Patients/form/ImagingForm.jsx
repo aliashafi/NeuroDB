@@ -101,38 +101,47 @@ class ImagingForm extends React.Component {
 
         
         return(
-            <div className="patient-dem-container">
-                <h1 className="patient-show-inner-card__header initial-header">Imaging</h1>
-                <div className='header-divider'></div>
-                
-                <div className="patient-add-imaging">
-                        <div className="left-side">
-                            <div>
-                            <h1>Add to Montage</h1><span><i onClick={() => this.addElec()} className="far fa-plus-square clickable"></i></span>
-                            </div>
-                            <div className="left-side__electrode-form">
-
-                            <div>
+            <>
+                <div className='patient-show-inner-card__header'>
+                    <div>Imaging</div>
+                    <div className='header-divider'></div>
+                </div>
+                <div className='patient-show-inner-card__body'>
+                    <div className='patient-show-inner-card__info'>
+                        <div className='imaging-form-two-col'>
+                            <div className='electrode__form'>
+                                <div className='electrode__row--imaging row-header-border'>
+                                    <div className='electrode__col-header--imaging'>Region</div>
+                                        <div className='electrode__col-header--imaging'># of Electrodes</div>
+                                </div>
                                 {addElecForms}
 
-                                <div className="btn btn--card margin-left-none" onClick={this.renderMontage}>
+                                <div onClick={() => this.addElec()} className='patient-add-imaging clickable'>
+                                    <h1 className='patient-add-imaging--label'>Add Another Region</h1>
+                                    <span><i className="far fa-plus-square"></i></span>
+                                </div>
+
+                                
+                            </div>
+                            <div className="electrode__montage">
+                                <div id='montage-btn' className="btn btn--card margin-left-none" onClick={this.renderMontage}>
                                     Render Montage
                                 </div>
+                                <MontageIndex
+                                    key="montage-idx"
+                                    montage={Object.values(this.state.montage)}
+                                    updateMontage={this.updateMontage} />
                             </div>
-                            </div>
-                            
                         </div>
 
-
-                        <div className="right-side">
-                        <h1>Montage</h1>
-                            <MontageIndex 
-                                key="montage-idx"
-                                montage={Object.values(this.state.montage)} 
-                                updateMontage={this.updateMontage}/> 
-                        </div>
+                    </div>
                 </div>
-            </div>
+
+                
+
+
+                
+            </>
         )
     }
 }

@@ -42,4 +42,31 @@ export const formatDate = date => {
 
 
 
-    return `${months[month]} ${day} ${year}`}
+    return `${months[month]} ${day} ${year}`
+}
+
+
+    export const formatDateShort = date => {
+        const months = {
+            1: '01',
+            2: '02',
+            3: '03',
+            4: '04',
+            5: '05',
+            6: '06',
+            7: '07',
+            8: '08',
+            9: '09',
+            10: '10',
+            11: '11',
+            12: '12',
+        };
+    
+        const newDate = date.split("T");
+        const ymd = newDate[0].split("-");
+        const year = ymd[0];
+        const month = parseInt(ymd[1]);
+        const day = parseInt(ymd[2]);
+       
+        return (day > 9) ? `${year}-${months[month]}-${day}` : `${year}-${months[month]}-0${day}`;
+    }

@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import PlaceholderBrainProfile from '../../../images/placeholder_rotating_brain.gif'
 import TaskTimeline from './taskTimeline'
-import '../../../css/patient_popup.scss';
+
 
 
 
