@@ -20,7 +20,9 @@ class PatientIndex extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         this.props.fetchPatients();
+        debugger
     }
 
     updatePatientsWithFilter(filteredPatients){
