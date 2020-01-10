@@ -30,9 +30,12 @@ class LoginForm extends React.Component {
             password: 'password'
         }
         this.props.loginUser(user)
+        
+        // this.props.history.push("/patients")
             .then(() =>
                 this.props.history.push(`/patients`)
-            )        
+            )       
+        
     }
 
     handleSubmit(event) {
@@ -49,6 +52,8 @@ class LoginForm extends React.Component {
         const emailErrors = this.props.loginErrors.email;
         const passwordErrors = this.props.loginErrors.password;
         const notVerified = this.props.loginErrors.notVerified;
+
+        // console.log(this.props.currentUserId)
 
         return (
             <div className="session-form-container">

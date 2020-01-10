@@ -127,7 +127,7 @@ class PatientTable extends React.Component {
                         </div>
                         
                         {this.state.filteredPatients.map((patient, index) => (
-                            <div onClick={() => this.props.handleQuickView(index)}>
+                            <div key={index} onClick={() => this.props.handleQuickView(index)}>
                                 <div>{patient._id}</div>
                                 <div>{patient.researchId}</div>
                                 <div>{patient.demographics.age}</div>

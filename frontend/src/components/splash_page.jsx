@@ -16,8 +16,6 @@ const mapStateToProps = (state) => {
 
 const SplashPage = (props) => {
 
-    console.log(props)
-
     const splashBtns = props.currentUserId ? (
         <div>
         </div>

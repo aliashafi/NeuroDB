@@ -53,6 +53,7 @@ class PatientTable extends React.Component {
                     <div>
                         {patients.map((patient, index) => (
                             <div 
+                            key={index}
                             onClick={() => this.props.handleQuickView(patient)}
                             className="patient-table__rows clickable">
                                 <div>{patient.researchId}</div>

@@ -148,7 +148,7 @@ class PatientBasicSearchBar extends React.Component{
 
         return(
             <div className="search-bar no-padding" >
-                <div className="search-icon"><i class="fas fa-search"></i></div>
+                <div className="search-icon"><i className="fas fa-search"></i></div>
                 <input className="search-bar__researchId" type="text" placeholder='Search by Research ID'
                     onChange={(e) => this.handleSearchInput(e)}
                     id="researchId"

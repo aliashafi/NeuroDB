@@ -46,6 +46,7 @@ export const loginUser = (user) => (dispatch) => {
     return (
         SessionApiUtil.login(user)
             .then( (response) => {
+                console.log(response)
                 const {token} = response.data;
                 // remembers web token between different sessions
                 localStorage.setItem("jwtToken", token);

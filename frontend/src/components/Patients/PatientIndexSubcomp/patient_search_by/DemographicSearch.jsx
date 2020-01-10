@@ -37,11 +37,11 @@ class DemographicsSearch extends React.Component{
                         <div className="filter-sex">
                             <div className='filter-sex__bullet'>M
                                     <i onClick={() => this.props.handleRadioInput("gender", "M")}
-                                    class={`fas fa-circle bullet left-margin ${this.props.filters.gender === "M" ? "checked-bullet" : ""}`} />
+                                    className={`fas fa-circle bullet left-margin ${this.props.filters.gender === "M" ? "checked-bullet" : ""}`} />
                             </div>
                             <div className='filter-sex__bullet'>F
                                     <i onClick={() => this.props.handleRadioInput("gender", "F")}
-                                    class={`fas fa-circle bullet left-margin ${this.props.filters.gender === "F" ? "checked-bullet" : ""}`} />
+                                    className={`fas fa-circle bullet left-margin ${this.props.filters.gender === "F" ? "checked-bullet" : ""}`} />
                             </div>
                         </div>
                     </div>

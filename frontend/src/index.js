@@ -15,8 +15,8 @@ import {verifyToken} from "./util/user_api_util";
 document.addEventListener('DOMContentLoaded', () => {
     let store;
     store = configureStore({})
-    window.getState = store.getState;
-    window.dispatch = store.dispatch
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch
     if (localStorage.jwtToken) {
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
@@ -34,24 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ReactDOM.render(<Root store={store}/>, root);
 
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
 
-    window.logout = logout;
+    // window.logout = logout;
 
-    window.fetchUsers = fetchUsers;
-    window.fetchUser = fetchUser;
-    window.deleteUser = deleteUser;
+    // window.fetchUsers = fetchUsers;
+    // window.fetchUser = fetchUser;
+    // window.deleteUser = deleteUser;
     // window.updateUser = updateUser;
-    window.verifyToken = verifyToken;
+    // window.verifyToken = verifyToken;
 
 
-    window.createPatient = createPatient;
-    window.getPatient = getPatient;
-    window.getPatients = getPatients;
+    // window.createPatient = createPatient;
+    // window.getPatient = getPatient;
+    // window.getPatients = getPatients;
 
-    window.createTask = createTask;
-    window.getTask = getTask;
-    window.updateTask = updateTask;
+    // window.createTask = createTask;
+    // window.getTask = getTask;
+    // window.updateTask = updateTask;
 
 });
