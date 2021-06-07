@@ -2,8 +2,7 @@
 
 ## NeuroDB
 Live Link: https://neurodb.herokuapp.com
-To sign in as admin: username: ernest.man10@gmail.com password: password
-Click the menu bar to navigate around the site
+THE LIVE LINK IS NO LONGER MAINTAINED.
 
 #### Overview: 
 NeuroDB is a database tool to help researchers studying intracranial Electrocorticography (ECoG) manage patient meta data and research related information. The project idea was inspired by the Chang Lab at UCSF, a neurosurgery lab interested in determining the basic mechanisms that underlie our ability to create and produce speech. Similar to many academic labs, the Chang Lab current mechanism for storing patient and clinical trial information is through numerous excel and google sheets. This makes it particularily hard to (1) search for patients that fall under specific criteria, (2) easily gather meta data and stats on a given patient population, and (3) keep track of experimental trial notes across studies. This database hopes to be a tool of use for searching, sharing, storing, organizing and gathering patient/subject data across studies and within the lab.
